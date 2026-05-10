@@ -1,0 +1,4214 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>水滸傳 一百零八將 · 完整名錄</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+TC:wght@300;400;500;600;700&family=ZCOOL+XiaoWei&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-0: #0a0806;
+    --bg-1: #14110d;
+    --bg-2: #1c1814;
+    --bg-3: #252019;
+    --gold: #c9a961;
+    --gold-bright: #e6c878;
+    --gold-dim: #8a7544;
+    --gold-soft: rgba(201, 169, 97, 0.12);
+    --red: #a83232;
+    --red-soft: rgba(168, 50, 50, 0.18);
+    --text: #d8c8a0;
+    --text-2: #9a8e6e;
+    --text-3: #6b6248;
+    --border: #2a2620;
+    --border-gold: rgba(201, 169, 97, 0.25);
+    --font-display: 'Ma Shan Zheng', cursive;
+    --font-heading: 'ZCOOL XiaoWei', 'Noto Serif TC', serif;
+    --font-body: 'Noto Serif TC', 'Songti TC', serif;
+    --font-latin: 'Cormorant Garamond', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.75;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, #1a140e 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, #18120c 0%, transparent 60%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    z-index: 0;
+  }
+
+  .hero {
+    position: relative;
+    padding: 80px 24px 48px;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .hero-ornament {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 24px;
+    display: block;
+    opacity: 0.85;
+    animation: fadeIn 1.2s ease-out;
+  }
+
+  .title-cn {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 9vw, 96px);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    text-shadow: 0 0 60px rgba(201, 169, 97, 0.15);
+    animation: fadeUp 1s ease-out 0.2s both;
+  }
+
+  .title-en {
+    font-family: var(--font-latin);
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.45em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 1s ease-out 0.4s both;
+  }
+
+  .title-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 18px;
+    animation: fadeIn 1.2s ease-out 0.5s both;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  }
+
+  .divider-mark {
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .subtitle {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    color: var(--text-2);
+    letter-spacing: 0.32em;
+    animation: fadeUp 1s ease-out 0.6s both;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .stats {
+    max-width: 880px;
+    margin: 0 auto 56px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease-out 0.8s both;
+  }
+
+  .stat-box {
+    border: 1px solid var(--border-gold);
+    padding: 22px 16px 20px;
+    text-align: center;
+    background: rgba(20, 17, 13, 0.4);
+    position: relative;
+    backdrop-filter: blur(2px);
+  }
+
+  .stat-box .corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--gold);
+  }
+  .stat-box .corner.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .stat-box .corner.tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+  .stat-box .corner.bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+  .stat-box .corner.br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+  .stat-num {
+    font-family: var(--font-latin);
+    font-size: 44px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    color: var(--text-2);
+    letter-spacing: 0.3em;
+  }
+
+  .controls {
+    max-width: 1080px;
+    margin: 0 auto 36px;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .search-wrap {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+  }
+
+  .search-input {
+    width: 100%;
+    background: rgba(20, 17, 13, 0.6);
+    border: 1px solid var(--border-gold);
+    padding: 11px 16px 11px 42px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+
+  .search-input:focus {
+    border-color: var(--gold);
+    background: var(--bg-2);
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+  }
+
+  .search-input::placeholder { color: var(--text-3); }
+
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold-dim);
+    pointer-events: none;
+  }
+
+  .view-toggle {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--border-gold);
+    background: rgba(20, 17, 13, 0.6);
+  }
+
+  .view-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-2);
+    padding: 10px 18px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 0.18em;
+    transition: all 0.2s;
+  }
+
+  .view-btn:hover { color: var(--gold); }
+  .view-btn.active { background: var(--gold); color: var(--bg-0); }
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    margin-right: 4px;
+  }
+
+  .chip {
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--text-2);
+    padding: 6px 14px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .chip:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .chip.active {
+    background: var(--gold);
+    color: var(--bg-0);
+    border-color: var(--gold);
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline { position: relative; }
+  .timeline.hidden { display: none; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 24px;
+    bottom: 24px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold-dim) 4%, var(--gold-dim) 96%, transparent);
+  }
+
+  .hero-card {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 76px;
+  }
+
+  .hero-num {
+    position: absolute;
+    left: 12px;
+    top: 16px;
+    width: 34px;
+    height: 34px;
+    background: var(--bg-0);
+    border: 1px solid var(--gold-dim);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-latin);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold);
+    z-index: 1;
+    transition: all 0.25s;
+  }
+
+  .hero-num.dishasha {
+    border-color: var(--text-3);
+    color: var(--text-2);
+  }
+
+  .card-body {
+    background: rgba(20, 17, 13, 0.7);
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    backdrop-filter: blur(2px);
+  }
+
+  .card-body:hover {
+    border-color: var(--border-gold);
+    background: var(--bg-2);
+  }
+
+  .card-body:hover + .nothing,
+  .card-body:hover ~ .hero-num,
+  .hero-card:hover .hero-num { border-color: var(--gold); color: var(--gold-bright); }
+
+  .card-body.expanded {
+    border-color: var(--gold);
+    background: var(--bg-2);
+  }
+
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .name {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  .nick {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .star {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: 0.18em;
+  }
+
+  .faction-pill {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid var(--border-gold);
+    color: var(--gold-dim);
+    letter-spacing: 0.18em;
+  }
+
+  .faction-pill.f-yuanlao { color: #b89968; border-color: rgba(184, 153, 104, 0.45); }
+  .faction-pill.f-chao { color: #d4a857; border-color: rgba(212, 168, 87, 0.4); }
+  .faction-pill.f-shaohua { color: #c89572; border-color: rgba(200, 149, 114, 0.45); }
+  .faction-pill.f-erlong { color: #7eb6a3; border-color: rgba(126, 182, 163, 0.4); }
+  .faction-pill.f-qingfeng { color: #d28b8b; border-color: rgba(210, 139, 139, 0.4); }
+  .faction-pill.f-jiangzhou { color: #6fa8c4; border-color: rgba(111, 168, 196, 0.4); }
+  .faction-pill.f-dengzhou { color: #a8b860; border-color: rgba(168, 184, 96, 0.4); }
+  .faction-pill.f-daming { color: #c5919a; border-color: rgba(197, 145, 154, 0.4); }
+  .faction-pill.f-jiang { color: #8eaad0; border-color: rgba(142, 170, 208, 0.4); }
+  .faction-pill.f-saner { color: #a89e80; border-color: rgba(168, 158, 128, 0.4); }
+
+  .chapter {
+    font-family: var(--font-latin);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-3);
+    margin-left: auto;
+    letter-spacing: 0.05em;
+  }
+
+  .detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, margin 0.3s ease, padding 0.3s ease;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0 solid transparent;
+  }
+
+  .card-body.expanded .detail {
+    max-height: 2000px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .detail-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+    font-size: 14.5px;
+  }
+
+  .detail-key {
+    color: var(--gold-dim);
+    min-width: 56px;
+    flex-shrink: 0;
+    font-family: var(--font-heading);
+    letter-spacing: 0.15em;
+    font-size: 13px;
+    padding-top: 2px;
+  }
+
+  .detail-val {
+    color: var(--text);
+    flex: 1;
+    line-height: 1.85;
+  }
+
+  .relations {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .relations-title {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .relations-title::before, .relations-title::after {
+    content: '';
+    flex: 0 0 16px;
+    height: 1px;
+    background: var(--gold-dim);
+  }
+
+  .rel-block {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .rel-label {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    color: var(--gold-dim);
+    min-width: 60px;
+    letter-spacing: 0.18em;
+  }
+
+  .rel-tags {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .rel-tag {
+    background: var(--gold-soft);
+    border: 1px solid var(--border-gold);
+    color: var(--text);
+    padding: 4px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: var(--font-body);
+  }
+
+  .rel-tag:not(.ext):hover {
+    background: var(--gold);
+    color: var(--bg-0);
+    border-color: var(--gold);
+  }
+
+  .rel-tag.enemy {
+    background: var(--red-soft);
+    border-color: rgba(168, 50, 50, 0.4);
+    color: #d4a0a0;
+  }
+
+  .rel-tag.enemy:not(.ext):hover {
+    background: var(--red);
+    color: var(--text);
+    border-color: var(--red);
+  }
+
+  .rel-tag.ext {
+    background: transparent;
+    color: var(--text-2);
+    border-style: dashed;
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .stars-view { display: none; }
+  .stars-view.show { display: block; animation: fadeIn 0.4s ease-out; }
+
+  .stats-view { display: none; }
+  .stats-view.show { display: block; animation: fadeIn 0.4s ease-out; }
+
+  .graph-view { display: none; }
+  .graph-view.show { display: block; animation: fadeIn 0.4s ease-out; }
+
+  /* === 派系統計 === */
+  .stats-overview {
+    background: rgba(20, 17, 13, 0.6);
+    border: 1px solid var(--border-gold);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .stats-overview-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 18px;
+    letter-spacing: 0.1em;
+  }
+
+  .stats-totals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+
+  .stats-total-item {
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+  }
+
+  .stats-total-num {
+    font-family: var(--font-latin);
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stats-total-label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: 0.18em;
+  }
+
+  .death-bar-overall {
+    display: flex;
+    height: 14px;
+    border: 1px solid var(--border-gold);
+    overflow: hidden;
+  }
+
+  .death-bar-overall span {
+    height: 100%;
+    transition: opacity 0.2s;
+    cursor: default;
+  }
+
+  .death-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 14px;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    color: var(--text-2);
+    letter-spacing: 0.1em;
+  }
+
+  .death-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .death-legend-swatch {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+  }
+
+  /* faction stat cards grid */
+  .faction-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .faction-card {
+    background: rgba(20, 17, 13, 0.7);
+    border: 1px solid var(--border);
+    border-top-width: 3px;
+    padding: 18px 20px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .faction-card:hover {
+    border-color: var(--border-gold);
+  }
+
+  .faction-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .faction-card-name {
+    font-family: var(--font-heading);
+    font-size: 19px;
+    letter-spacing: 0.1em;
+  }
+
+  .faction-card-count {
+    font-family: var(--font-latin);
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .faction-card-count .unit {
+    font-size: 12px;
+    color: var(--text-3);
+    margin-left: 2px;
+  }
+
+  .faction-card-meta {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    color: var(--text-2);
+    letter-spacing: 0.12em;
+  }
+
+  .faction-card-meta b {
+    color: var(--gold-bright);
+    font-weight: 400;
+    font-family: var(--font-latin);
+    font-size: 14px;
+  }
+
+  .death-bar {
+    display: flex;
+    height: 8px;
+    margin-bottom: 8px;
+    border-radius: 1px;
+    overflow: hidden;
+    background: var(--bg-3);
+  }
+
+  .death-bar span {
+    height: 100%;
+  }
+
+  .faction-card-stats {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+    margin-top: 6px;
+  }
+
+  .faction-card-stats em {
+    font-style: normal;
+    color: var(--text);
+  }
+
+  /* === 關係圖 === */
+  .graph-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .graph-controls .filter-label {
+    margin-right: 0;
+  }
+
+  .graph-toggle {
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--text-2);
+    padding: 6px 14px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 0.12em;
+    transition: all 0.2s;
+  }
+
+  .graph-toggle:hover { color: var(--gold); border-color: var(--gold); }
+  .graph-toggle.active { background: var(--gold); color: var(--bg-0); border-color: var(--gold); }
+
+  .graph-container {
+    background: rgba(10, 8, 6, 0.5);
+    border: 1px solid var(--border-gold);
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #graph-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+  }
+  #graph-svg:active { cursor: grabbing; }
+
+  #graph-svg .node {
+    cursor: pointer;
+    stroke: rgba(0, 0, 0, 0.5);
+    stroke-width: 1px;
+    transition: opacity 0.2s, stroke 0.2s, stroke-width 0.2s;
+  }
+  #graph-svg .node.tian { stroke-width: 1.5px; }
+  #graph-svg .node.dim { opacity: 0.15; }
+  #graph-svg .node.highlight { stroke: var(--gold-bright); stroke-width: 2.5px; }
+
+  #graph-svg .node-label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    fill: var(--text);
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  #graph-svg .node-label.show { opacity: 1; }
+
+  #graph-svg .link {
+    fill: none;
+    transition: opacity 0.2s, stroke-width 0.2s;
+  }
+  #graph-svg .link.sworn { stroke: rgba(201, 169, 97, 0.35); stroke-width: 1px; }
+  #graph-svg .link.enemy { stroke: rgba(168, 50, 50, 0.5); stroke-width: 1px; stroke-dasharray: 3 3; }
+  #graph-svg .link.dim { opacity: 0.1; }
+  #graph-svg .link.highlight { stroke-width: 2px; opacity: 1; }
+
+  .graph-tooltip {
+    position: absolute;
+    background: var(--bg-2);
+    border: 1px solid var(--gold);
+    padding: 8px 12px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 10;
+    max-width: 240px;
+  }
+
+  .graph-tooltip.show { opacity: 1; }
+
+  .graph-tooltip .tt-name {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .graph-tooltip .tt-info {
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: 0.05em;
+  }
+
+  .graph-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: 0.08em;
+  }
+
+  .graph-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .graph-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .graph-legend-line {
+    width: 18px;
+    height: 0;
+    border-top: 1.5px solid;
+    display: inline-block;
+  }
+
+  .graph-help {
+    color: var(--text-3);
+    font-size: 12px;
+    font-family: var(--font-heading);
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  /* === 動畫覆蓋層（聚義時序播放）=== */
+  .play-overlay {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 8, 6, 0.85);
+    border: 1px solid var(--gold);
+    padding: 12px 24px;
+    text-align: center;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    min-width: 220px;
+  }
+  .play-overlay.show { opacity: 1; }
+
+  .play-chapter {
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .play-counter {
+    font-family: var(--font-heading);
+    color: var(--text-2);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+  }
+
+  .play-event {
+    font-family: var(--font-heading);
+    color: var(--gold-bright);
+    font-size: 12px;
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  /* === 招安路線視圖 === */
+  .stance-view { display: none; }
+  .stance-view.show { display: block; animation: fadeIn 0.4s ease-out; }
+
+  .stance-intro {
+    background: rgba(20, 17, 13, 0.6);
+    border: 1px solid var(--border-gold);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+  }
+
+  .stance-intro-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .stance-intro-text {
+    color: var(--text-2);
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+
+  .stance-intro-text em {
+    font-style: normal;
+    color: var(--gold-bright);
+  }
+
+  .stance-bar {
+    display: flex;
+    height: 16px;
+    margin-top: 16px;
+    border: 1px solid var(--border-gold);
+    overflow: hidden;
+  }
+  .stance-bar span {
+    height: 100%;
+    transition: opacity 0.2s;
+  }
+  .stance-bar .anti { background: #a83232; }
+  .stance-bar .neutral { background: #7a6b5a; }
+  .stance-bar .pro { background: #d4a857; }
+
+  .stance-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .stance-cols { grid-template-columns: 1fr; }
+  }
+
+  .stance-col {
+    background: rgba(20, 17, 13, 0.7);
+    border: 1px solid var(--border);
+    border-top-width: 3px;
+    padding: 22px;
+    position: relative;
+  }
+  .stance-col.anti { border-top-color: #a83232; }
+  .stance-col.neutral { border-top-color: #7a6b5a; }
+  .stance-col.pro { border-top-color: #d4a857; }
+
+  .stance-col-head {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .stance-col-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    letter-spacing: 0.18em;
+    margin-bottom: 4px;
+  }
+  .stance-col.anti .stance-col-title { color: #d4847a; }
+  .stance-col.neutral .stance-col-title { color: #b0a585; }
+  .stance-col.pro .stance-col-title { color: var(--gold); }
+
+  .stance-col-meta {
+    font-family: var(--font-latin);
+    font-size: 13px;
+    color: var(--text-2);
+    letter-spacing: 0.1em;
+  }
+
+  .stance-col-meta b {
+    font-weight: 500;
+    color: var(--gold-bright);
+    margin-right: 4px;
+  }
+
+  .stance-quote {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-2);
+    font-style: italic;
+    margin: 10px 0 4px;
+    line-height: 1.6;
+    padding-left: 10px;
+    border-left: 2px solid var(--gold-dim);
+  }
+
+  .stance-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .stance-chip {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-left: 2px solid;
+    padding: 6px 10px 6px 9px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+  }
+
+  .stance-chip:hover {
+    border-color: var(--gold);
+    border-left-color: var(--gold);
+    background: var(--bg-2);
+    transform: translateX(2px);
+  }
+
+  .stance-chip-name {
+    font-family: var(--font-heading);
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .stance-chip-nick {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-left: 4px;
+  }
+
+  .stance-chip.tian .stance-chip-name {
+    color: var(--gold);
+  }
+
+  /* === 音效按鈕 === */
+  .sound-toggle {
+    background: rgba(20, 17, 13, 0.6);
+    border: 1px solid var(--border-gold);
+    color: var(--text-2);
+    width: 44px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s;
+    margin-left: 4px;
+  }
+
+  .sound-toggle:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .sound-toggle.on {
+    background: var(--gold);
+    color: var(--bg-0);
+    border-color: var(--gold);
+  }
+
+  .sound-hint {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(10, 8, 6, 0.92);
+    border: 1px solid var(--gold);
+    padding: 12px 18px;
+    color: var(--text);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    pointer-events: none;
+    max-width: 280px;
+  }
+
+  .sound-hint.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* === 名言區塊 === */
+  .quote-block {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: rgba(201, 169, 97, 0.06);
+    border-left: 2px solid var(--gold);
+    position: relative;
+  }
+
+  .quote-text {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--gold-bright);
+    line-height: 1.7;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .quote-ctx {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .quote-button {
+    background: transparent;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    padding: 5px 14px 5px 12px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .quote-button:hover {
+    background: var(--gold-soft);
+    border-color: var(--gold);
+  }
+
+  .quote-button.playing {
+    background: var(--gold);
+    color: var(--bg-0);
+    border-color: var(--gold);
+  }
+
+  .quote-button .icon {
+    font-size: 13px;
+  }
+
+  .stars-section { margin-bottom: 56px; }
+
+  .stars-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  .stars-section-title {
+    font-family: var(--font-display);
+    font-size: 38px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .stars-count {
+    font-family: var(--font-latin);
+    font-size: 13px;
+    color: var(--text-2);
+    letter-spacing: 0.2em;
+  }
+
+  .stars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .star-tile {
+    background: rgba(20, 17, 13, 0.7);
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: all 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .star-tile:hover {
+    border-color: var(--gold);
+    background: var(--bg-2);
+    transform: translateY(-2px);
+  }
+
+  .star-tile:hover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .star-rank {
+    font-family: var(--font-latin);
+    font-size: 11px;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .star-tile-star {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 4px;
+    letter-spacing: 0.15em;
+  }
+
+  .star-tile-name {
+    font-family: var(--font-heading);
+    font-size: 19px;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .star-tile-nick {
+    font-size: 13px;
+    color: var(--text-2);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 60px 24px 50px;
+    color: var(--text-3);
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+    font-family: var(--font-heading);
+  }
+
+  .footer-mark {
+    font-family: var(--font-display);
+    color: var(--gold-dim);
+    font-size: 32px;
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-line {
+    margin-bottom: 8px;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-3);
+  }
+
+  .empty-mark {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--gold-dim);
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .empty-text {
+    font-family: var(--font-heading);
+    letter-spacing: 0.2em;
+  }
+
+  .highlight-flash {
+    animation: highlightFlash 1.6s ease-out;
+  }
+
+  @keyframes highlightFlash {
+    0%, 30% { box-shadow: 0 0 0 2px var(--gold), 0 0 30px rgba(201, 169, 97, 0.3); }
+    100% { box-shadow: 0 0 0 0 transparent, 0 0 0 transparent; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 56px 20px 36px; }
+    .stats { grid-template-columns: 1fr; gap: 10px; max-width: 280px; }
+    .stat-num { font-size: 36px; }
+    .controls-row { flex-direction: column; align-items: stretch; }
+    .view-toggle { width: 100%; }
+    .view-btn { flex: 1; }
+    .timeline::before { left: 20px; }
+    .hero-card { padding-left: 56px; }
+    .hero-num { left: 4px; width: 30px; height: 30px; font-size: 12px; }
+    .name { font-size: 20px; }
+    .nick { font-size: 14px; }
+    .stars-grid { grid-template-columns: 1fr; }
+    .stars-section-title { font-size: 30px; }
+    .card-body { padding: 16px 16px; }
+    .detail-row { flex-direction: column; gap: 4px; }
+    .detail-key { min-width: auto; }
+    .rel-label { min-width: auto; }
+  }
+  /* === 繪圖提示詞展開區 === */
+  .prompt-section {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-gold);
+  }
+  .prompt-toggle {
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--gold);
+    padding: 9px 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .prompt-toggle:hover {
+    background: var(--gold-soft);
+    color: var(--gold-bright);
+  }
+  .prompt-toggle::after {
+    content: '▾';
+    transition: transform 0.2s;
+    font-size: 14px;
+  }
+  .prompt-toggle.open::after { transform: rotate(180deg); }
+  .prompt-content {
+    margin-top: 12px;
+    padding: 14px 14px 14px 16px;
+    background: var(--bg-2);
+    border-left: 3px solid var(--gold-dim);
+    border-radius: 2px;
+    position: relative;
+    display: none;
+  }
+  .prompt-content.show {
+    display: block;
+    animation: promptFadeIn 0.22s ease-out;
+  }
+  @keyframes promptFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .prompt-text {
+    color: var(--text-2);
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding-right: 78px;
+  }
+  .prompt-copy {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--gold);
+    color: var(--bg-0);
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .prompt-copy:hover { background: var(--gold-bright); }
+  .prompt-copy.copied { background: var(--text-3); color: var(--text); cursor: default; }
+
+  /* === Hero Modal（從 stars / stance / graph / 關係圖 點任何人都可彈出） === */
+  .hero-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 16px;
+    overflow-y: auto;
+  }
+  .hero-modal.show {
+    display: flex;
+    animation: heroModalFadeIn 0.25s ease-out;
+  }
+  .hero-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 6, 4, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+  }
+  .hero-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    background: var(--bg-1);
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(201, 169, 97, 0.08);
+    animation: heroModalSlideUp 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .hero-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-gold);
+    background: var(--bg-2);
+    color: var(--gold);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .hero-modal-close:hover {
+    background: var(--gold);
+    color: var(--bg-0);
+    transform: rotate(90deg);
+  }
+  .hero-modal-body {
+    padding: 8px;
+  }
+  /* modal 內的卡片：永遠展開、不可被點擊收起、移除 hover 效果 */
+  .hero-modal-body .hero-card {
+    margin: 0;
+    padding-left: 56px;
+  }
+  .hero-modal-body .card-body {
+    cursor: default;
+  }
+  .hero-modal-body .card-body:hover {
+    background: inherit;
+    transform: none;
+  }
+  @keyframes heroModalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes heroModalSlideUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (max-width: 640px) {
+    .hero-modal { padding: 16px 8px; }
+    .hero-modal-body .hero-card { padding-left: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<audio id="bgmAudio" loop preload="auto">
+  <source src="examples/tunetank-asian-epic-adventure-music-414102.mp3" type="audio/mpeg">
+</audio>
+
+<div id="hero-modal" class="hero-modal" aria-hidden="true" role="dialog" aria-label="人物詳細資料">
+  <div class="hero-modal-backdrop" id="hero-modal-backdrop"></div>
+  <div class="hero-modal-content">
+    <button class="hero-modal-close" id="hero-modal-close" aria-label="關閉">×</button>
+    <div class="hero-modal-body" id="hero-modal-body"></div>
+  </div>
+</div>
+
+<header class="hero">
+  <svg class="hero-ornament" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+    <circle cx="30" cy="30" r="26" stroke="#c9a961" stroke-width="0.5" opacity="0.4"/>
+    <circle cx="30" cy="30" r="20" stroke="#c9a961" stroke-width="0.5" opacity="0.55"/>
+    <circle cx="30" cy="30" r="14" stroke="#c9a961" stroke-width="0.5" opacity="0.7"/>
+    <path d="M30 4 L30 56 M4 30 L56 30" stroke="#c9a961" stroke-width="0.4" opacity="0.35"/>
+    <path d="M12 12 L48 48 M12 48 L48 12" stroke="#c9a961" stroke-width="0.4" opacity="0.3"/>
+    <circle cx="30" cy="30" r="3" fill="#c9a961"/>
+  </svg>
+  <h1 class="title-cn">水滸傳 一百零八將</h1>
+  <p class="title-en">The Hundred and Eight Stars of Destiny</p>
+  <div class="title-divider">
+    <span class="divider-line"></span>
+    <span class="divider-mark"></span>
+    <span class="divider-line"></span>
+  </div>
+  <p class="subtitle">天 罡 三 十 六 · 地 煞 七 十 二</p>
+</header>
+
+<section class="stats">
+  <div class="stat-box">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="stat-num">108</div>
+    <div class="stat-label">本 表 角 色</div>
+  </div>
+  <div class="stat-box">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="stat-num">36</div>
+    <div class="stat-label">天 罡 星</div>
+  </div>
+  <div class="stat-box">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="stat-num">72</div>
+    <div class="stat-label">地 煞 星</div>
+  </div>
+</section>
+
+<section class="controls">
+  <div class="controls-row">
+    <div class="search-wrap">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input id="search" class="search-input" type="text" placeholder="搜尋名字、綽號或星宿..." autocomplete="off">
+    </div>
+    <div class="view-toggle" role="tablist">
+      <button class="view-btn active" data-view="timeline">時間軸</button>
+      <button class="view-btn" data-view="stars">天罡地煞</button>
+      <button class="view-btn" data-view="stats">派系統計</button>
+      <button class="view-btn" data-view="graph">關係圖</button>
+      <button class="view-btn" data-view="stance">招安路線</button>
+    </div>
+    <button class="sound-toggle" id="sound-toggle" title="開啟音效（編鐘+鐘鼓+翻書聲）">🔇</button>
+    <button class="sound-toggle" id="bgm-toggle" title="背景音樂（先開音效）">🎵</button>
+  </div>
+  <div class="filter-row" id="filters">
+    <span class="filter-label">派 系</span>
+    <button class="chip active" data-faction="all">全部</button>
+    <button class="chip" data-faction="梁山元老">梁山元老</button>
+    <button class="chip" data-faction="晁蓋系">晁蓋系</button>
+    <button class="chip" data-faction="少華山">少華山</button>
+    <button class="chip" data-faction="二龍山">二龍山</button>
+    <button class="chip" data-faction="清風山系">清風山系</button>
+    <button class="chip" data-faction="江州揭陽">江州揭陽</button>
+    <button class="chip" data-faction="登州系">登州系</button>
+    <button class="chip" data-faction="大名府">大名府</button>
+    <button class="chip" data-faction="朝廷降將">朝廷降將</button>
+    <button class="chip" data-faction="散人">散人/技術</button>
+  </div>
+</section>
+
+<main class="container">
+  <div id="timeline-view" class="timeline"></div>
+  <div id="stars-view" class="stars-view"></div>
+  <div id="stats-view" class="stats-view"></div>
+  <div id="graph-view" class="graph-view"></div>
+  <div id="stance-view" class="stance-view"></div>
+  <div id="empty-state" class="empty" style="display: none;">
+    <div class="empty-mark">無</div>
+    <div class="empty-text">未 找 到 相 符 的 好 漢</div>
+  </div>
+</main>
+
+<div class="sound-hint" id="sound-hint"></div>
+
+<footer class="footer">
+  <div class="footer-mark">替 天 行 道</div>
+  <div class="footer-line">水 滸 傳 · 施 耐 庵</div>
+  <div class="footer-line" style="opacity: 0.6;">本表整理自百回本《水滸傳》</div>
+  <div class="footer-line" style="opacity: 0.4; font-size: 11px; margin-top: 16px;">
+    BGM：<a href="https://pixabay.com/music/main-title-asian-epic-adventure-music-414102/" target="_blank" rel="noopener" style="color: inherit;">"Asian Epic Adventure Music" by Tunetank</a>（Pixabay Content License）
+  </div>
+</footer>
+
+<script>
+// === 音效系統 ===
+let audioCtx = null;
+let audioEnabled = false;
+
+function ensureAudio() {
+  if (!audioCtx) {
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (e) {
+      console.warn('Web Audio not supported');
+    }
+  }
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+function playChime(freq, duration, volume) {
+  if (!audioEnabled || !ensureAudio()) return;
+  freq = freq || 880;
+  duration = duration || 0.5;
+  volume = volume || 0.18;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0, audioCtx.currentTime);
+  gain.gain.linearRampToValueAtTime(volume, audioCtx.currentTime + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+  osc.connect(gain).connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + duration);
+  // 加一個高音泛音
+  const osc2 = audioCtx.createOscillator();
+  const gain2 = audioCtx.createGain();
+  osc2.type = 'sine';
+  osc2.frequency.value = freq * 2;
+  gain2.gain.setValueAtTime(0, audioCtx.currentTime);
+  gain2.gain.linearRampToValueAtTime(volume * 0.4, audioCtx.currentTime + 0.01);
+  gain2.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration * 0.6);
+  osc2.connect(gain2).connect(audioCtx.destination);
+  osc2.start();
+  osc2.stop(audioCtx.currentTime + duration * 0.6);
+}
+
+function playDrum(volume) {
+  if (!audioEnabled || !ensureAudio()) return;
+  volume = volume || 0.4;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(110, audioCtx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(35, audioCtx.currentTime + 0.18);
+  gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+  osc.connect(gain).connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.25);
+}
+
+function playGong(volume) {
+  if (!audioEnabled || !ensureAudio()) return;
+  volume = volume || 0.32;
+  const duration = 3.0;
+  // 多重諧波模擬鑼的金屬感
+  const freqs = [98, 147, 220, 330, 440, 588];
+  freqs.forEach((f, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = i < 2 ? 'sine' : 'triangle';
+    osc.frequency.value = f;
+    osc.frequency.exponentialRampToValueAtTime(f * 0.97, audioCtx.currentTime + duration);
+    const v = volume / Math.pow(i + 1, 0.7);
+    gain.gain.setValueAtTime(v, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+  });
+  // 加一點寬頻噪聲模擬金屬撞擊瞬間
+  const bufSize = audioCtx.sampleRate * 0.4;
+  const noiseBuf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
+  const data = noiseBuf.getChannelData(0);
+  for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = noiseBuf;
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.value = 900;
+  filter.Q.value = 2;
+  const noiseGain = audioCtx.createGain();
+  noiseGain.gain.setValueAtTime(volume * 0.4, audioCtx.currentTime);
+  noiseGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+  noise.connect(filter).connect(noiseGain).connect(audioCtx.destination);
+  noise.start();
+  noise.stop(audioCtx.currentTime + 0.4);
+}
+
+// 語音相關移除（不夠精緻），改加古琴 BGM / 翻書聲 / 開場編鐘
+
+// === 古琴五聲音階 BGM ===
+const guqinFreqs = [];
+[0.5, 1, 2].forEach(mult => {
+  // 宮商角徵羽 (C, D, E, G, A) 三個八度
+  [261.63, 293.66, 329.63, 392.00, 440.00].forEach(f => guqinFreqs.push(f * mult));
+});
+
+let bgmEnabled = false;
+let bgmTimer = null;
+
+function playGuqinNote(freq, vol) {
+  if (!audioCtx) return;
+  vol = vol || 0.06;
+  const dur = 2.8;
+  const t = audioCtx.currentTime;
+
+  // 主音 (三角波，較柔和)
+  const osc1 = audioCtx.createOscillator();
+  osc1.type = 'triangle';
+  osc1.frequency.value = freq;
+  // 高八度泛音
+  const osc2 = audioCtx.createOscillator();
+  osc2.type = 'sine';
+  osc2.frequency.value = freq * 2;
+  // 12 度泛音（古琴的金屬感）
+  const osc3 = audioCtx.createOscillator();
+  osc3.type = 'sine';
+  osc3.frequency.value = freq * 3;
+
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'lowpass';
+  filter.frequency.value = freq * 6;
+  filter.Q.value = 1.2;
+
+  const gain1 = audioCtx.createGain();
+  gain1.gain.setValueAtTime(0, t);
+  gain1.gain.linearRampToValueAtTime(vol, t + 0.005);
+  gain1.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+  const gain2 = audioCtx.createGain();
+  gain2.gain.setValueAtTime(0, t);
+  gain2.gain.linearRampToValueAtTime(vol * 0.45, t + 0.005);
+  gain2.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.7);
+
+  const gain3 = audioCtx.createGain();
+  gain3.gain.setValueAtTime(0, t);
+  gain3.gain.linearRampToValueAtTime(vol * 0.18, t + 0.005);
+  gain3.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.5);
+
+  osc1.connect(gain1).connect(filter).connect(audioCtx.destination);
+  osc2.connect(gain2).connect(filter);
+  osc3.connect(gain3).connect(filter);
+
+  osc1.start(t); osc1.stop(t + dur);
+  osc2.start(t); osc2.stop(t + dur);
+  osc3.start(t); osc3.stop(t + dur);
+}
+
+// BGM 改為 mp3 自託管（真實樂器錄音，比合成更貼合武俠氛圍）
+// 原本的隨機古琴合成 BGM 已棄用；playGuqinNote 函式仍保留供其他地方呼叫
+const bgmAudio = document.getElementById('bgmAudio');
+bgmAudio.volume = 0.45;
+
+function startBGM() {
+  bgmAudio.play().catch(err => console.warn('BGM 播放失敗：', err));
+}
+
+function stopBGM() {
+  bgmAudio.pause();
+  if (bgmTimer) { clearTimeout(bgmTimer); bgmTimer = null; }
+}
+
+function toggleBGM() {
+  if (!audioEnabled) {
+    showSoundHint('請先開啟音效（左邊的喇叭按鈕）');
+    return;
+  }
+  bgmEnabled = !bgmEnabled;
+  const btn = document.getElementById('bgm-toggle');
+  btn.classList.toggle('on', bgmEnabled);
+  if (bgmEnabled) {
+    startBGM();
+    showSoundHint('背景音樂已開啟');
+  } else {
+    stopBGM();
+    showSoundHint('背景音樂已關閉');
+  }
+}
+
+// === 翻書聲（紙張摩擦）===
+function playPageFlip() {
+  if (!audioCtx) return;
+  const t = audioCtx.currentTime;
+  const bufSize = audioCtx.sampleRate * 0.18;
+  const buf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
+  const data = buf.getChannelData(0);
+  for (let i = 0; i < bufSize; i++) {
+    // 帶有 attack-decay 包絡的雜訊
+    const r = i / bufSize;
+    const env = r < 0.08 ? r / 0.08 : Math.pow(1 - (r - 0.08) / 0.92, 2);
+    data[i] = (Math.random() * 2 - 1) * env;
+  }
+  const src = audioCtx.createBufferSource();
+  src.buffer = buf;
+
+  const filter = audioCtx.createBiquadFilter();
+  filter.type = 'bandpass';
+  filter.frequency.value = 2600;
+  filter.Q.value = 0.7;
+
+  const gain = audioCtx.createGain();
+  gain.gain.value = 0.13;
+
+  src.connect(filter).connect(gain).connect(audioCtx.destination);
+  src.start(t);
+}
+
+// === 開場編鐘（V2 滄海一聲笑型）===
+// 純鐘聲下行 A5→G5→E5→D5→C5，末段空五度（A3+A4）落地
+// 五聲音階下行為主軸（豁達中帶蒼涼）+ 留白與尾韻
+// 總時長約 3.8 秒
+function playOpeningBells() {
+  if (!audioCtx) return;
+  const seq = [
+    { freq: 880,    delay: 0,    dur: 1.4, vol: 0.38 }, // A5 高八度起
+    { freq: 783.99, delay: 420,  dur: 1.0, vol: 0.32 }, // G5
+    { freq: 659.25, delay: 880,  dur: 1.1, vol: 0.34 }, // E5 屬音
+    { freq: 587.33, delay: 1380, dur: 1.0, vol: 0.30 }, // D5 經過
+    { freq: 523.25, delay: 1900, dur: 1.3, vol: 0.34 }, // C5 小三度
+    { freq: 220,    delay: 2550, dur: 2.4, vol: 0.28 }, // A3 低八度鋪底
+    { freq: 440,    delay: 2700, dur: 2.2, vol: 0.40 }, // A4 主音落地
+  ];
+  seq.forEach(b => {
+    setTimeout(() => playChime(b.freq, b.dur, b.vol), b.delay);
+  });
+}
+
+function showSoundHint(msg, duration) {
+  const el = document.getElementById('sound-hint');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => el.classList.remove('show'), duration || 2800);
+}
+
+function toggleAudio() {
+  audioEnabled = !audioEnabled;
+  const btn = document.getElementById('sound-toggle');
+  btn.classList.toggle('on', audioEnabled);
+  btn.textContent = audioEnabled ? '🔊' : '🔇';
+  if (audioEnabled) {
+    ensureAudio();
+    // 開場編鐘
+    playOpeningBells();
+    showSoundHint('音效已開啟 · 點 🎵 可加上背景音樂');
+  } else {
+    // 關閉時也停 BGM
+    if (bgmEnabled) {
+      bgmEnabled = false;
+      document.getElementById('bgm-toggle').classList.remove('on');
+      stopBGM();
+    }
+    showSoundHint('音效已關閉');
+  }
+}
+
+const heroPrompts = {
+  1: "北宋末年青年武人，年約十八，**身材挺拔、面如玉、眉清目秀**，**赤膊或袒胸露出滿身九條青龍刺青（從肩膀蜿蜒到胸腹）**，束髮戴武人巾，下穿緊身武人褲，**手執三尖兩刃刀或朴刀**。神情英氣勃勃、有少年俠客的傲氣。背景：少華山或史家莊。畫風：中國古風工筆。圖片**左上方直書「九紋龍史進」繁體書法**，**正下方朱紅方印刻「天微」**。除此題款外不可有其他文字。",
+  2: "北宋末年和尚，年約三十五，**身高八尺、體格壯碩魁梧、腰圓背厚**，**面圓耳大、鼻直口方、滿臉絡腮鬍鬚、剃光頭、後背及手臂滿是刺青**，穿土黃色僧袍、外罩深色直裰、腰束布帶，**手執水磨禪杖（粗重金屬杖）**。神情豪邁不羈、目光剛烈正義。背景：五台山或大相國寺菜園、垂楊柳樹。畫風：中國古風工筆。圖片**左上方直書「花和尚魯智深」繁體書法**，**正下方朱紅方印刻「天孤」**。除此題款外不可有其他文字。",
+  3: "北宋末年武將，年約三十五，**身高八尺、身材挺拔**，**豹頭、環眼圓睜、燕頷虎鬚、面如冰盤（白皙清冷）**，頭戴頂風雪笠或軍盔，穿青色武教頭袍服，腰挎腰刀，**手執丈八蛇矛**。神情冷峻內斂、有被體制壓抑的悲劇感。背景：風雪山神廟、雪地。畫風：中國古風工筆。圖片**左上方直書「豹子頭林沖」繁體書法**，**正下方朱紅方印刻「天雄」**。除此題款外不可有其他文字。",
+  4: "北宋末年武將，年約三十，身高七八尺、身材壯碩，**左半臉一塊大青色胎記（從太陽穴覆蓋到嘴角，是「青面獸」綽號由來）**，三綹黑長鬚、相貌威武，穿青灰色武人短袍、戴皮巾，**背負楊家祖傳寶刀、手執朴刀**。神情沉鬱、有楊家後人懷才不遇的悲憤。背景：黃泥岡或東京街頭。畫風：中國古風工筆。圖片**左上方直書「青面獸楊志」繁體書法**，**正下方朱紅方印刻「天暗」**。除此題款外不可有其他文字。",
+  5: "北宋末年官差，年約三十，**身高七尺五、紫棠色（深棕紅）面皮、虎眉燕頷**，戴皂巾、穿青色公差袍、腰挎腰刀，**手執朴刀**。神情勇猛憨直。背景：鄆城縣街市。畫風：中國古風工筆。圖片**左上方直書「插翅虎雷橫」繁體書法**，**正下方朱紅方印刻「天退」**。除此題款外不可有其他文字。",
+  6: "北宋末年官差，年約三十五，**身高八尺四、面似重棗（紅潤）、目如朗星、一部虎鬚長髯垂胸（與關羽相似）**，戴皂色軟巾、穿青色公服或紅綠戰袍、腰挎腰刀，騎馬。神情忠厚仗義。背景：鄆城縣街市。畫風：中國古風工筆。圖片**左上方直書「美髯公朱仝」繁體書法**，**正下方朱紅方印刻「天滿」**。除此題款外不可有其他文字。",
+  7: "北宋末年男性軍師，年約四十，瘦削書生身材，**白面、鬢髮已斑白**，蓄三縷文人長鬚，戴方巾、穿儒生長衫，手執羽扇或鵝毛扇。眉目精明、眼神多智、似笑非笑藏謀略。氣質：諸葛亮式的軍師。背景：梁山聚義廳或書齋。畫風：中國古風工筆。圖片**左上方直書「智多星吳用」繁體書法**，**正下方朱紅方印刻「天機」**。除此題款外不可有其他文字。",
+  8: "北宋末年男性，年約二十八，**紫黑色闊臉、面有凶相、鬢邊一搭朱砂胎記上長一撮紅毛（赤髮鬼綽號由來）**，眉目猙獰，戴黑色武人巾、穿紅黑相間短袍，**手執朴刀**。神情凶悍粗豪。背景：荒野或東溪村。畫風：中國古風工筆。圖片**左上方直書「赤髮鬼劉唐」繁體書法**，**正下方朱紅方印刻「天異」**。除此題款外不可有其他文字。",
+  9: "北宋末年男性道士，年約四十，身材修長，**蓄黑色長髯及胸**，八字眉、杏子眼，頭戴黃色道冠或束髮，穿藍灰色道袍，腰繫絲絛，背負桃木劍。神情清矍出塵、有仙風道骨。背景：道觀或山林雲霧。畫風：中國古風工筆。圖片**左上方直書「入雲龍公孫勝」繁體書法**，**正下方朱紅方印刻「天閑」**。除此題款外不可有其他文字。",
+  10: "北宋末年漁夫，年約三十二，**精瘦結實、面色黧黑（漁民膚色）、滿臉粗鬚**，包黑頭巾、赤膊或穿藍麻短衫、束腰，**手執鋼叉或漁槳**。神情粗豪剛烈。背景：石碣湖泊、漁船。畫風：中國古風工筆。圖片**左上方直書「立地太歲阮小二」繁體書法**，**正下方朱紅方印刻「天劍」**。除此題款外不可有其他文字。",
+  11: "北宋末年漁夫，年約三十，**精瘦、面色微黑、胸前一隻深青色老虎刺青（佔滿胸膛）、面頰有刀疤**，散亂頭髮包巾、赤膊袒露刺青、下穿短麻褲，**手執鋼叉**。神情狂野不羈。背景：石碣湖、漁船。畫風：中國古風工筆。圖片**左上方直書「短命二郎阮小五」繁體書法**，**正下方朱紅方印刻「天罪」**。除此題款外不可有其他文字。",
+  12: "北宋末年漁夫，年約二十六，**精瘦結實、面色黧黑、面相凶悍如閻羅**，散亂頭髮包巾、赤膊或穿短麻打、束腰，**手執鋼叉**。神情野性凶猛。背景：石碣湖、月下湖面。畫風：中國古風工筆。圖片**左上方直書「活閻羅阮小七」繁體書法**，**正下方朱紅方印刻「天敗」**。除此題款外不可有其他文字。",
+  13: "北宋末年男性，年約二十八，**身材瘦小單薄、面色蒼白、面相猥瑣機靈**，戴黑巾、穿青色短打粗布衣、繫腰、肩挑酒桶或挑擔，**手執扁擔**。神情狡黠機靈。背景：黃泥岡或東溪村。畫風：中國古風工筆。圖片**左上方直書「白日鼠白勝」繁體書法**，**正下方朱紅方印刻「地賊」**。除此題款外不可有其他文字。",
+  14: "北宋末年男性，年約三十五，身材偏矮但結實壯碩，**面色黧黑（綽號「黑宋江」）**，眉清目秀，眼神深沉內斂、似笑非笑，三縷短鬚，文官書吏打扮：青色長衫便服、黑色軟巾，腰束絲帶，手執書卷或羽扇。氣度仁厚而具城府、是亂世領袖而非武將。背景：水泊梁山聚義廳。畫風：中國古風工筆人物畫、半身像、水墨設色、淡雅。圖片**左上方直書「呼保義宋江」繁體中文書法**（楷書或行書），字色與背景形成對比；姓名正下方緊接**一枚朱紅方形篆刻印章，刻「天魁」二字**。除此題款外，圖片不可有其他文字。",
+  15: "北宋末年男性，年約三十，**身高八尺、相貌堂堂、骨健筋強、虎背狼腰**，**頭陀打扮：披散長髮、頭戴鐵箍、頸掛骷髏念珠**，穿黑色短直裰、腰束皂絲絛、繫鐵戒尺，**雙手各持一把雪花鑌鐵戒刀**。神情冷峻凌厲、目光如電。背景：景陽崗山林或十字坡黑店、月夜。畫風：中國古風工筆。圖片**左上方直書「行者武松」繁體書法**，**正下方朱紅方印刻「天傷」**。除此題款外不可有其他文字。",
+  16: "北宋末年青年武將，年約二十五，**身材修長挺拔、容貌俊美如唐代李廣再世**，面如冠玉、眉清目秀，**戴銀盔、披銀甲、穿白色戰袍**，腰懸雕弓箭袋，**手執銀鎗或拉滿弓**，騎白馬。氣質：英俊神箭、儒雅武將。背景：戰場、空中飛雁。畫風：中國古風工筆。圖片**左上方直書「小李廣花榮」繁體書法**，**正下方朱紅方印刻「天英」**。除此題款外不可有其他文字。",
+  17: "北宋末年武將，年約三十五，**滿臉黑色絡腮鬍鬚、面如鍋底、雙目圓睜、性情急躁**，穿赤紅戰袍配紋甲、戴鳳翅盔，**手執狼牙棒**，騎黃驃馬。神情怒目而視、霹靂如雷。背景：戰場、火光衝天。畫風：中國古風工筆。圖片**左上方直書「霹靂火秦明」繁體書法**，**正下方朱紅方印刻「天猛」**。除此題款外不可有其他文字。",
+  18: "北宋末年男性，年約三十五，**身材高瘦修長、雙腿特別精健**，面色微黃，戴皂色軟巾、穿黑色短直裰束腰、**腳上甲馬（綁四個甲馬符的草鞋）**，手執哨棒。神情精幹敏捷。背景：道路、奔行間風起雲湧。畫風：中國古風工筆。圖片**左上方直書「神行太保戴宗」繁體書法**，**正下方朱紅方印刻「天速」**。除此題款外不可有其他文字。",
+  19: "北宋末年水手，年約三十，**身材修長精瘦、面色黝黑（常年日曬風吹）**，蓄短鬚，戴箬笠或包頭巾、穿短打麻布衫、繫腰，**手執船槳或鋼叉**。神情精幹靈活。背景：揚子江或梁山水泊、船上。畫風：中國古風工筆。圖片**左上方直書「混江龍李俊」繁體書法**，**正下方朱紅方印刻「天壽」**。除此題款外不可有其他文字。",
+  20: "北宋末年男性，年約三十，**黑熊般魁梧粗壯體格、滿身黑色濃毛、面色焦黑如鍋底、麻臉粗糙、大眼圓睜、闊嘴露齒**，蓬亂黑髮，**赤膊或穿粗布短褂**、腰束粗皮帶，**雙手各持一把板斧**。神情凶悍粗野、目光卻直率天真。背景：戰場血戰、或沂水縣山林。畫風：中國古風工筆。圖片**左上方直書「黑旋風李逵」繁體書法**，**正下方朱紅方印刻「天殺」**。除此題款外不可有其他文字。",
+  21: "北宋末年水手，年約二十八，**身材精壯、皮膚白皙如雪（綽號「白條」由來）、面目清秀**，包頭巾、赤膊上身露出白皙肌膚、下穿短水褲，**手執漁網或鋼叉**。神情靈動機敏。背景：揚子江中、入水翻浪。畫風：中國古風工筆。圖片**左上方直書「浪裡白條張順」繁體書法**，**正下方朱紅方印刻「天損」**。除此題款外不可有其他文字。",
+  22: "北宋末年押獄劊子手，年約三十，**身材高瘦、面色蠟黃（蠟黃如病容，故稱「病關索」）**，蓄短鬚、戴黑巾、穿紅色行刑袍或押獄差服、繫紅帶，**手執行刑朴刀或鬼頭刀**。神情陰鷙冷峻。背景：薊州刑場或牢城。畫風：中國古風工筆。圖片**左上方直書「病關索楊雄」繁體書法**，**正下方朱紅方印刻「天牢」**。除此題款外不可有其他文字。",
+  23: "北宋末年男性，年約二十八，**身材精悍瘦削、面色青黃、目光銳利凌厲**，戴皂巾、穿青色短打粗布衣、束腰、繫腿，**手執朴刀或柴斧**。神情倔烈直爽、目光如刀。背景：薊州街市或翠屏山。畫風：中國古風工筆。圖片**左上方直書「拚命三郎石秀」繁體書法**，**正下方朱紅方印刻「天慧」**。除此題款外不可有其他文字。",
+  24: "北宋末年神偷，年約二十八，**身材極為瘦小靈活、面色蠟黃、雙目炯炯有神、手腳長靈活**，戴黑色軟巾或夜行頭套、穿緊身夜行衣（黑色或深藍色）、束腰、繫腿，**手執短刀或飛爪繩**。神情靈巧狡黠、飛簷走壁姿態。背景：夜色屋頂、飛簷上。畫風：中國古風工筆。圖片**左上方直書「鼓上蚤時遷」繁體書法**，**正下方朱紅方印刻「地狗」**。除此題款外不可有其他文字。",
+  25: "北宋末年女將，年約二十二，**身材高挑修長、容貌絕美、面如桃花、目光英氣銳利**，**頭戴鳳翅金冠或女武人束髮、穿紅色或粉色錦繡戰袍配軟甲、腰束絲絛、裙擺飛揚**，**雙手各持一把寒月雙刀**，騎青鬃馬。氣質：絕色女將、巾幗不讓鬚眉。背景：祝家莊或梁山校場。畫風：中國古風工筆。圖片**左上方直書「一丈青扈三娘」繁體書法**，**正下方朱紅方印刻「地慧」**。除此題款外不可有其他文字。",
+  26: "北宋末年獵戶，年約二十八，**身材結實精瘦、面色黝黑、雙目銳利**，戴獸皮帽、穿土褐色獵戶短打配虎皮坎肩、繫腿，**背負獵叉、手執鋼叉**，腰繫腰刀。神情精幹勇猛。背景：登州山林、雪地或夜獵。畫風：中國古風工筆。圖片**左上方直書「兩頭蛇解珍」繁體書法**，**正下方朱紅方印刻「天暴」**。除此題款外不可有其他文字。",
+  27: "北宋末年獵戶，年約二十六，**身材精瘦結實、面色黝黑、面貌與兄解珍相似**，戴獸皮帽、穿褐色獵戶短打、繫腿，**背負弓箭、手執獵叉**，腰繫腰刀。神情比兄稍機敏。背景：登州山林。畫風：中國古風工筆。圖片**左上方直書「雙尾蠍解寶」繁體書法**，**正下方朱紅方印刻「天哭」**。除此題款外不可有其他文字。",
+  28: "北宋末年武將，年約三十五，身材魁梧，**面色黝黑、留三縷黑長鬚**，戴鐵盔、披連環鎖子甲、穿烏雲戰袍，**雙手各持一根鋼鞭**，騎踢雪烏騅馬。氣度沉穩威武。背景：戰場、千軍萬馬連環馬陣。畫風：中國古風工筆。圖片**左上方直書「雙鞭呼延灼」繁體書法**，**正下方朱紅方印刻「天威」**。除此題款外不可有其他文字。",
+  29: "北宋末年男性，年約三十五，**身高九尺、身材挺拔魁偉**，面如冠玉、皮膚白皙、英俊堂堂，眉目疏朗、神情高貴，留三縷美髯。穿錦緞貴族武人服飾、束玉帶，手執朴刀或長槍。氣質：富家貴公子兼武林高手，貴氣與英武並存。背景：北宋大名府富宅或梁山。畫風：中國古風工筆人物畫、半身像、水墨設色。圖片**左上方直書「玉麒麟盧俊義」繁體書法**，**正下方朱紅方印刻「天罡」二字**。除此題款外不可有其他文字。",
+  30: "北宋末年男性，年約二十二，**身材修長挺拔、皮膚白皙如玉、容貌俊美無雙、眉清目秀如美少年**，**全身有極精緻華美的花卉刺青（花鳥圖案，連臂膀都是）**，束髮戴英雄結、穿藕色或淺青色錦緞勁裝、腰束絲絛，**手執弩弓或胡琴**。神情靈動機敏、貴氣與市井靈活並存。背景：東京勾欄瓦舍或泰山相撲台。畫風：中國古風工筆。圖片**左上方直書「浪子燕青」繁體書法**，**正下方朱紅方印刻「天巧」**。除此題款外不可有其他文字。",
+  31: "北宋末年文士兼將領，年約三十五，**身材中等、面白瘦削、目光精明**，戴儒巾、穿青色道袍式長衫，**手執兵書或羽扇**。神情沉著有謀。背景：山寨議事廳或少華山。畫風：中國古風工筆。圖片**左上方直書「神機軍師朱武」繁體書法**，**正下方朱紅方印刻「地魁」**。除此題款外不可有其他文字。",
+  32: "北宋末年山寨頭領，年約二十八，**身材結實、面色微黑、面相威武**，蓄短髭，戴武人巾、穿綠色或棕色武人勁裝、束腰，**手執點鋼槍**。神情勇猛。背景：少華山。畫風：中國古風工筆。圖片**左上方直書「跳澗虎陳達」繁體書法**，**正下方朱紅方印刻「地周」**。除此題款外不可有其他文字。",
+  33: "北宋末年山寨頭領，年約二十六，**身材修長、面色微白、目光靈動**，戴黑巾、穿青色武人勁裝、束腰，**手執大桿刀**。神情機敏。背景：少華山。畫風：中國古風工筆。圖片**左上方直書「白花蛇楊春」繁體書法**，**正下方朱紅方印刻「地隱」**。除此題款外不可有其他文字。",
+  34: "北宋末年貴公子，年約三十，**身材修長、皮膚白皙、相貌儒雅斯文**，蓄短鬚，戴儒巾、穿錦緞青色長衫、腰束玉帶，手執書卷或摺扇。氣度雍容有貴族氣派、目光溫和。背景：滄州柴府莊園、高雅廳堂。畫風：中國古風工筆。圖片**左上方直書「小旋風柴進」繁體書法**，**正下方朱紅方印刻「天貴」**。除此題款外不可有其他文字。",
+  35: "北宋末年山寨頭領，年約三十，**身材異常高瘦修長（比常人高出一頭以上）、面色微黑、瘦削**，戴黑巾、穿青色短打、束腰，**手執朴刀**。神情粗獷。背景：梁山舊寨。畫風：中國古風工筆。圖片**左上方直書「摸著天杜遷」繁體書法**，**正下方朱紅方印刻「地妖」**。除此題款外不可有其他文字。",
+  36: "北宋末年山寨頭領，年約三十二，**身材高大壯碩如金剛佛像、面色微黑**，戴黑巾、穿青色武人勁裝，**手執朴刀**。神情粗豪。背景：梁山泊舊聚義廳。畫風：中國古風工筆。圖片**左上方直書「雲裡金剛宋萬」繁體書法**，**正下方朱紅方印刻「地魔」**。除此題款外不可有其他文字。",
+  37: "北宋末年酒店老闆兼情報員，年約三十五，**身材瘦削修長、面色微黃憔悴（長年不見天日）**，蓄短鬚，戴皂巾、穿青色長衫、繫圍裙，**手執短刀或酒杯**。神情精明老練、有江湖耳目氣質。背景：梁山泊邊酒店。畫風：中國古風工筆。圖片**左上方直書「旱地忽律朱貴」繁體書法**，**正下方朱紅方印刻「地藏」**。除此題款外不可有其他文字。",
+  38: "北宋末年武將，年約三十，**身材魁梧、面色黝黑、滿臉鬚髯**，戴鳳翅盔、披紅色戰袍配鐵甲，**手執大金蘸斧（開斧）**，騎黃馬。神情急躁勇猛。背景：戰場、火光。畫風：中國古風工筆。圖片**左上方直書「急先鋒索超」繁體書法**，**正下方朱紅方印刻「天空」**。除此題款外不可有其他文字。",
+  39: "北宋末年青年男性，年約二十二，**身材修長、面白如玉、英俊年輕、目光清澈**，蓄短髭，束髮戴英雄巾、穿白色或淺青色錦緞武人袍、束絲絛，**手執朴刀**。氣質清俊。背景：清風山或蘇州街市。畫風：中國古風工筆。圖片**左上方直書「白面郎君鄭天壽」繁體書法**，**正下方朱紅方印刻「地異」**。除此題款外不可有其他文字。",
+  40: "北宋末年山賊頭領，年約三十二，**身材壯碩、面色黧黑、有橘紅色虎紋刺青或穿著虎紋皮甲（綽號「錦毛虎」由來）**，包頭巾、穿緊身武人裝、束腰，**手執朴刀**。神情粗獷威猛。背景：清風山山寨。畫風：中國古風工筆。圖片**左上方直書「錦毛虎燕順」繁體書法**，**正下方朱紅方印刻「地強」**。除此題款外不可有其他文字。",
+  41: "北宋末年山賊頭領，年約三十，**身材矮小但結實壯碩（不到五尺）、面色微黑、目光帶情慾貪婪、面相粗野**，包頭巾、穿緊身武人短打、束腰，**手執雙刀**。神情粗獷好色。背景：清風山山寨。畫風：中國古風工筆。圖片**左上方直書「矮腳虎王英」繁體書法**，**正下方朱紅方印刻「地微」**。除此題款外不可有其他文字。",
+  42: "北宋末年武將，年約三十，**身材壯碩、面色微紅、留短鬚**，戴武將盔、穿綠色戰袍配甲，**手執喪門劍**，騎馬。神情威武。背景：青州城下。畫風：中國古風工筆。圖片**左上方直書「鎮三山黃信」繁體書法**，**正下方朱紅方印刻「地煞」**。除此題款外不可有其他文字。",
+  43: "北宋末年江湖賭徒兼好漢，年約三十，**身材結實壯碩如石、面色黧黑、目光直率**，戴皂巾、穿青色武人勁裝，**手執朴刀**。神情粗豪直爽。背景：江湖賭場或山寨。畫風：中國古風工筆。圖片**左上方直書「石將軍石勇」繁體書法**，**正下方朱紅方印刻「地數」**。除此題款外不可有其他文字。",
+  44: "北宋末年水手，年約二十八，**身材精瘦、面色黝黑、目光精明**，包頭巾、穿短打麻衣、繫腰、裸足，**手執鋼叉或船槳**。神情精幹。背景：揚子江、船上。畫風：中國古風工筆。圖片**左上方直書「出洞蛟童威」繁體書法**，**正下方朱紅方印刻「地進」**。除此題款外不可有其他文字。",
+  45: "北宋末年水手，年約二十六，**身材精瘦結實、面色黧黑、面貌與兄童威相似**，包頭巾、赤膊或穿短打、繫腰、裸足，**手執鋼叉**。神情敏捷。背景：揚子江。畫風：中國古風工筆。圖片**左上方直書「翻江蜃童猛」繁體書法**，**正下方朱紅方印刻「地退」**。除此題款外不可有其他文字。",
+  46: "北宋末年黑店老闆，年約三十二，**身材壯碩、面色青黑、面相凶悍如鬼判官、目光陰冷**，蓄黑鬚，戴黑巾、穿黑色武人勁裝，**手執朴刀或屠刀**。神情陰鷙。背景：揭陽嶺黑店、夜暗。畫風：中國古風工筆。圖片**左上方直書「催命判官李立」繁體書法**，**正下方朱紅方印刻「地察」**。除此題款外不可有其他文字。",
+  47: "北宋末年江湖船家，年約三十，**精瘦黝黑、長手長腳、面有凶相**，包頭巾、赤膊或穿短打、束腰，**手執船槳或腰刀**。神情精明兼凶悍、是水上強盜。背景：江上船頭、月夜。畫風：中國古風工筆。圖片**左上方直書「船火兒張橫」繁體書法**，**正下方朱紅方印刻「天平」**。除此題款外不可有其他文字。",
+  48: "北宋末年揭陽地方豪強，年約三十，**身材高大威猛、面色微黑、目光炯炯**，蓄短髯，穿綠色錦緞武人袍、束革帶，**手執朴刀**。神情霸氣強悍。背景：揭陽鎮街市或長江邊。畫風：中國古風工筆。圖片**左上方直書「沒遮攔穆弘」繁體書法**，**正下方朱紅方印刻「天究」**。除此題款外不可有其他文字。",
+  49: "北宋末年地方豪強，年約二十六，**身材結實、面色微黑、面貌與兄穆弘相似**，戴武人巾、穿青色武人袍、束腰，**手執朴刀**。神情強悍。背景：揭陽鎮。畫風：中國古風工筆。圖片**左上方直書「小遮攔穆春」繁體書法**，**正下方朱紅方印刻「地鎮」**。除此題款外不可有其他文字。",
+  50: "北宋末年江湖藝人，年約二十八，**身材精瘦、面色蒼白憔悴（如病容）、目光精明**，蓄短鬚，戴皂巾、穿青色武人勁裝、束腰，**手執朴刀**。神情滄桑歷練。背景：街市賣藝場、桌上擺刀劍棍棒。畫風：中國古風工筆。圖片**左上方直書「病大蟲薛永」繁體書法**，**正下方朱紅方印刻「地幽」**。除此題款外不可有其他文字。",
+  51: "北宋末年文士書法家，年約三十五，**身材修長、面白清秀、目光溫文**，蓄三縷文人鬚，戴儒巾、穿藍色長衫，**手執毛筆或文房四寶**。神情儒雅、書卷氣濃。背景：書房、案上有書畫卷軸。畫風：中國古風工筆。圖片**左上方直書「聖手書生蕭讓」繁體書法**，**正下方朱紅方印刻「地文」**。除此題款外不可有其他文字。",
+  52: "北宋末年雕刻匠人，年約三十，**身材修長、面白俊秀、雙臂白皙修長**，蓄短鬚，戴儒巾、穿青色長衫、袖口繫帶，**手執雕刻刀或玉印**。神情靜雅專注。背景：書齋、案上有印石碑文。畫風：中國古風工筆。圖片**左上方直書「玉臂匠金大堅」繁體書法**，**正下方朱紅方印刻「地巧」**。除此題款外不可有其他文字。",
+  53: "北宋末年江湖好漢，年約二十八，**身材高瘦、面色微黑、目光銳利**，戴武人巾、穿綠色短打武袍、束腰，**手執鐵槍**。神情靈動敏捷。背景：黃門山。畫風：中國古風工筆。圖片**左上方直書「摩雲金翅歐鵬」繁體書法**，**正下方朱紅方印刻「地闊」**。除此題款外不可有其他文字。",
+  54: "北宋末年江湖好漢，年約三十，**面色微黑、雙眼赤紅如火（綽號「火眼」由來）、面相凶悍**，蓄短鬚，戴黑色巾、穿黑色短打勁裝、束腰，**手執鐵鏈或長刀**。神情凶狠。背景：飲馬川山寨。畫風：中國古風工筆。圖片**左上方直書「火眼狻猊鄧飛」繁體書法**，**正下方朱紅方印刻「地闔」**。除此題款外不可有其他文字。",
+  55: "北宋末年江湖好漢，年約二十八，**身材修長矯健、面色微黑、目光銳利**，戴武人巾、穿豹紋或暗色花紋短打、束腰，**手執朴刀**。神情敏捷。背景：飲馬川或薊州山道。畫風：中國古風工筆。圖片**左上方直書「錦豹子楊林」繁體書法**，**正下方朱紅方印刻「地暗」**。除此題款外不可有其他文字。",
+  56: "北宋末年青年小卒兼歌者，年約二十二，**身材修長清瘦、面白清秀、目光靈動**，戴皂巾、穿青色武人勁裝，**手執鐵骨笛或拍板**，腰挎短刀。神情清朗有藝人氣質。背景：登州或山寨筵席。畫風：中國古風工筆。圖片**左上方直書「鐵叫子樂和」繁體書法**，**正下方朱紅方印刻「地樂」**。除此題款外不可有其他文字。",
+  57: "北宋末年女性山寨老闆娘，年約三十二，**身材高大壯碩（不輸男人）、面色黝黑、面相粗獷威武、雙目圓睜如雌虎**，散亂頭髮綰髻、穿土黃色或棗紅色女武人短打、束革帶，**手執雙刀或大斧**。氣質：潑辣兇悍的女好漢。背景：登州酒店。畫風：中國古風工筆。圖片**左上方直書「母大蟲顧大嫂」繁體書法**，**正下方朱紅方印刻「地刑」**。除此題款外不可有其他文字。",
+  58: "北宋末年武將，年約三十二，**身高八尺、面色蠟黃（綽號「病尉遲」由來）、長鬚黑硬、目光威嚴**，戴鐵盔、披皂色戰袍配甲，**手執竹節鋼鞭、腰挎弓箭**，騎烏騅馬。神情沉穩。背景：登州或祝家莊。畫風：中國古風工筆。圖片**左上方直書「病尉遲孫立」繁體書法**，**正下方朱紅方印刻「地勇」**。除此題款外不可有其他文字。",
+  59: "北宋末年莊主，年約四十，**身材高大、面皮白淨、五綹長黑鬚**，穿土黃色或棕色錦袍配軟甲、戴絨帽，腰掛飛刀數把，**手執朴刀或長槍**。神情沉穩、有富戶莊主的精明氣度。背景：李家莊堡寨。畫風：中國古風工筆。圖片**左上方直書「撲天雕李應」繁體書法**，**正下方朱紅方印刻「天富」**。除此題款外不可有其他文字。",
+  60: "北宋末年武將，年約三十，**面白英俊、身材挺拔修長**，戴金頂武人冠、穿錦繡戰袍配軟甲，**手執金紋長槍（金鎗）**，腰掛短刀。氣質：京城高級武官的儒雅威武。背景：東京殿前禁軍校場。畫風：中國古風工筆。圖片**左上方直書「金鎗手徐寧」繁體書法**，**正下方朱紅方印刻「天佑」**。除此題款外不可有其他文字。",
+  61: "北宋末年江湖賣藝人，年約三十五，**身材結實、面色微黑、面相滄桑**，蓄短鬚，戴布巾、穿土褐色武人短打、束腰，**手執朴刀或棍棒**。神情精明歷練。背景：街市賣藝、擺攤。畫風：中國古風工筆。圖片**左上方直書「打虎將李忠」繁體書法**，**正下方朱紅方印刻「地僻」**。除此題款外不可有其他文字。",
+  62: "北宋末年山賊頭領，年約二十八，**身材矮粗結實（不算高，但壯）、面色黝黑、面相凶悍**，散亂頭髮包巾、穿青黑色武人勁裝，**手執朴刀**。神情粗野好色。背景：桃花山。畫風：中國古風工筆。圖片**左上方直書「小霸王周通」繁體書法**，**正下方朱紅方印刻「地空」**。除此題款外不可有其他文字。",
+  63: "北宋末年男性，年約三十，**身材中等、面色微黑（與兄宋江相似但較淡）、相貌斯文清秀**，蓄短鬚，戴儒巾、穿青色長衫，**手執鐵骨摺扇（綽號由來）**。神情溫和儒雅。背景：山寨宴廳。畫風：中國古風工筆。圖片**左上方直書「鐵扇子宋清」繁體書法**，**正下方朱紅方印刻「地俊」**。除此題款外不可有其他文字。",
+  64: "北宋末年屠夫，年約二十八，**身材結實壯碩、面色微黑、雙手粗壯**，蓄短髭，戴布巾、穿白色或灰色屠夫圍裙（沾血跡）、繫革帶，**手執屠宰刀或朴刀**。神情粗豪兼帶屠工的精準。背景：屠宰場或孟州道酒店。畫風：中國古風工筆。圖片**左上方直書「操刀鬼曹正」繁體書法**，**正下方朱紅方印刻「地嵇」**。除此題款外不可有其他文字。",
+  65: "北宋末年黑店老闆，年約三十五，**身材壯碩、面色微黑、面相精明帶凶**，蓄短鬚，戴皂巾、穿青色武人勁裝、繫圍裙，**手執朴刀**。神情陰鷙中帶生意人精明。背景：十字坡黑店、酒旗飄揚。畫風：中國古風工筆。圖片**左上方直書「菜園子張青」繁體書法**，**正下方朱紅方印刻「地壯」**。除此題款外不可有其他文字。",
+  66: "北宋末年女性黑店老闆娘，年約二十八，**身材結實壯碩、面色黧黑或微紅、面相凶悍如夜叉、目光凶猛**，散亂頭髮綰髻包頭巾、**穿紅裙配青色短襖、繫圍裙（沾血跡）**，**手執屠刀或短鏈**。氣質：辣手無情的女好漢。背景：十字坡黑店、灶台。畫風：中國古風工筆。圖片**左上方直書「母夜叉孫二娘」繁體書法**，**正下方朱紅方印刻「地劣」**。除此題款外不可有其他文字。",
+  67: "北宋末年牢城少爺，年約二十五，**身材修長、面色微紅、雙眼炯炯有金光（綽號由來）**，蓄短髭，戴黑巾、穿青色武人勁裝，**手執朴刀**。神情精明。背景：孟州牢城或快活林酒店。畫風：中國古風工筆。圖片**左上方直書「金眼彪施恩」繁體書法**，**正下方朱紅方印刻「地伏」**。除此題款外不可有其他文字。",
+  68: "北宋末年地方豪強少爺，年約二十五，**身材結實、面色微黑、頭髮粗硬蓬亂如毛頭**，蓄短鬚，包頭巾、穿綠色錦緞武人袍、束腰，**手執朴刀**。神情粗豪。背景：白虎山或孔家莊。畫風：中國古風工筆。圖片**左上方直書「毛頭星孔明」繁體書法**，**正下方朱紅方印刻「地猖」**。除此題款外不可有其他文字。",
+  69: "北宋末年地方豪強少爺，年約二十二，**身材結實、面色微黑、性情急躁面有怒意**，蓄短髭，包頭巾、穿赤色錦緞武人袍、束腰，**手執朴刀**。神情火爆。背景：白虎山。畫風：中國古風工筆。圖片**左上方直書「獨火星孔亮」繁體書法**，**正下方朱紅方印刻「地狂」**。除此題款外不可有其他文字。",
+  70: "北宋末年青年武將，年約二十二，**身材修長英俊、面如冠玉、容貌酷似古代呂布**，戴金冠紮紅纓、穿大紅戰袍配金甲，**手執方天畫戟**，騎赤馬。神情英武風流。背景：對影山或戰場。畫風：中國古風工筆。圖片**左上方直書「小溫侯呂方」繁體書法**，**正下方朱紅方印刻「地佐」**。除此題款外不可有其他文字。",
+  71: "北宋末年青年武將，年約二十三，**身材挺拔英俊、面白俊朗、容貌酷似古代薛仁貴**，戴銀盔、穿白色戰袍配銀甲，**手執方天畫戟**，騎白馬。神情英武清朗。背景：對影山或戰場。畫風：中國古風工筆。圖片**左上方直書「賽仁貴郭盛」繁體書法**，**正下方朱紅方印刻「地佑」**。除此題款外不可有其他文字。",
+  72: "北宋末年江湖好漢兼樂師，年約三十，**身材修長挺拔、面色微黑、目光清亮**，蓄短鬚，戴黑巾、穿青色武人勁裝，**手執鐵笛、腰挎雙刀**。神情雅致中帶英氣。背景：江邊月夜、笛聲渺渺。畫風：中國古風工筆。圖片**左上方直書「鐵笛仙馬麟」繁體書法**，**正下方朱紅方印刻「地明」**。除此題款外不可有其他文字。",
+  73: "北宋末年文士會計師，年約三十，**身材修長、面白瘦削、目光精明**，戴儒巾、穿青色長衫，**手執算盤或竹簡賬冊**。神情精於計算。背景：山寨帳房、案上有算盤竹簡。畫風：中國古風工筆。圖片**左上方直書「神算子蔣敬」繁體書法**，**正下方朱紅方印刻「地會」**。除此題款外不可有其他文字。",
+  74: "北宋末年農夫出身的好漢，年約三十二，**身材結實壯碩、面色黝黑（農民膚色）、雙手粗壯**，戴笠帽或包頭巾、穿土褐色短打粗布衣、繫腰、裸足或穿草鞋，**手執鐵鋤頭（特殊武器）或鐵鏟**。神情憨厚剛強。背景：黃門山。畫風：中國古風工筆。圖片**左上方直書「九尾龜陶宗旺」繁體書法**，**正下方朱紅方印刻「地理」**。除此題款外不可有其他文字。",
+  75: "北宋末年裁縫匠，年約三十，**身材瘦削、雙臂異常修長（如猿臂）、面色微黑、目光精明**，戴青巾、穿青色長衫、繫腰，**手執剪刀或短劍**。神情靈活機敏。背景：裁縫店、案上有布匹。畫風：中國古風工筆。圖片**左上方直書「通臂猿侯健」繁體書法**，**正下方朱紅方印刻「地遂」**。除此題款外不可有其他文字。",
+  76: "北宋末年酒店老闆，年約三十，**身材中等微胖、面色紅潤、面帶笑容（似笑非笑、藏鋒）**，蓄短鬚，戴皂巾、穿青色長衫、繫圍裙，**手執酒壺或短刀**。神情笑裡藏刀。背景：沂水縣酒店。畫風：中國古風工筆。圖片**左上方直書「笑面虎朱富」繁體書法**，**正下方朱紅方印刻「地平」**。除此題款外不可有其他文字。",
+  77: "北宋末年官差都頭，年約三十二，**身材結實、面色微黃、雙眼瞳色青（罕見的青眼，綽號由來）**，蓄短鬚，戴皂巾、穿青色公差袍、束腰，**手執朴刀**。神情正直。背景：沂水縣街市。畫風：中國古風工筆。圖片**左上方直書「青眼虎李雲」繁體書法**，**正下方朱紅方印刻「地惡」**。除此題款外不可有其他文字。",
+  78: "北宋末年司法官吏，年約四十，**身材中等、面色黝黑如鐵、五官威嚴方正、目光如電**，蓄短黑鬚，戴黑色官帽、穿青色官袍，**手執判官筆或木牘**。神情冷峻剛正、有判官氣派。背景：衙門公堂或大牢。畫風：中國古風工筆。圖片**左上方直書「鐵面孔目裴宣」繁體書法**，**正下方朱紅方印刻「地正」**。除此題款外不可有其他文字。",
+  79: "北宋末年造船匠，年約三十，**身材極為高大瘦長（如旗幡竿）、皮膚白皙、面相清秀**，戴匠人巾、穿青色短打工裝、束腰，**手執斧鋸或長槍**。神情幹練。背景：船廠、半成船骨架。畫風：中國古風工筆。圖片**左上方直書「玉幡竿孟康」繁體書法**，**正下方朱紅方印刻「地滿」**。除此題款外不可有其他文字。",
+  80: "北宋末年莊客，年約三十二，**身材中等、面貌古怪醜陋（鬼臉、面相不協調，五官扭曲）、目光精明**，戴黑巾、穿青色長衫，**手執朴刀**。神情精明。背景：李家莊。畫風：中國古風工筆。圖片**左上方直書「鬼臉兒杜興」繁體書法**，**正下方朱紅方印刻「地短」**。除此題款外不可有其他文字。",
+  81: "北宋末年武人，年約二十八，**身材結實、面色微黃、面貌與兄孫立相似（小尉遲）**，蓄短鬚，戴武人巾、穿青色武人勁裝，**手執雙鞭或腰刀**。神情勇武。背景：登州。畫風：中國古風工筆。圖片**左上方直書「小尉遲孫新」繁體書法**，**正下方朱紅方印刻「地陰」**。除此題款外不可有其他文字。",
+  82: "北宋末年山賊頭領，年約三十二，**身材結實壯碩、面色黝黑、目光勇武**，戴黑巾、穿土褐色短打、束腰，**手執朴刀**。神情粗獷。背景：登州山林。畫風：中國古風工筆。圖片**左上方直書「獨角龍鄒淵」繁體書法**，**正下方朱紅方印刻「地角」**。除此題款外不可有其他文字。",
+  83: "北宋末年山賊，年約二十六，**身材結實壯碩、面色黝黑、頭頂上有一塊肉瘤突起（如角狀）**，戴黑巾遮蓋瘤、穿青色武人短打，**手執朴刀**。神情勇猛。背景：登州山林。畫風：中國古風工筆。圖片**左上方直書「出林龍鄒潤」繁體書法**，**正下方朱紅方印刻「地囚」**。除此題款外不可有其他文字。",
+  84: "北宋末年江湖打手，年約三十，**身材結實、面色焦黑、面相冷酷凶悍、目光無情**，蓄短鬚，赤膊或穿短打武人勁裝、束腰，雙手結實如鐵，**或赤手相撲姿勢、或執短鏈**。神情冷酷。背景：江湖、相撲場。畫風：中國古風工筆。圖片**左上方直書「沒面目焦挺」繁體書法**，**正下方朱紅方印刻「地醜」**。除此題款外不可有其他文字。",
+  85: "北宋末年鐵匠，年約三十，**身材結實、面色焦黑、滿臉麻點、身上有金錢圖案刺青（綽號由來）**，戴皂巾、穿土黃色短打鐵匠工裝、束革帶，**手執鐵錘或寶劍**。神情粗獷實在。背景：鐵匠鋪、爐火熊熊。畫風：中國古風工筆。圖片**左上方直書「金錢豹子湯隆」繁體書法**，**正下方朱紅方印刻「地全」**。除此題款外不可有其他文字。",
+  86: "北宋末年武將，年約三十五，身材魁梧，**面色赤紅、留鬍鬚**，戴鐵盔、披黃色戰袍配甲，**手執棗木朔**。神情威武。背景：戰場、連環馬陣。畫風：中國古風工筆。圖片**左上方直書「百勝將韓滔」繁體書法**，**正下方朱紅方印刻「地威」**。除此題款外不可有其他文字。",
+  87: "北宋末年武將，年約三十二，**身材壯碩、面色青黑、目光威嚴有神**，蓄短鬚，戴武將盔、穿戰袍配甲，**手執三尖兩刃八環刀**。神情冷峻。背景：戰場。畫風：中國古風工筆。圖片**左上方直書「天目將彭玘」繁體書法**，**正下方朱紅方印刻「地英」**。除此題款外不可有其他文字。",
+  88: "北宋末年火器專家武將，年約三十五，**身材中等、面色微赤（火藥薰染）、目光精明**，戴武人巾、穿青色或棕色短打勁裝、束革帶、繫火藥包，**手執火砲信子或矮腳虎子母砲**。神情精於技術。背景：火砲陣地、煙霧瀰漫。畫風：中國古風工筆。圖片**左上方直書「轟天雷凌振」繁體書法**，**正下方朱紅方印刻「地軸」**。除此題款外不可有其他文字。",
+  89: "北宋末年道士兼山賊頭領，年約三十二，**披散長黑髮、面色微黃、目光深邃帶法術氣息**，穿藍灰色道袍配獸面護心鏡、腰繫絲絛、繫五色絲線，**手執桃木劍或鋼鞭**。神情神秘玄奧。背景：芒碭山雲霧、法陣。畫風：中國古風工筆。圖片**左上方直書「混世魔王樊瑞」繁體書法**，**正下方朱紅方印刻「地默」**。除此題款外不可有其他文字。",
+  90: "北宋末年滾牌手，年約二十五，**身材精瘦敏捷、面色微黑、目光銳利**，戴黑巾、穿緊身武人勁裝、繫腿，**身披三十六口飛標、左手持團牌（圓盾）、右手持標槍或短劍**。神情敏捷凌厲。背景：芒碭山。畫風：中國古風工筆。圖片**左上方直書「八臂哪吒項充」繁體書法**，**正下方朱紅方印刻「地飛」**。除此題款外不可有其他文字。",
+  91: "北宋末年滾牌手，年約二十五，**身材精瘦敏捷、面色微黑、面相靈動**，戴黑巾、穿緊身武人勁裝、繫腿，**身披二十四口飛刀、左手持團牌、右手持標槍**。神情靈巧敏捷。背景：芒碭山、與項充並肩。畫風：中國古風工筆。圖片**左上方直書「飛天大聖李袞」繁體書法**，**正下方朱紅方印刻「地走」**。除此題款外不可有其他文字。",
+  92: "北宋末年盜馬賊，年約三十，**身材精瘦、面色微黑、滿臉金黃色鬚髯（綽號「金毛」由來）、頭髮亦微黃**，戴黑巾、穿青色或棕色武人短打、束腰、繫腿，**手執馬鞭或短刀**，旁有駿馬。神情精明老練。背景：北方草原或馬廄。畫風：中國古風工筆。圖片**左上方直書「金毛犬段景住」繁體書法**，**正下方朱紅方印刻「地察」**。除此題款外不可有其他文字。",
+  93: "北宋末年押獄劊子手，年約三十二，**身材壯碩、雙臂特別粗壯（如鐵臂）、面色微黑、目光威嚴**，蓄短鬚，戴皂巾、穿紅色或暗紅色行刑服，**手執鬼頭刀**。神情冷峻。背景：大名府牢城刑場。畫風：中國古風工筆。圖片**左上方直書「鐵臂膊蔡福」繁體書法**，**正下方朱紅方印刻「地損」**。除此題款外不可有其他文字。",
+  94: "北宋末年青年押獄，年約二十六，**身材修長、面白俊秀、鬢邊插一朵紅花（綽號由來，刻意風流的打扮）**，戴黑巾、穿紅色或紫色武人勁裝，**手執短劍或腰刀**。神情風流中帶冷意。背景：大名府或刑場。畫風：中國古風工筆。圖片**左上方直書「一枝花蔡慶」繁體書法**，**正下方朱紅方印刻「地奴」**。除此題款外不可有其他文字。",
+  95: "北宋末年武將，年約四十，**身材魁偉如關羽再世，面如重棗（深紅色）、丹鳳眼、臥蠶眉、五綹長髯**，戴綠色錦盔、披綠色戰袍配金甲，騎赤紅戰馬，**手提青龍偃月刀**。氣質：威武忠義。背景：戰場或軍營。畫風：中國古風工筆。圖片**左上方直書「大刀關勝」繁體書法**，**正下方朱紅方印刻「天勇」**。除此題款外不可有其他文字。",
+  96: "北宋末年武將，年約三十五，**面貌醜陋怪異、紫色臉、卷髮赤鬚、雙目深陷**，戴武人盔、穿戰袍配甲，**手執大鐵刀**。神情陰沉複雜（醜貌但官位顯赫的反差）。背景：戰場或宋朝邊關。畫風：中國古風工筆。圖片**左上方直書「醜郡馬宣贊」繁體書法**，**正下方朱紅方印刻「地傑」**。除此題款外不可有其他文字。",
+  97: "北宋末年武將，年約三十，**身材高大壯碩、面色微黑、目光勇武**，蓄短鬚，戴鳳翅盔、披紅色戰袍配甲，**手執方天畫戟**。神情忠勇。背景：戰場、關勝部下。畫風：中國古風工筆。圖片**左上方直書「井木犴郝思文」繁體書法**，**正下方朱紅方印刻「地雄」**。除此題款外不可有其他文字。",
+  98: "北宋末年名醫，年約四十，**身材修長、面白清秀、目光溫和睿智**，蓄三縷長鬚，戴儒巾、穿青色長衫、外披藥師袖罩，**手執藥囊或藥碾子**，腰掛繫藥袋。神情仁厚清雅。背景：藥房、案上有藥材草本。畫風：中國古風工筆。圖片**左上方直書「神醫安道全」繁體書法**，**正下方朱紅方印刻「地靈」**。除此題款外不可有其他文字。",
+  99: "北宋末年青年酒保，年約二十二，**身材瘦小靈活、面色微黑、目光靈動**，戴皂巾、穿青色短打武人勁裝、束腰，**手執短刀或棍棒**。神情敏捷。背景：揚子江邊小酒店。畫風：中國古風工筆。圖片**左上方直書「活閃婆王定六」繁體書法**，**正下方朱紅方印刻「地健」**。除此題款外不可有其他文字。",
+  100: "北宋末年武將兼方術師，年約三十五，**身材中等、面色微紅、目光深邃**，戴武將盔配水紋飾、穿藍色戰袍配甲，**手執丈八蛇矛**，騎神駿馬。神情有方術氣息。背景：戰場、水霧中。畫風：中國古風工筆。圖片**左上方直書「聖水將軍單廷珪」繁體書法**，**正下方朱紅方印刻「地奇」**。除此題款外不可有其他文字。",
+  101: "北宋末年武將兼方術師，年約三十五，**身材壯碩、面色赤紅如火、目光火炙**，戴武將盔配火紋飾、穿紅色戰袍配甲（火元素），**手執火尖槍或長劍**。神情有方術之威。背景：戰場、火光熊熊。畫風：中國古風工筆。圖片**左上方直書「神火將軍魏定國」繁體書法**，**正下方朱紅方印刻「地猛」**。除此題款外不可有其他文字。",
+  102: "北宋末年武將，年約三十，**身材壯碩、面色赤紅、面相猙獰凶悍如惡神**，散亂黑髮包巾、穿黑色或暗紅色武人勁裝、束腰，**手執鬼頭刀或闊劍**。神情凶煞。背景：戰場、血氣騰騰。畫風：中國古風工筆。圖片**左上方直書「喪門神鮑旭」繁體書法**，**正下方朱紅方印刻「地暴」**。除此題款外不可有其他文字。",
+  103: "北宋末年獸醫，年約四十五，**身材中等、面色紅潤、滿臉紫色（深棕紅）長鬚垂胸**，戴黃色軟巾、穿土褐色長衫，**手執馬鞭或獸醫器具**。神情親切專業。背景：馬廄、有馬匹。畫風：中國古風工筆。圖片**左上方直書「紫髯伯皇甫端」繁體書法**，**正下方朱紅方印刻「地獸」**。除此題款外不可有其他文字。",
+  104: "北宋末年降將，年約三十，**身材異常高大壯碩（如廟門口的險道神像）、面色黝黑、相貌兇悍**，戴武人盔、穿黑色武人勁裝，**手執長旗（中軍寶纛旗）或長槍**。神情威嚴。背景：戰場中軍、巨大旗幟。畫風：中國古風工筆。圖片**左上方直書「險道神郁保四」繁體書法**，**正下方朱紅方印刻「地耗」**。除此題款外不可有其他文字。",
+  105: "北宋末年武將，年約三十，**英俊瀟灑、面如冠玉、目光銳利**，蓄短鬚，戴鳳翅盔、披紅戰袍配明光甲，**雙手各持一把銀槍**，騎白龍駒。氣質：文武雙全、風流武將。背景：戰場馬上。畫風：中國古風工筆。圖片**左上方直書「雙鎗將董平」繁體書法**，**正下方朱紅方印刻「天立」**。除此題款外不可有其他文字。",
+  106: "北宋末年武將，年約二十八，**身材短小精悍、面色微黑**，戴小型武人巾、穿緊身武人袍、腰束革囊裝滿光滑鵝卵石，**手執短槍另一手揚起準備擲石**。神情靈活機敏。背景：戰場、東昌府城樓。畫風：中國古風工筆。圖片**左上方直書「沒羽箭張清」繁體書法**，**正下方朱紅方印刻「天捷」**。除此題款外不可有其他文字。",
+  107: "北宋末年武將，年約二十八，**身材精悍、面色微黑、頸項上有顯眼的彩色花虎刺青（從鎖骨蜿蜒至下顎）**，戴武人巾、穿緊身武人勁裝、束腰，**身懸數枝飛槍、手執長槍**。神情狡黠勇猛。背景：戰場、東昌府附近。畫風：中國古風工筆。圖片**左上方直書「花項虎龔旺」繁體書法**，**正下方朱紅方印刻「地捷」**。除此題款外不可有其他文字。",
+  108: "北宋末年武將，年約三十，**身材結實、面色黝黑、面頸有舊箭傷疤痕（綽號「中箭虎」由來）**，戴武人盔、穿緊身武人勁裝，**身懸數枝飛叉、手執短戟**。神情粗獷。背景：戰場、東昌府附近。畫風：中國古風工筆。圖片**左上方直書「中箭虎丁得孫」繁體書法**，**正下方朱紅方印刻「地速」**。除此題款外不可有其他文字。",
+};
+
+const heroes = [
+  {
+    num: 1, name: "史進", nick: "九紋龍", star: "天微星", rank: 23, isTian: true,
+    chapter: "第2回", faction: "少華山", endType: "戰死", stance: "反招安", weapon: "三尖兩刃刀",
+    intro: "華陰縣史家莊少莊主，身上紋了九條青龍，從小不愛讀書愛使槍棒。",
+    deeds: "拜八十萬禁軍教頭王進為師學成十八般武藝，後因結交少華山三好漢被官府通緝，亡命江湖。",
+    end: "征方臘時於昱嶺關被龐萬春一箭射死。",
+    rel: {
+      sworn: [{n:"王進(師父)",ext:1},{n:"朱武",id:31},{n:"陳達",id:32},{n:"楊春",id:33},{n:"魯智深",id:2}],
+      saved: [], savedBy: [], enemies: [{n:"華陰縣官府",ext:1}]
+    }
+  },
+  {
+    num: 2, name: "魯智深", nick: "花和尚", star: "天孤星", rank: 13, isTian: true,
+    chapter: "第3回", faction: "二龍山", endType: "出家", stance: "反招安", quote: "滿朝文武，多是奸邪，蒙蔽聖聰，洗殺怎得乾淨。", quoteCtx: "（招安後對宋江抗議）", weapon: "水磨禪杖（六十二斤）",
+    intro: "原名魯達，渭州經略府提轄。書中最通透的好漢，金聖嘆評為「上上人物」。",
+    deeds: "拳打鎮關西、大鬧五台山、倒拔垂楊柳、大鬧野豬林救林沖、活捉方臘。",
+    end: "征方臘後在杭州六和寺聽錢塘潮信坐化，留偈「今日方知我是我」。",
+    rel: {
+      sworn: [{n:"林沖",id:3},{n:"武松",id:15},{n:"楊志",id:4},{n:"史進",id:1},{n:"曹正",id:64},{n:"李忠",id:61},{n:"周通",id:62}],
+      saved: [{n:"林沖",id:3},{n:"金老父女",ext:1},{n:"劉太公女兒",ext:1},{n:"周通(調停)",id:62}],
+      savedBy: [],
+      enemies: [{n:"鎮關西(已殺)",ext:1},{n:"高俅",ext:1}]
+    }
+  },
+  {
+    num: 3, name: "林沖", nick: "豹子頭", star: "天雄星", rank: 6, isTian: true,
+    chapter: "第7回", faction: "梁山元老", endType: "意外瘟疫", stance: "中立", quote: "殺人可恕，情理難容。", quoteCtx: "（風雪山神廟，殺陸謙等三人後）", weapon: "丈八蛇矛",
+    intro: "東京八十萬禁軍槍棒教頭。武藝高強，性格隱忍，是被體制碾碎的悲劇人物。",
+    deeds: "誤入白虎堂、刺配滄州、野豬林遇救、風雪山神廟、雪夜上梁山、火併王倫扶晁蓋。",
+    end: "征方臘途中風癱於杭州六和寺，半年後病逝，由武松照料臨終。",
+    rel: {
+      sworn: [{n:"魯智深",id:2},{n:"武松",id:15},{n:"曹正(徒弟)",id:64},{n:"徐寧(同事)",id:60},{n:"董平",id:105}],
+      saved: [{n:"張清(設計擒)",id:106}],
+      savedBy: [{n:"魯智深",id:2},{n:"柴進(滄州收留)",id:34}],
+      enemies: [{n:"高俅",ext:1},{n:"高衙內",ext:1},{n:"陸謙(已殺)",ext:1},{n:"扈三娘(被擒)",id:25}]
+    }
+  },
+  {
+    num: 4, name: "楊志", nick: "青面獸", star: "天暗星", rank: 17, isTian: true,
+    chapter: "第12回", faction: "二龍山", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "楊家將後代，原為殿前制使官，臉上有青色胎記。",
+    deeds: "失陷花石綱被革職、賣刀殺牛二、押運生辰綱被劫、上二龍山入夥。",
+    end: "征方臘途中在丹徒縣病死。",
+    rel: {
+      sworn: [{n:"魯智深",id:2},{n:"武松",id:15},{n:"曹正",id:64},{n:"索超(比武結識)",id:38}],
+      saved: [], savedBy: [],
+      enemies: [{n:"高俅",ext:1},{n:"牛二(已殺)",ext:1},{n:"晁蓋等劫綱七人",id:7},{n:"索超(早期)",id:38}]
+    }
+  },
+  {
+    num: 5, name: "雷橫", nick: "插翅虎", star: "天退星", rank: 25, isTian: true,
+    chapter: "第13回", faction: "清風山系", endType: "戰死", stance: "親招安", weapon: "朴刀",
+    intro: "鄆城縣步兵都頭，與朱仝是地方一對好漢。",
+    deeds: "因毆殺潑皮白秀英被刺配，押解途中被朱仝義釋放，後上梁山。",
+    end: "征方臘攻打杭州時被司行方斬於陣中。",
+    rel: {
+      sworn: [{n:"朱仝",id:6},{n:"宋江",id:14}],
+      saved: [{n:"劉唐",id:8}],
+      savedBy: [{n:"朱仝",id:6}],
+      enemies: [{n:"白秀英(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 6, name: "朱仝", nick: "美髯公", star: "天滿星", rank: 12, isTian: true,
+    chapter: "第13回", faction: "清風山系", endType: "善終", stance: "親招安", weapon: "朴刀",
+    intro: "鄆城縣馬兵都頭，美髯飄飄如關公，為人忠厚義氣。",
+    deeds: "義釋晁蓋、義釋宋江、義釋雷橫，後被李逵殺四歲小衙內逼上梁山。",
+    end: "招安後封保定府都統制，後升至太平軍節度使，是少數善終者。",
+    rel: {
+      sworn: [{n:"雷橫",id:5},{n:"宋江",id:14}],
+      saved: [{n:"晁蓋",ext:1},{n:"宋江",id:14},{n:"雷橫",id:5}],
+      savedBy: [],
+      enemies: [{n:"李逵(殺小衙內)",id:20}]
+    }
+  },
+  {
+    num: 7, name: "吳用", nick: "智多星", star: "天機星", rank: 3, isTian: true,
+    chapter: "第14回", faction: "晁蓋系", endType: "殉葬", stance: "親招安", weapon: "銅鏈（主謀略）",
+    intro: "鄆城縣東溪村教書先生，號稱「賽諸葛」。本為晁蓋軍師，後倒向宋江。",
+    deeds: "智取生辰綱、設計火併王倫、藏頭詩騙盧俊義上山、賺朱仝小衙內事件、各戰役主謀。",
+    end: "宋江被毒死後，與花榮在宋江墓前雙雙上吊自盡。",
+    rel: {
+      sworn: [{n:"晁蓋",ext:1},{n:"宋江",id:14},{n:"公孫勝",id:9},{n:"劉唐",id:8},{n:"阮氏三兄弟",id:10},{n:"花榮",id:16}],
+      saved: [], savedBy: [],
+      enemies: [{n:"楊志(早期)",id:4},{n:"高俅",ext:1}]
+    }
+  },
+  {
+    num: 8, name: "劉唐", nick: "赤髮鬼", star: "天異星", rank: 21, isTian: true,
+    chapter: "第14回", faction: "晁蓋系", endType: "戰死", stance: "反招安", weapon: "朴刀",
+    intro: "東潞州人，鬢邊一塊紅斑、紅頭髮。是劫生辰綱最初的提議者。",
+    deeds: "夜訪晁蓋提議劫生辰綱、智取生辰綱、上梁山。",
+    end: "征方臘攻打杭州城時被城門閘板砸死。",
+    rel: {
+      sworn: [{n:"晁蓋",ext:1},{n:"吳用",id:7},{n:"公孫勝",id:9},{n:"阮氏三兄弟",id:10},{n:"白勝",id:13}],
+      saved: [], savedBy: [{n:"雷橫",id:5}],
+      enemies: [{n:"楊志(劫生辰綱)",id:4}]
+    }
+  },
+  {
+    num: 9, name: "公孫勝", nick: "入雲龍", star: "天閒星", rank: 4, isTian: true,
+    chapter: "第15回", faction: "晁蓋系", endType: "出家", stance: "反招安", quote: "從此隱於羅真人門下，不再返人世。", quoteCtx: "（征遼後辭別宋江）", weapon: "松文古定劍（主法術）",
+    intro: "薊州人，羅真人弟子，會呼風喚雨、奇門遁甲。",
+    deeds: "智取生辰綱、芒碭山降樊瑞、降高廉妖法、征遼破陣。",
+    end: "征遼後告辭宋江回薊州羅真人座下修道，終世不出，得善終。",
+    rel: {
+      sworn: [{n:"晁蓋",ext:1},{n:"吳用",id:7},{n:"羅真人(師)",ext:1},{n:"樊瑞(徒)",id:89},{n:"楊林(同鄉)",id:55}],
+      saved: [{n:"樊瑞(降妖收服)",id:89}],
+      savedBy: [],
+      enemies: [{n:"高廉(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 10, name: "阮小二", nick: "立地太歲", star: "天劍星", rank: 27, isTian: true,
+    chapter: "第15回", faction: "晁蓋系", endType: "戰死", stance: "反招安", weapon: "兩股鋼叉",
+    intro: "石碣村漁民，阮氏三雄之首，性格沉著有大哥風範。",
+    deeds: "智取生辰綱、石碣村大破何濤官軍、梁山水軍主將。",
+    end: "征方臘清溪縣戰敗，自刎而死（一說投水自盡）。",
+    rel: {
+      sworn: [{n:"阮小五",id:11},{n:"阮小七",id:12},{n:"晁蓋",ext:1},{n:"吳用",id:7}],
+      saved: [], savedBy: [],
+      enemies: [{n:"何濤官軍",ext:1}]
+    }
+  },
+  {
+    num: 11, name: "阮小五", nick: "短命二郎", star: "天罪星", rank: 29, isTian: true,
+    chapter: "第15回", faction: "晁蓋系", endType: "戰死", stance: "反招安", weapon: "鋼叉",
+    intro: "石碣村漁民，阮氏三雄老二，最早被吳用說動入伙。",
+    deeds: "與兩兄弟同進退，水軍各場戰役。",
+    end: "征方臘清溪縣被婁敏中亂軍中刺死。",
+    rel: {
+      sworn: [{n:"阮小二",id:10},{n:"阮小七",id:12},{n:"晁蓋",ext:1},{n:"吳用",id:7}],
+      saved: [], savedBy: [],
+      enemies: [{n:"何濤官軍",ext:1}]
+    }
+  },
+  {
+    num: 12, name: "阮小七", nick: "活閻羅", star: "天敗星", rank: 31, isTian: true,
+    chapter: "第15回", faction: "晁蓋系", endType: "善終", stance: "反招安", quote: "我穿這龍袍，叫官家也瞧一瞧。", quoteCtx: "（征方臘後穿方臘龍袍鬧朝廷）", weapon: "鋼叉",
+    intro: "石碣村漁民，阮氏三雄最小，最豪邁，最有「江湖氣」。",
+    deeds: "智取生辰綱、水軍各役、征方臘奪方臘玉璽（穿龍袍鬧事）。",
+    end: "穿方臘龍袍被劾，貶為庶民，回石碣村打漁，活到六十善終。",
+    rel: {
+      sworn: [{n:"阮小二",id:10},{n:"阮小五",id:11},{n:"晁蓋",ext:1},{n:"吳用",id:7}],
+      saved: [], savedBy: [],
+      enemies: [{n:"高俅(陣前敵)",ext:1}]
+    }
+  },
+  {
+    num: 13, name: "白勝", nick: "白日鼠", star: "地耗星", rank: 98, isTian: false,
+    chapter: "第16回", faction: "晁蓋系", endType: "意外瘟疫", stance: "中立", weapon: "—",
+    intro: "黃泥岡賣酒小販，看似普通，是劫生辰綱中關鍵的「演員」。",
+    deeds: "扮挑酒漢誘騙楊志一行喝下蒙汗藥酒。事敗被捕招供，連累晁蓋。",
+    end: "征方臘途中病死於杭州。",
+    rel: {
+      sworn: [{n:"晁蓋",ext:1},{n:"吳用",id:7},{n:"劉唐",id:8}],
+      saved: [], savedBy: [{n:"晁蓋等劫法場",ext:1}],
+      enemies: [{n:"楊志(劫生辰綱)",id:4}]
+    }
+  },
+  {
+    num: 14, name: "宋江", nick: "及時雨", star: "天魁星", rank: 1, isTian: true,
+    chapter: "第18回", faction: "清風山系", endType: "毒殺", stance: "親招安", quote: "權借水泊歇馬，待朝廷赦罪招安，重見天日。", quoteCtx: "（梁山日常向眾兄弟反覆說）", weapon: "樸刀（自衛）",
+    intro: "鄆城縣押司，又號「呼保義」「孝義黑三郎」。梁山首領。",
+    deeds: "通風報信救晁蓋、殺閻婆惜、潯陽樓題反詩、江州劫法場、奪晁蓋之位、推動招安、征四寇。",
+    end: "招安後被高俅蔡京下毒，自飲毒酒前還誆騙李逵同死，葬於楚州蓼兒洼。",
+    rel: {
+      sworn: [{n:"武松",id:15},{n:"李逵",id:20},{n:"戴宗",id:18},{n:"花榮",id:16},{n:"朱仝",id:6},{n:"雷橫",id:5},{n:"吳用",id:7},{n:"宋清(親弟)",id:63},{n:"柴進",id:34},{n:"燕順",id:40},{n:"李應",id:59}],
+      saved: [{n:"晁蓋(通風報信)",ext:1}],
+      savedBy: [{n:"朱仝",id:6},{n:"花榮",id:16},{n:"戴宗",id:18},{n:"李逵",id:20}],
+      enemies: [{n:"閻婆惜(已殺)",ext:1},{n:"高俅",ext:1},{n:"蔡京",ext:1},{n:"黃文炳(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 15, name: "武松", nick: "行者", star: "天傷星", rank: 14, isTian: true,
+    chapter: "第23回", faction: "二龍山", endType: "出家", stance: "反招安", quote: "今日也要招安，明日也要招安去，冷了弟兄們的心。", quoteCtx: "（招安宴上喝止宋江）", weapon: "雙戒刀",
+    intro: "清河縣人。書中份量最重的個人英雄，「武十回」獨佔十回篇幅。",
+    deeds: "景陽岡打虎、為兄報仇殺潘金蓮西門慶、醉打蔣門神、血濺鴛鴦樓、二龍山入夥。",
+    end: "征方臘斷臂後在六和寺出家，照料林沖至終，自身活到八十歲善終。",
+    rel: {
+      sworn: [{n:"宋江",id:14},{n:"魯智深",id:2},{n:"楊志",id:4},{n:"林沖",id:3},{n:"柴進",id:34},{n:"張青",id:65},{n:"孫二娘",id:66},{n:"施恩",id:67},{n:"孔明",id:68},{n:"孔亮",id:69},{n:"曹正",id:64}],
+      saved: [{n:"林沖(臨終照料)",id:3},{n:"施恩(打蔣門神)",id:67},{n:"張青孫二娘",id:65}],
+      savedBy: [{n:"宋江(柴進莊接濟)",id:14},{n:"柴進(收留養病)",id:34}],
+      enemies: [{n:"西門慶(已殺)",ext:1},{n:"潘金蓮(已殺)",ext:1},{n:"蔣門神(已殺)",ext:1},{n:"張都監(已殺)",ext:1},{n:"包道乙(已殺,斷臂仇)",ext:1}]
+    }
+  },
+  {
+    num: 16, name: "花榮", nick: "小李廣", star: "天英星", rank: 9, isTian: true,
+    chapter: "第33回", faction: "清風山系", endType: "殉葬", stance: "親招安", weapon: "銀槍、神箭",
+    intro: "清風寨副知寨，箭法天下無雙，比擬漢代飛將軍李廣。宋江最忠心的親信之一。",
+    deeds: "救宋江出清風寨、清風山相聚、二打祝家莊、神箭射雁射鵰各種傳奇場面。",
+    end: "宋江被毒死後，與吳用在宋江墓前雙雙上吊殉葬。",
+    rel: {
+      sworn: [{n:"宋江",id:14},{n:"吳用",id:7},{n:"秦明(連襟)",id:17},{n:"呂方",id:70},{n:"郭盛",id:71},{n:"黃信",id:42}],
+      saved: [{n:"宋江(清風寨)",id:14}],
+      savedBy: [],
+      enemies: [{n:"劉高夫婦(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 17, name: "秦明", nick: "霹靂火", star: "天猛星", rank: 7, isTian: true,
+    chapter: "第34回", faction: "清風山系", endType: "戰死", stance: "親招安", weapon: "狼牙棒",
+    intro: "青州指揮司總管，性情如烈火，故得綽號「霹靂火」。",
+    deeds: "領兵剿清風山被擒，宋江設計派人扮秦明屠青州害秦明全家被殺，逼降。後二打祝家莊立功。",
+    end: "征方臘清溪縣被方臘姪子方杰一戟刺死。",
+    rel: {
+      sworn: [{n:"花榮(連襟)",id:16},{n:"宋江",id:14}],
+      saved: [], savedBy: [{n:"宋江(被擒後勸降)",id:14}],
+      enemies: [{n:"宋江(間接害全家)",id:14},{n:"慕容知府(已殺)",ext:1},{n:"方杰(殺害他)",ext:1}]
+    }
+  },
+  {
+    num: 18, name: "戴宗", nick: "神行太保", star: "天速星", rank: 20, isTian: true,
+    chapter: "第36回", faction: "江州揭陽", endType: "出家", stance: "親招安", weapon: "神行甲馬（道術）",
+    intro: "江州兩院押牢節級，腿綁神行甲馬可日行八百里。宋江情報網核心。",
+    deeds: "傳遞情報無人能及、江州劫法場、智取公孫勝、征遼征方臘各役偵察。",
+    end: "征方臘後辭官到泰安州岳廟出家，數年後大笑而終，得善終。",
+    rel: {
+      sworn: [{n:"宋江",id:14},{n:"李逵",id:20},{n:"楊雄(同鄉)",id:22},{n:"楊林(同公孫鄉)",id:55},{n:"蕭讓",id:51},{n:"金大堅",id:52},{n:"安道全",id:98},{n:"王定六",id:99},{n:"侯健",id:75}],
+      saved: [{n:"宋江(劫法場)",id:14}],
+      savedBy: [],
+      enemies: [{n:"蔡九知府",ext:1},{n:"黃文炳(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 19, name: "李俊", nick: "混江龍", star: "天壽星", rank: 26, isTian: true,
+    chapter: "第36回", faction: "江州揭陽", endType: "善終", stance: "中立", weapon: "樸刀、水戰",
+    intro: "廬州人，揚子江上水軍頭領。是宋江之外最有野心、最有遠見的人物。",
+    deeds: "江州劫法場、梁山水軍正將、征方臘水戰立大功。",
+    end: "征方臘後託病留蘇州，與童威童猛出海到暹羅國，後做了暹羅國王，書中結局最瀟灑者之一。",
+    rel: {
+      sworn: [{n:"張順",id:21},{n:"張橫",id:47},{n:"童威",id:44},{n:"童猛",id:45},{n:"李立",id:46},{n:"宋江",id:14},{n:"穆弘",id:48},{n:"穆春",id:49}],
+      saved: [{n:"宋江(揭陽嶺)",id:14}],
+      savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 20, name: "李逵", nick: "黑旋風", star: "天殺星", rank: 22, isTian: true,
+    chapter: "第38回", faction: "江州揭陽", endType: "毒殺", stance: "反招安", quote: "招甚鳥安。便殺去東京，奪了鳥位。", quoteCtx: "（接到聖旨時踢翻欽差）", weapon: "兩把板斧",
+    intro: "沂水縣人，黑熊般一身粗肉。宋江最忠實的影子，純真與殘忍並存。",
+    deeds: "江州劫法場排頭砍人、沂嶺殺四虎為母報仇、劈死四歲小衙內賺朱仝、反招安頂撞宋江。",
+    end: "宋江臨死前怕他造反壞了「忠義名」，誆他喝下毒酒，葬於宋江墓旁。",
+    rel: {
+      sworn: [{n:"宋江",id:14},{n:"戴宗",id:18},{n:"張順(打架後成友)",id:21},{n:"朱貴(沂水同鄉)",id:37},{n:"朱富",id:76},{n:"焦挺",id:84},{n:"鮑旭",id:102}],
+      saved: [{n:"宋江(劫法場)",id:14}],
+      savedBy: [{n:"宋江(賭錢接濟)",id:14},{n:"戴宗(救難)",id:18}],
+      enemies: [{n:"朱仝(殺其小衙內)",id:6},{n:"四虎(已殺)",ext:1},{n:"曹太公一家(已殺)",ext:1},{n:"小衙內(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 21, name: "張順", nick: "浪裡白條", star: "天損星", rank: 30, isTian: true,
+    chapter: "第38回", faction: "江州揭陽", endType: "戰死", stance: "中立", weapon: "水戰技能",
+    intro: "潯陽江漁戶，水性絕頂，水中能憋氣七天七夜（誇張）。",
+    deeds: "水中按李逵討教、救宋江、各種水戰、智取無為軍。",
+    end: "征方臘攻打杭州湧金門時，潛水偷襲被守軍亂箭射死於水中，後被追封金華太保。",
+    rel: {
+      sworn: [{n:"李俊",id:19},{n:"張橫(親兄)",id:47},{n:"李逵(打架後成友)",id:20},{n:"宋江",id:14}],
+      saved: [{n:"宋江(救病)",id:14}],
+      savedBy: [],
+      enemies: [{n:"黃文炳(已殺)",ext:1},{n:"杭州守軍",ext:1}]
+    }
+  },
+  {
+    num: 22, name: "楊雄", nick: "病關索", star: "天牢星", rank: 32, isTian: true,
+    chapter: "第44回", faction: "散人", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "薊州兩院押獄，相貌如關羽但臉色青黃，故稱「病關索」。",
+    deeds: "與石秀合力捉姦殺潘巧雲、上梁山、三打祝家莊。",
+    end: "征方臘後病死於杭州。",
+    rel: {
+      sworn: [{n:"石秀(結義)",id:23},{n:"戴宗(同鄉)",id:18},{n:"時遷",id:24},{n:"楊林(同薊州)",id:55}],
+      saved: [{n:"時遷",id:24}],
+      savedBy: [],
+      enemies: [{n:"潘巧雲(已殺)",ext:1},{n:"裴如海(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 23, name: "石秀", nick: "拚命三郎", star: "天慧星", rank: 33, isTian: true,
+    chapter: "第44回", faction: "散人", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "金陵建康府人，仗義拼命，為朋友粉身碎骨在所不辭。",
+    deeds: "助楊雄殺潘巧雲、三打祝家莊獨闖祝家莊探路、智救盧俊義跳樓劫法場（未遂被擒）。",
+    end: "征方臘攻昱嶺關時與史進等被龐萬春射殺。",
+    rel: {
+      sworn: [{n:"楊雄(結義)",id:22},{n:"時遷",id:24},{n:"楊林(同薊州)",id:55}],
+      saved: [{n:"楊雄",id:22},{n:"盧俊義(劫法場)",id:29},{n:"時遷",id:24}],
+      savedBy: [],
+      enemies: [{n:"潘巧雲(已殺)",ext:1},{n:"龐萬春(已殺楊雄等)",ext:1}]
+    }
+  },
+  {
+    num: 24, name: "時遷", nick: "鼓上蚤", star: "地賊星", rank: 107, isTian: false,
+    chapter: "第46回", faction: "散人", endType: "意外瘟疫", stance: "中立", weapon: "輕功與偷竊",
+    intro: "高唐州人，輕功絕頂，能上屋飛檐走壁，是書中唯一的神偷。",
+    deeds: "偷雞引發三打祝家莊、盜徐寧家傳金甲賺其上山、火燒翠雲樓配合大軍。",
+    end: "征方臘後病死於杭州（絞腸痧）。",
+    rel: {
+      sworn: [{n:"楊雄",id:22},{n:"石秀",id:23},{n:"徐寧(盜甲後同山)",id:60}],
+      saved: [],
+      savedBy: [{n:"楊雄",id:22},{n:"石秀",id:23}],
+      enemies: [{n:"祝家莊",ext:1}]
+    }
+  },
+  {
+    num: 25, name: "扈三娘", nick: "一丈青", star: "地慧星", rank: 59, isTian: false,
+    chapter: "第48回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "雙刀",
+    intro: "扈家莊主之妹，書中武藝最高的女將。原與祝家莊三公子有婚約。",
+    deeds: "三打祝家莊中生擒王英，後被林沖活捉，宋江強配給矮腳虎王英為妻。",
+    end: "征方臘清溪縣被方臘國師鄭彪斬殺。",
+    rel: {
+      sworn: [{n:"王英(夫)",id:41},{n:"宋江(義父)",id:14},{n:"孫二娘",id:66},{n:"顧大嫂",id:57}],
+      saved: [], savedBy: [],
+      enemies: [{n:"祝彪(殺其全家)",ext:1},{n:"林沖(被擒)",id:3},{n:"鄭彪(殺害她)",ext:1}]
+    }
+  },
+  {
+    num: 26, name: "解珍", nick: "兩頭蛇", star: "天暴星", rank: 34, isTian: true,
+    chapter: "第49回", faction: "登州系", endType: "戰死", stance: "中立", weapon: "鋼叉",
+    intro: "登州獵戶，與弟解寶以打獵為生。",
+    deeds: "因獵虎被毛太公陷害下獄，姐夫孫立等劫獄上山，加入梁山。",
+    end: "征方臘攻烏龍嶺墜崖，被守軍亂箭射成刺蝟而死。",
+    rel: {
+      sworn: [{n:"解寶(親弟)",id:27},{n:"孫立(姐夫)",id:58},{n:"顧大嫂",id:57},{n:"樂和",id:56},{n:"孫新",id:81},{n:"鄒淵",id:82},{n:"鄒潤",id:83}],
+      saved: [], savedBy: [{n:"孫立",id:58},{n:"顧大嫂",id:57},{n:"樂和",id:56},{n:"孫新",id:81},{n:"鄒淵",id:82},{n:"鄒潤",id:83}],
+      enemies: [{n:"毛太公(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 27, name: "解寶", nick: "雙尾蠍", star: "天哭星", rank: 35, isTian: true,
+    chapter: "第49回", faction: "登州系", endType: "戰死", stance: "中立", weapon: "鋼叉",
+    intro: "登州獵戶，解珍之弟，兄弟二人從不分離。",
+    deeds: "與哥哥同進退，獵虎下獄、劫獄上山、各役兄弟同行。",
+    end: "與哥哥同時死於烏龍嶺亂箭之下。",
+    rel: {
+      sworn: [{n:"解珍(親兄)",id:26},{n:"孫立(姐夫)",id:58},{n:"顧大嫂",id:57},{n:"樂和",id:56},{n:"孫新",id:81},{n:"鄒淵",id:82},{n:"鄒潤",id:83}],
+      saved: [], savedBy: [{n:"孫立",id:58},{n:"顧大嫂",id:57},{n:"樂和",id:56},{n:"孫新",id:81},{n:"鄒淵",id:82},{n:"鄒潤",id:83}],
+      enemies: [{n:"毛太公(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 28, name: "呼延灼", nick: "雙鞭", star: "天威星", rank: 8, isTian: true,
+    chapter: "第54回", faction: "朝廷降將", endType: "善終", stance: "親招安", weapon: "雙鞭",
+    intro: "開國名將呼延贊嫡派子孫，汝寧郡都統制，武藝高強。",
+    deeds: "領連環馬大破梁山，被徐寧鉤鐮槍破，戰敗投降；後征遼征方臘為主力。",
+    end: "招安後封御營兵馬指揮使，得善終。",
+    rel: {
+      sworn: [{n:"宋江(降後)",id:14},{n:"徐寧",id:60},{n:"關勝",id:95},{n:"韓滔(副將)",id:86},{n:"彭玘(副將)",id:87},{n:"凌振",id:88}],
+      saved: [], savedBy: [],
+      enemies: [{n:"林沖(陣前)",id:3},{n:"秦明(陣前)",id:17},{n:"高俅",ext:1}]
+    }
+  },
+  {
+    num: 29, name: "盧俊義", nick: "玉麒麟", star: "天罡星", rank: 2, isTian: true,
+    chapter: "第60回", faction: "大名府", endType: "毒殺", stance: "親招安", weapon: "棍棒、樸刀",
+    intro: "北京大名府富商，棍棒天下無雙，江湖人稱「河北玉麒麟」。",
+    deeds: "被吳用藏頭詩算計、家破人亡（妻與管家通姦陷害），後上梁山活捉史文恭、招安、征四寇主將。",
+    end: "招安後封廬州安撫使，被高俅蔡京下水銀慢性毒，泛舟落水溺死。",
+    rel: {
+      sworn: [{n:"燕青(主僕情)",id:30},{n:"宋江",id:14},{n:"關勝",id:95}],
+      saved: [], savedBy: [{n:"燕青",id:30},{n:"石秀(劫法場)",id:23},{n:"蔡福(獄中保護)",id:93},{n:"蔡慶(獄中保護)",id:94}],
+      enemies: [{n:"李固(管家,已殺)",ext:1},{n:"賈氏(妻,已殺)",ext:1},{n:"高俅",ext:1},{n:"蔡京",ext:1},{n:"史文恭(已擒)",ext:1}]
+    }
+  },
+  {
+    num: 30, name: "燕青", nick: "浪子", star: "天巧星", rank: 36, isTian: true,
+    chapter: "第61回", faction: "大名府", endType: "失蹤", stance: "反招安", quote: "身邊自有君王赦，灑脫風塵過此生。", quoteCtx: "（飄然離開宋江前的辭別書信）", weapon: "川弩、相撲",
+    intro: "盧俊義家僕，吹簫唱曲、相撲射弩、各地方言樣樣精通，書中最瀟灑的角色。",
+    deeds: "盧俊義落難拼死救主、智撲擎天柱任原、結交李師師促成招安、勸盧俊義隱退。",
+    end: "勸盧不成獨自離去，留書「身邊自有君王赦，灑脫風塵過此生」，飄然江湖無人知所終，是真正全身而退者。",
+    rel: {
+      sworn: [{n:"盧俊義(主)",id:29},{n:"李師師(義姊)",ext:1}],
+      saved: [{n:"盧俊義",id:29}],
+      savedBy: [],
+      enemies: [{n:"李固(已殺)",ext:1},{n:"賈氏(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 31, name: "朱武", nick: "神機軍師", star: "地魁星", rank: 37, isTian: false,
+    chapter: "第2回", faction: "少華山", endType: "出家", stance: "反招安", weapon: "雙刀（主謀略）",
+    intro: "少華山頭領，定遠縣人，善排兵布陣，足智多謀。",
+    deeds: "與陳達楊春佔少華山；陳達被史進活擒後，朱武與楊春同跪求情以義氣感動史進；後隨史進上梁山輔助參謀軍機。",
+    end: "征方臘存活，與樊瑞同投公孫勝師父羅真人座下出家學道，得善終。",
+    rel: {
+      sworn: [{n:"陳達",id:32},{n:"楊春",id:33},{n:"史進",id:1},{n:"樊瑞",ext:1},{n:"公孫勝",id:9}],
+      saved: [{n:"陳達",id:32}],
+      savedBy: [{n:"史進(放陳達結義)",id:1}],
+      enemies: []
+    }
+  },
+  {
+    num: 32, name: "陳達", nick: "跳澗虎", star: "地周星", rank: 72, isTian: false,
+    chapter: "第2回", faction: "少華山", endType: "戰死", stance: "中立", weapon: "出白點鋼槍",
+    intro: "鄴城人，少華山頭領，跳澗如飛。",
+    deeds: "攻華陰縣借糧被史進活擒，因朱武楊春跪求結為兄弟，後同上梁山。",
+    end: "征方臘攻打蘇州被司行方一刀斬於陣中。",
+    rel: {
+      sworn: [{n:"朱武",id:31},{n:"楊春",id:33},{n:"史進",id:1}],
+      saved: [], savedBy: [{n:"朱武楊春跪求",id:31}],
+      enemies: [{n:"司行方(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 33, name: "楊春", nick: "白花蛇", star: "地隱星", rank: 73, isTian: false,
+    chapter: "第2回", faction: "少華山", endType: "戰死", stance: "中立", weapon: "大桿刀",
+    intro: "蒲州解良縣人，少華山三頭領之一。",
+    deeds: "與朱武陳達同為少華山頭領，與史進結交；後同上梁山。",
+    end: "征方臘清溪縣被婁敏中亂軍刺死。",
+    rel: {
+      sworn: [{n:"朱武",id:31},{n:"陳達",id:32},{n:"史進",id:1}],
+      saved: [{n:"陳達",id:32}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 34, name: "柴進", nick: "小旋風", star: "天貴星", rank: 10, isTian: true,
+    chapter: "第9回", faction: "散人", endType: "善終", stance: "親招安", weapon: "樸刀",
+    intro: "後周柴世宗嫡派子孫，朝廷敕賜「丹書鐵券」護身。為人慷慨好客，凡江湖好漢落難多投奔他，「小旋風」之名喻其能呼朋引類。",
+    deeds: "接濟林沖、武松、宋江等多名落難好漢；其叔柴皇城被高廉害死，柴進入獄；宋江攻高唐州才救出他；征方臘時奉宋江命詐降方臘成方臘女婿（駙馬）為內應。",
+    end: "征方臘存活，封橫海軍滄州都統制；後辭官回鄉為民，無疾而終，得善終。",
+    rel: {
+      sworn: [{n:"林沖",id:3},{n:"武松",id:15},{n:"宋江",id:14},{n:"李應",id:59},{n:"蔡福",id:93},{n:"蔡慶",id:94}],
+      saved: [{n:"林沖",id:3},{n:"武松",id:15},{n:"宋江",id:14},{n:"石勇",id:43}],
+      savedBy: [{n:"宋江(攻高唐州)",id:14}],
+      enemies: [{n:"高廉(害柴皇城,已殺)",ext:1},{n:"殷天錫(已殺)",ext:1},{n:"高俅",ext:1}]
+    }
+  },
+  {
+    num: 35, name: "杜遷", nick: "摸著天", star: "地妖星", rank: 83, isTian: false,
+    chapter: "第11回", faction: "梁山元老", endType: "戰死", stance: "中立", weapon: "樸刀",
+    intro: "山東人，因身材高大號「摸著天」。是王倫上梁山時的最早班底，梁山三朝元老之一。",
+    deeds: "王倫時期梁山頭領之一；火併王倫後接受晁蓋、宋江領導但地位不高。",
+    end: "征方臘清溪縣被亂軍中馬踏死。",
+    rel: {
+      sworn: [{n:"宋萬",id:36},{n:"朱貴",id:37},{n:"林沖",id:3},{n:"王倫(舊主)",ext:1}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 36, name: "宋萬", nick: "雲裡金剛", star: "地魔星", rank: 82, isTian: false,
+    chapter: "第11回", faction: "梁山元老", endType: "戰死", stance: "中立", weapon: "樸刀",
+    intro: "山東人，與杜遷同為梁山創山元老，三朝元老之一。",
+    deeds: "王倫時期同上山；火併王倫後地位類似杜遷。",
+    end: "征方臘清溪縣戰死。",
+    rel: {
+      sworn: [{n:"杜遷",id:35},{n:"朱貴",id:37},{n:"林沖",id:3},{n:"王倫(舊主)",ext:1}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 37, name: "朱貴", nick: "旱地忽律", star: "地囚星", rank: 92, isTian: false,
+    chapter: "第11回", faction: "梁山元老", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "沂水縣人，朱富的哥哥。原開「梁山泊酒店」為梁山打探消息傳遞情報。",
+    deeds: "梁山眼線專家；指引林沖上山；多年負責情報網。",
+    end: "征方臘途中染瘟疫病死於杭州。",
+    rel: {
+      sworn: [{n:"朱富(親弟)",id:76},{n:"杜遷",id:35},{n:"宋萬",id:36},{n:"李逵(沂水同鄉)",id:20},{n:"林沖",id:3}],
+      saved: [{n:"林沖(指引上山)",id:3}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 38, name: "索超", nick: "急先鋒", star: "天空星", rank: 19, isTian: true,
+    chapter: "第13回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "大斧",
+    intro: "河北人，大名府正牌軍，性急勇猛故稱「急先鋒」。",
+    deeds: "大名府教場與楊志比武五十回合不分勝負，二人同任提轄；攻大名府時被梁山設計擒住降梁山。",
+    end: "征方臘獨松關被厲天閏一槍刺死。",
+    rel: {
+      sworn: [{n:"楊志(比武結識)",id:4},{n:"梁中書(舊主)",ext:1}],
+      saved: [], savedBy: [],
+      enemies: [{n:"楊志(早期)",id:4},{n:"厲天閏(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 39, name: "鄭天壽", nick: "白面郎君", star: "地異星", rank: 75, isTian: false,
+    chapter: "第32回", faction: "清風山系", endType: "戰死", stance: "中立", weapon: "樸刀",
+    intro: "蘇州人，相貌俊俏白皙，銀匠出身，後落草清風山。",
+    deeds: "清風山三頭領之一；隨宋江上梁山；攻祝家莊、青州。",
+    end: "征方臘攻烏龍嶺被亂石打死。",
+    rel: {
+      sworn: [{n:"燕順",id:40},{n:"王英",id:41},{n:"宋江",id:14},{n:"花榮",id:16}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 40, name: "燕順", nick: "錦毛虎", star: "地強星", rank: 50, isTian: false,
+    chapter: "第32回", faction: "清風山系", endType: "戰死", stance: "中立", weapon: "蠻牌、雙劍",
+    intro: "萊州人，清風山大頭領，原為羊馬販子。",
+    deeds: "清風山首領，識宋江於清風山險救其命；隨宋江上梁山；攻祝家莊、青州、東平府。",
+    end: "征方臘攻清溪縣被方杰一戟刺死。",
+    rel: {
+      sworn: [{n:"王英",id:41},{n:"鄭天壽",id:39},{n:"宋江",id:14},{n:"花榮",id:16},{n:"秦明",id:17}],
+      saved: [{n:"宋江(清風山救命)",id:14}], savedBy: [],
+      enemies: [{n:"方杰(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 41, name: "王英", nick: "矮腳虎", star: "地微星", rank: 58, isTian: false,
+    chapter: "第32回", faction: "清風山系", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "兩淮人，身材矮小（不滿五尺），好色貪財，本是腳販出身。",
+    deeds: "清風山頭領之一；曾要強佔劉知寨夫人被宋江勸阻；後生擒扈三娘想佔為妻反被擒，宋江應允配為夫妻。",
+    end: "征方臘攻清溪縣被鄭彪斬殺，扈三娘趕來救夫亦被殺，夫妻同日陣亡。",
+    rel: {
+      sworn: [{n:"燕順",id:40},{n:"鄭天壽",id:39},{n:"扈三娘(妻)",id:25},{n:"宋江",id:14}],
+      saved: [], savedBy: [{n:"宋江(勸他放劉夫人)",id:14}],
+      enemies: [{n:"鄭彪(已殺夫妻)",ext:1}]
+    }
+  },
+  {
+    num: 42, name: "黃信", nick: "鎮三山", star: "地煞星", rank: 38, isTian: false,
+    chapter: "第33回", faction: "清風山系", endType: "善終", stance: "親招安", weapon: "喪門劍",
+    intro: "青州兵馬都監，秦明徒弟，自誇能鎮服清風山、二龍山、桃花山三山故號「鎮三山」。",
+    deeds: "領兵剿清風山被花榮設計擒住，宋江勸降；後隨秦明攻祝家莊、青州。",
+    end: "征方臘存活，封武奕郎，後辭官回青州為民，得善終。",
+    rel: {
+      sworn: [{n:"秦明(師父)",id:17},{n:"花榮",id:16},{n:"宋江",id:14}],
+      saved: [], savedBy: [{n:"花榮(擒後勸降)",id:16}],
+      enemies: []
+    }
+  },
+  {
+    num: 43, name: "石勇", nick: "石將軍", star: "地醜星", rank: 63, isTian: false,
+    chapter: "第35回", faction: "散人", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "大名府人，原是賭徒，江湖人稱「石將軍」。",
+    deeds: "因打死人逃亡，慕名要投奔柴進但柴進不在；路上撞見宋江送家書（宋父亡故）；隨宋江上梁山。",
+    end: "征方臘清溪縣戰死。",
+    rel: {
+      sworn: [{n:"宋江",id:14},{n:"柴進(慕名未見)",id:34}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 44, name: "童威", nick: "出洞蛟", star: "地進星", rank: 67, isTian: false,
+    chapter: "第36回", faction: "江州揭陽", endType: "善終", stance: "中立", weapon: "朴刀、水戰",
+    intro: "廬州人，與弟童猛在揚子江販賣私鹽，後從李俊。",
+    deeds: "江州劫法場、揭陽嶺救宋江；水軍各役。",
+    end: "征方臘存活，與李俊、童猛出海到暹羅國，輔佐李俊稱王，得善終。",
+    rel: {
+      sworn: [{n:"童猛(親弟)",id:45},{n:"李俊",id:19},{n:"張順",id:21},{n:"李立",id:46}],
+      saved: [{n:"宋江(揭陽嶺)",id:14}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 45, name: "童猛", nick: "翻江蜃", star: "地退星", rank: 68, isTian: false,
+    chapter: "第36回", faction: "江州揭陽", endType: "善終", stance: "中立", weapon: "朴刀、水戰",
+    intro: "童威之弟，與兄同販私鹽。",
+    deeds: "同童威；江州劫法場、水軍戰役。",
+    end: "與童威同往暹羅國得善終。",
+    rel: {
+      sworn: [{n:"童威(親兄)",id:44},{n:"李俊",id:19},{n:"張順",id:21},{n:"李立",id:46}],
+      saved: [{n:"宋江(揭陽嶺)",id:14}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 46, name: "李立", nick: "催命判官", star: "地奴星", rank: 76, isTian: false,
+    chapter: "第36回", faction: "江州揭陽", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "揭陽嶺開「黑店」（賣人肉包子）的店主。",
+    deeds: "險些用蒙汗藥麻倒宋江，被李俊及時阻止；後與李俊一同上梁山。",
+    end: "征方臘攻常州時中弩箭身亡。",
+    rel: {
+      sworn: [{n:"李俊",id:19},{n:"童威",id:44},{n:"童猛",id:45}],
+      saved: [], savedBy: [{n:"李俊(阻止他害宋江)",id:19}],
+      enemies: [{n:"宋江(差點害他,後同盟)",id:14}]
+    }
+  },
+  {
+    num: 47, name: "張橫", nick: "船火兒", star: "天平星", rank: 28, isTian: true,
+    chapter: "第37回", faction: "江州揭陽", endType: "意外瘟疫", stance: "中立", weapon: "朴刀、水戰",
+    intro: "潯陽江上的水賊船火兒，張順的親哥哥（兄高大粗壯，弟修長白皙）。",
+    deeds: "在潯陽江上要劫宋江險些害死他，被弟張順救下相認；上梁山為水軍頭領。",
+    end: "征方臘攻杭州時染瘟疫病死。",
+    rel: {
+      sworn: [{n:"張順(親弟)",id:21},{n:"李俊",id:19},{n:"穆弘",id:48}],
+      saved: [], savedBy: [{n:"張順(認親)",id:21}],
+      enemies: []
+    }
+  },
+  {
+    num: 48, name: "穆弘", nick: "沒遮攔", star: "天究星", rank: 24, isTian: true,
+    chapter: "第37回", faction: "江州揭陽", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "揭陽鎮地霸，與弟穆春合稱「揭陽三霸」之一支，性格豪橫沒有遮攔。",
+    deeds: "與弟穆春欺壓賣藥的薛永引出宋江仗義；後合力上梁山。",
+    end: "征方臘途中染瘟疫病死於杭州。",
+    rel: {
+      sworn: [{n:"穆春(親弟)",id:49},{n:"宋江",id:14},{n:"薛永",id:50},{n:"張橫",id:47},{n:"李俊",id:19}],
+      saved: [], savedBy: [],
+      enemies: [{n:"薛永(早期,後同盟)",id:50}]
+    }
+  },
+  {
+    num: 49, name: "穆春", nick: "小遮攔", star: "地鎮星", rank: 80, isTian: false,
+    chapter: "第37回", faction: "江州揭陽", endType: "善終", stance: "中立", weapon: "朴刀",
+    intro: "穆弘之弟，揭陽三霸之一，「小遮攔」是相對哥哥的稱呼。",
+    deeds: "與哥哥同進退；上梁山。",
+    end: "征方臘存活，回鄉為民得善終。",
+    rel: {
+      sworn: [{n:"穆弘(親兄)",id:48},{n:"宋江",id:14},{n:"薛永",id:50}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 50, name: "薛永", nick: "病大蟲", star: "地幽星", rank: 84, isTian: false,
+    chapter: "第37回", faction: "江州揭陽", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "河南洛陽人，使槍棒賣藥的江湖賣藝人。",
+    deeds: "在揭陽鎮街頭賣藝被穆家兄弟禁聲沒有打賞，宋江見義給銀子被穆家兄弟尋仇；後同上梁山。",
+    end: "征方臘攻打杭州時戰死。",
+    rel: {
+      sworn: [{n:"宋江",id:14},{n:"穆弘",id:48},{n:"穆春",id:49}],
+      saved: [], savedBy: [{n:"宋江(街頭被欺時)",id:14}],
+      enemies: [{n:"穆弘穆春(早期,後同盟)",id:48}]
+    }
+  },
+  {
+    num: 51, name: "蕭讓", nick: "聖手書生", star: "地文星", rank: 46, isTian: false,
+    chapter: "第39回", faction: "散人", endType: "善終", stance: "親招安", weapon: "—（文職）",
+    intro: "北京大名府人，書法絕妙，能仿天下名家字體。",
+    deeds: "戴宗為救宋江需偽造蔡京回信，吳用先設計騙蕭讓上山仿寫蔡京字體；後在梁山管文職、寫公文。",
+    end: "征方臘存活，被太師蔡京留用為門館先生（家庭教師），得善終。",
+    rel: {
+      sworn: [{n:"金大堅",id:52},{n:"戴宗",id:18},{n:"吳用",id:7}],
+      saved: [{n:"宋江(偽造書信救命)",id:14}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 52, name: "金大堅", nick: "玉臂匠", star: "地巧星", rank: 66, isTian: false,
+    chapter: "第39回", faction: "散人", endType: "善終", stance: "親招安", weapon: "—（工匠）",
+    intro: "濟州人，雕刻印章絕妙，能仿天下官印。",
+    deeds: "與蕭讓同時被吳用騙上梁山，配合偽造蔡京印章救宋江；梁山管刻印製造。",
+    end: "征方臘存活，被朝廷留京任御寶監（皇家印璽局），得善終。",
+    rel: {
+      sworn: [{n:"蕭讓",id:51},{n:"戴宗",id:18},{n:"吳用",id:7}],
+      saved: [{n:"宋江(偽造印章救命)",id:14}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 53, name: "歐鵬", nick: "摩雲金翅", star: "地闊星", rank: 48, isTian: false,
+    chapter: "第41回", faction: "散人", endType: "戰死", stance: "中立", weapon: "鐵槍",
+    intro: "黃門山頭領，原為軍中提轄，因得罪上司逃落草。",
+    deeds: "黃門山截宋江後降梁山；多役為馬軍頭領。",
+    end: "征方臘攻清溪縣被龐萬春一箭射死。",
+    rel: {
+      sworn: [{n:"蔣敬",ext:1},{n:"馬麟",ext:1},{n:"陶宗旺",ext:1},{n:"宋江",id:14}],
+      saved: [], savedBy: [],
+      enemies: [{n:"龐萬春(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 54, name: "鄧飛", nick: "火眼狻猊", star: "地闔星", rank: 49, isTian: false,
+    chapter: "第44回", faction: "散人", endType: "戰死", stance: "中立", weapon: "鐵鏈",
+    intro: "蓋天軍襄陽府人，眼有紅光如火（綽號火眼狻猊），飲馬川頭領。",
+    deeds: "與裴宣、孟康同據飲馬川為盜；楊林、戴宗找到後一同降梁山。",
+    end: "征方臘攻杭州被石寶斬於陣中。",
+    rel: {
+      sworn: [{n:"裴宣",ext:1},{n:"孟康",ext:1},{n:"楊林",id:55},{n:"戴宗",id:18}],
+      saved: [], savedBy: [],
+      enemies: [{n:"石寶(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 55, name: "楊林", nick: "錦豹子", star: "地暗星", rank: 47, isTian: false,
+    chapter: "第44回", faction: "散人", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "彰德府人，江湖好漢，公孫勝同鄉舊友。",
+    deeds: "戴宗去薊州找公孫勝路上認識楊林結交；後楊林去飲馬川聯絡鄧飛等同上梁山。",
+    end: "征方臘攻昱嶺關被亂箭射死。",
+    rel: {
+      sworn: [{n:"戴宗",id:18},{n:"鄧飛",id:54},{n:"公孫勝(同鄉)",id:9},{n:"楊雄(同薊州)",id:22}],
+      saved: [], savedBy: [],
+      enemies: [{n:"龐萬春(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 56, name: "樂和", nick: "鐵叫子", star: "地樂星", rank: 77, isTian: false,
+    chapter: "第49回", faction: "登州系", endType: "善終", stance: "中立", weapon: "—（音樂為主）",
+    intro: "茅州人，孫立的妻舅，聲音清亮如鐵叫子，凡天下歌曲皆能唱。",
+    deeds: "隨孫立姐夫一家劫獄救解珍解寶上山；管軍中文書、傳令；招安後燕青見李師師時樂和獻歌。",
+    end: "征方臘存活，被駙馬王都尉留用為親隨樂工，得善終。",
+    rel: {
+      sworn: [{n:"孫立(姐夫)",id:58},{n:"顧大嫂",id:57},{n:"解珍",id:26},{n:"解寶",id:27}],
+      saved: [{n:"解珍",id:26},{n:"解寶",id:27}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 57, name: "顧大嫂", nick: "母大蟲", star: "地陰星", rank: 101, isTian: false,
+    chapter: "第49回", faction: "登州系", endType: "善終", stance: "中立", weapon: "兩把刀",
+    intro: "登州十字坡開酒店，孫新之妻，性格凶悍如母老虎，是書中三位女將之一。",
+    deeds: "解珍解寶被毛太公陷害下獄，顧大嫂主謀劫獄；上梁山。",
+    end: "征方臘存活，隨夫孫新回登州得善終。",
+    rel: {
+      sworn: [{n:"孫新(夫)",id:81},{n:"孫立(夫兄)",id:58},{n:"解珍",id:26},{n:"解寶",id:27},{n:"樂和",id:56},{n:"鄒淵",id:82},{n:"鄒潤",id:83},{n:"孫二娘",id:66},{n:"扈三娘",id:25}],
+      saved: [{n:"解珍",id:26},{n:"解寶",id:27}], savedBy: [],
+      enemies: [{n:"毛太公(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 58, name: "孫立", nick: "病尉遲", star: "地勇星", rank: 39, isTian: false,
+    chapter: "第49回", faction: "登州系", endType: "善終", stance: "中立", weapon: "鞭、槍",
+    intro: "登州兵馬提轄，相貌如尉遲恭但臉色青黃故稱「病尉遲」。書中重要的「臥底功臣」。",
+    deeds: "為救解珍解寶帶領一家劫獄；攻祝家莊時臥底（祝家莊教師欒廷玉是孫立同門師兄），關鍵時刻反水擒祝彪。",
+    end: "征方臘存活，封武奕郎後回登州，得善終。",
+    rel: {
+      sworn: [{n:"孫新(親弟)",id:81},{n:"顧大嫂(弟妹)",id:57},{n:"解珍(內弟)",id:26},{n:"解寶(內弟)",id:27},{n:"樂和(妻舅)",id:56},{n:"鄒淵",id:82},{n:"鄒潤",id:83}],
+      saved: [{n:"解珍",id:26},{n:"解寶",id:27}],
+      savedBy: [],
+      enemies: [{n:"欒廷玉(同門但出賣,已殺)",ext:1},{n:"祝彪(已擒殺)",ext:1}]
+    }
+  },
+  {
+    num: 59, name: "李應", nick: "撲天鵰", star: "天富星", rank: 11, isTian: true,
+    chapter: "第50回", faction: "散人", endType: "善終", stance: "親招安", weapon: "渾鐵點鋼槍、飛刀",
+    intro: "獨龍崗李家莊莊主，與祝家莊、扈家莊號稱「獨龍崗三大莊」。富甲一方，飛刀絕技。",
+    deeds: "因祝家莊與李家莊有過節，加上石秀求助而與梁山結交；祝家莊被破後李家莊也受牽連，乾脆上梁山。",
+    end: "征方臘存活，封中山府鄆州都統制；後辭官回獨龍崗為大富翁，得善終。",
+    rel: {
+      sworn: [{n:"杜興(管家)",id:80},{n:"宋江",id:14},{n:"柴進(同貴族)",id:34},{n:"林沖",id:3}],
+      saved: [], savedBy: [{n:"宋江(打祝家莊解圍)",id:14}],
+      enemies: [{n:"祝家莊三兄弟(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 60, name: "徐寧", nick: "金槍手", star: "天祐星", rank: 18, isTian: true,
+    chapter: "第56回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "鉤鐮槍、金槍",
+    intro: "京師金槍班教師，禁軍教頭，林沖同事。家傳鉤鐮槍法和雁翎金圈甲。",
+    deeds: "呼延灼連環馬大破梁山時，唯有湯隆（徐寧表弟）所知的鉤鐮槍可破。湯隆獻計時遷盜走徐寧家傳金甲，徐寧追討中被誘上梁山，傳授鉤鐮槍法破連環馬。",
+    end: "征方臘攻杭州時中藥箭，毒入骨髓不治身亡。",
+    rel: {
+      sworn: [{n:"湯隆(表弟)",id:85},{n:"林沖(禁軍同事)",id:3},{n:"宋江",id:14}],
+      saved: [], savedBy: [{n:"時遷(盜甲賺上山)",id:24},{n:"湯隆(獻計)",id:85}],
+      enemies: [{n:"呼延灼(陣前曾敵)",id:28},{n:"連環馬(已破)",ext:1}]
+    }
+  },
+  {
+    num: 61, name: "李忠", nick: "打虎將", star: "地僻星", rank: 86, isTian: false,
+    chapter: "第3回", faction: "二龍山", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "濠州定遠人，使槍棒賣藥的江湖賣藝人，曾為史進開蒙師父之一。",
+    deeds: "魯智深初到渭州前在街頭與李忠相遇結識；後在桃花山與周通搭夥落草，魯智深路過搶其金銀不告而別；後上梁山。",
+    end: "征方臘攻昱嶺關被亂石打死。",
+    rel: {
+      sworn: [{n:"史進(舊識)",id:1},{n:"魯智深",id:2},{n:"周通",id:62}],
+      saved: [], savedBy: [],
+      enemies: [{n:"魯智深(早期)",id:2}]
+    }
+  },
+  {
+    num: 62, name: "周通", nick: "小霸王", star: "地空星", rank: 87, isTian: false,
+    chapter: "第5回", faction: "二龍山", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "桃花山頭領，本想強娶劉太公之女被魯智深痛打。",
+    deeds: "桃花山與李忠搭夥；魯智深調停其與劉家婚事；後上梁山。",
+    end: "征方臘攻獨松關被厲天閏一刀斬於陣中。",
+    rel: {
+      sworn: [{n:"李忠",id:61}],
+      saved: [], savedBy: [{n:"魯智深(調停)",id:2}],
+      enemies: [{n:"魯智深(早期,後同盟)",id:2},{n:"劉太公一家(已和)",ext:1}]
+    }
+  },
+  {
+    num: 63, name: "宋清", nick: "鐵扇子", star: "地俊星", rank: 76, isTian: false,
+    chapter: "第18回", faction: "清風山系", endType: "善終", stance: "親招安", weapon: "—",
+    intro: "宋江親弟，鄆城宋家村人，性格忠厚老實，為人幫襯哥哥。",
+    deeds: "因宋江刺配江州事件留家照看老父；後上梁山幫宋江管筵宴等事務。",
+    end: "征方臘存活，封武奕郎；後辭官回鄆城宋家村奉母得善終。",
+    rel: {
+      sworn: [{n:"宋江(親兄)",id:14},{n:"花榮",id:16},{n:"戴宗",id:18}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 64, name: "曹正", nick: "操刀鬼", star: "地嵇星", rank: 81, isTian: false,
+    chapter: "第17回", faction: "二龍山", endType: "戰死", stance: "中立", weapon: "屠刀、朴刀",
+    intro: "林沖徒弟，殺豬出身，江湖人稱「操刀鬼」。",
+    deeds: "魯智深初到二龍山被山主鄧龍拒入，曹正獻計化裝賺取山寨；後跟魯智深、楊志、武松在二龍山落草，再上梁山。",
+    end: "征方臘攻清溪縣戰死。",
+    rel: {
+      sworn: [{n:"林沖(師父)",id:3},{n:"魯智深",id:2},{n:"楊志",id:4},{n:"武松",id:15},{n:"張青",id:65}],
+      saved: [{n:"魯智深(獻計賺山)",id:2}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 65, name: "張青", nick: "菜園子", star: "地刑星", rank: 102, isTian: false,
+    chapter: "第27回", faction: "二龍山", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "孟州道十字坡開酒店，與妻孫二娘以蒙汗藥麻倒過往客人賣人肉包子。",
+    deeds: "險些害武松反被武松識破，識英雄結為兄妹；連同諸多好漢上二龍山再上梁山。",
+    end: "征方臘攻清溪縣戰死。",
+    rel: {
+      sworn: [{n:"孫二娘(妻)",id:66},{n:"武松",id:15},{n:"魯智深",id:2},{n:"曹正",id:64}],
+      saved: [], savedBy: [{n:"武松(認識英雄)",id:15}],
+      enemies: []
+    }
+  },
+  {
+    num: 66, name: "孫二娘", nick: "母夜叉", star: "地壯星", rank: 103, isTian: false,
+    chapter: "第27回", faction: "二龍山", endType: "戰死", stance: "中立", weapon: "兩把刀",
+    intro: "張青之妻，江湖人稱「母夜叉」，書中三女將之一，潑辣兇悍。",
+    deeds: "與夫張青同開十字坡黑店；武松事件後成兄妹；上梁山。",
+    end: "征方臘攻清溪縣戰死。",
+    rel: {
+      sworn: [{n:"張青(夫)",id:65},{n:"武松",id:15},{n:"魯智深",id:2},{n:"顧大嫂",id:57},{n:"扈三娘",id:25}],
+      saved: [], savedBy: [{n:"武松(英雄相惜)",id:15}],
+      enemies: []
+    }
+  },
+  {
+    num: 67, name: "施恩", nick: "金眼彪", star: "地伏星", rank: 85, isTian: false,
+    chapter: "第28回", faction: "二龍山", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "孟州牢城營老管營之子，本經營快活林酒店，被蔣門神奪走後求助武松報仇。",
+    deeds: "武松義助施恩奪回快活林（醉打蔣門神）；後跟武松上二龍山再上梁山。",
+    end: "征方臘攻打杭州時跌入錢塘江溺死。",
+    rel: {
+      sworn: [{n:"武松(義兄)",id:15},{n:"魯智深",id:2},{n:"楊志",id:4}],
+      saved: [], savedBy: [{n:"武松(打蔣門神奪回快活林)",id:15}],
+      enemies: [{n:"蔣門神(已殺)",ext:1},{n:"張都監(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 68, name: "孔明", nick: "毛頭星", star: "地猖星", rank: 62, isTian: false,
+    chapter: "第32回", faction: "二龍山", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "青州白虎山莊主孔太公長子，與弟孔亮拜武松為師學棒法。",
+    deeds: "孔家因事傷人落草白虎山；後攻青州時被引上梁山。",
+    end: "征方臘攻打杭州時染瘟疫病死。",
+    rel: {
+      sworn: [{n:"孔亮(親弟)",id:69},{n:"武松(師父)",id:15},{n:"宋江",id:14}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 69, name: "孔亮", nick: "獨火星", star: "地狂星", rank: 63, isTian: false,
+    chapter: "第32回", faction: "二龍山", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "孔太公次子，孔明弟弟，性格急躁如火。",
+    deeds: "與兄孔明同進退；上梁山。",
+    end: "征方臘途中溺水而死。",
+    rel: {
+      sworn: [{n:"孔明(親兄)",id:68},{n:"武松(師父)",id:15},{n:"宋江",id:14}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 70, name: "呂方", nick: "小溫侯", star: "地佐星", rank: 54, isTian: false,
+    chapter: "第35回", faction: "散人", endType: "戰死", stance: "中立", weapon: "方天畫戟",
+    intro: "潭州人，相貌類三國呂布故號「小溫侯」，使方天畫戟。",
+    deeds: "與郭盛在對影山因生意起爭執大打出手戟纓相纏不解，宋江花榮路過花榮一箭射開；二人結義同上梁山。",
+    end: "征方臘攻清溪縣與郭盛同陷山陡被亂石打死。",
+    rel: {
+      sworn: [{n:"郭盛(結義)",id:71},{n:"宋江",id:14},{n:"花榮",id:16}],
+      saved: [], savedBy: [{n:"花榮(神箭分戟)",id:16}],
+      enemies: [{n:"郭盛(早期,後結義)",id:71}]
+    }
+  },
+  {
+    num: 71, name: "郭盛", nick: "賽仁貴", star: "地佑星", rank: 55, isTian: false,
+    chapter: "第35回", faction: "散人", endType: "戰死", stance: "中立", weapon: "方天畫戟",
+    intro: "嘉陵人，相貌如唐代薛仁貴故號「賽仁貴」，亦使方天畫戟。",
+    deeds: "與呂方對影山相鬥被花榮神箭分開後同上梁山。",
+    end: "征方臘攻烏龍嶺被山頂亂石打死。",
+    rel: {
+      sworn: [{n:"呂方(結義)",id:70},{n:"宋江",id:14},{n:"花榮",id:16}],
+      saved: [], savedBy: [{n:"花榮(神箭分戟)",id:16}],
+      enemies: []
+    }
+  },
+  {
+    num: 72, name: "馬麟", nick: "鐵笛仙", star: "地明星", rank: 70, isTian: false,
+    chapter: "第41回", faction: "散人", endType: "戰死", stance: "中立", weapon: "雙劍、鐵笛",
+    intro: "金陵建康府人，吹鐵笛聲動天聞，使雙劍。",
+    deeds: "與歐鵬同據黃門山；後上梁山為步軍將領。",
+    end: "征方臘攻清溪縣戰死。",
+    rel: {
+      sworn: [{n:"歐鵬",id:53},{n:"蔣敬",id:73},{n:"陶宗旺",id:74}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 73, name: "蔣敬", nick: "神算子", star: "地會星", rank: 53, isTian: false,
+    chapter: "第41回", faction: "散人", endType: "善終", stance: "中立", weapon: "朴刀、算盤",
+    intro: "湖南潭州人，精於書算錢糧之事，江湖稱「神算子」。",
+    deeds: "黃門山頭領之一；上梁山管錢糧出納帳本。",
+    end: "征方臘存活；後辭官回潭州為民得善終。",
+    rel: {
+      sworn: [{n:"歐鵬",id:53},{n:"馬麟",id:72},{n:"陶宗旺",id:74}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 74, name: "陶宗旺", nick: "九尾龜", star: "地理星", rank: 75, isTian: false,
+    chapter: "第41回", faction: "散人", endType: "戰死", stance: "中立", weapon: "鐵鍬",
+    intro: "光州人，農夫出身，慣使鐵鍬，渾身青色斑點如九尾龜。",
+    deeds: "黃門山頭領；上梁山管修建工程、挖掘地道。",
+    end: "征方臘攻潤州戰死。",
+    rel: {
+      sworn: [{n:"歐鵬",id:53},{n:"馬麟",id:72},{n:"蔣敬",id:73}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 75, name: "侯健", nick: "通臂猿", star: "地遂星", rank: 71, isTian: false,
+    chapter: "第41回", faction: "散人", endType: "意外瘟疫", stance: "中立", weapon: "短刀、縫紉",
+    intro: "洪都人，瘦長猿臂，裁縫出身，會縫制衣甲。",
+    deeds: "黃文炳事件中助宋江脫困；攻北京大名府火燒翠雲樓需偽造官府軍服由侯健負責縫製；梁山管軍中衣物。",
+    end: "征方臘乘船時遇風浪船翻溺死。",
+    rel: {
+      sworn: [{n:"戴宗",id:18},{n:"蕭讓",id:51},{n:"金大堅",id:52}],
+      saved: [{n:"宋江(裁縫救難)",id:14}], savedBy: [],
+      enemies: [{n:"黃文炳(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 76, name: "朱富", nick: "笑面虎", star: "地藏星", rank: 93, isTian: false,
+    chapter: "第43回", faction: "散人", endType: "意外瘟疫", stance: "中立", weapon: "朴刀",
+    intro: "沂水縣朱貴的弟弟，李雲徒弟，開酒店為生，相貌帶笑卻心狠。",
+    deeds: "李逵歸沂水縣被官府捉拿時，朱富配合用蒙汗藥麻倒師父李雲一同上梁山。",
+    end: "征方臘途中染瘟疫病死於杭州。",
+    rel: {
+      sworn: [{n:"朱貴(親兄)",id:37},{n:"李雲(師父)",id:77},{n:"李逵",id:20}],
+      saved: [{n:"李逵",id:20},{n:"李雲(賺上山)",id:77}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 77, name: "李雲", nick: "青眼虎", star: "地察星", rank: 97, isTian: false,
+    chapter: "第43回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "朴刀",
+    intro: "沂水縣都頭，朱富師父，相貌生有青記如虎眼。",
+    deeds: "領兵剿李逵被徒弟朱富用蒙汗藥麻倒，朱富勸降一同上梁山。",
+    end: "征方臘攻打蘇州戰死。",
+    rel: {
+      sworn: [{n:"朱富(徒弟)",id:76},{n:"宋江",id:14}],
+      saved: [], savedBy: [{n:"朱富(下蒙汗藥救命)",id:76}],
+      enemies: [{n:"李逵(早期)",id:20}]
+    }
+  },
+  {
+    num: 78, name: "裴宣", nick: "鐵面孔目", star: "地正星", rank: 47, isTian: false,
+    chapter: "第44回", faction: "散人", endType: "善終", stance: "中立", weapon: "雙劍",
+    intro: "京兆府人，原為六案孔目（法官書吏），鐵面無私，後因得罪上司被刺配。",
+    deeds: "落草飲馬川為頭領；後上梁山管軍政賞罰、賞功罰過。",
+    end: "征方臘存活；辭官隱居飲馬川為平民得善終。",
+    rel: {
+      sworn: [{n:"鄧飛",id:54},{n:"孟康",id:79},{n:"楊林",id:55}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 79, name: "孟康", nick: "玉幡竿", star: "地滿星", rank: 70, isTian: false,
+    chapter: "第44回", faction: "散人", endType: "戰死", stance: "中立", weapon: "朴刀、造船",
+    intro: "真定州人，身材高瘦如玉幡竿，造船絕技，因督造花石綱被押官刁難憤而落草。",
+    deeds: "飲馬川頭領；上梁山管造船廠。",
+    end: "征方臘攻打杭州被段三娘射死。",
+    rel: {
+      sworn: [{n:"鄧飛",id:54},{n:"裴宣",id:78}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 80, name: "杜興", nick: "鬼臉兒", star: "地全星", rank: 89, isTian: false,
+    chapter: "第47回", faction: "散人", endType: "善終", stance: "中立", weapon: "雙鞭",
+    intro: "中山府人，李應的管家，相貌醜陋故稱「鬼臉兒」，但聰明能幹。",
+    deeds: "李家莊與祝家莊有過節時，杜興引石秀等拜訪求情；李家莊事敗後同李應上梁山。",
+    end: "征方臘存活，隨李應回鄉得善終。",
+    rel: {
+      sworn: [{n:"李應(主)",id:59},{n:"石秀",id:23}],
+      saved: [], savedBy: [],
+      enemies: [{n:"祝家莊三兄弟(已殺)",ext:1}]
+    }
+  },
+  {
+    num: 81, name: "孫新", nick: "小尉遲", star: "地數星", rank: 100, isTian: false,
+    chapter: "第49回", faction: "登州系", endType: "善終", stance: "中立", weapon: "鞭、槍",
+    intro: "孫立之弟，顧大嫂的丈夫，登州十字坡開酒店。",
+    deeds: "隨兄長孫立、妻顧大嫂劫獄救解珍解寶；上梁山。",
+    end: "征方臘存活，隨兄回登州得善終。",
+    rel: {
+      sworn: [{n:"孫立(親兄)",id:58},{n:"顧大嫂(妻)",id:57},{n:"解珍",id:26},{n:"解寶",id:27},{n:"樂和",id:56},{n:"鄒淵",id:82},{n:"鄒潤",id:83}],
+      saved: [{n:"解珍",id:26},{n:"解寶",id:27}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 82, name: "鄒淵", nick: "出林龍", star: "地短星", rank: 90, isTian: false,
+    chapter: "第49回", faction: "登州系", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "登州登雲山好漢，鄒潤的叔叔，與顧大嫂相熟。",
+    deeds: "隨顧大嫂、孫新劫獄救解珍解寶；上梁山。",
+    end: "征方臘攻清溪縣戰死。",
+    rel: {
+      sworn: [{n:"鄒潤(姪)",id:83},{n:"顧大嫂",id:57},{n:"孫新",id:81},{n:"孫立",id:58}],
+      saved: [{n:"解珍",id:26},{n:"解寶",id:27}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 83, name: "鄒潤", nick: "獨角龍", star: "地角星", rank: 91, isTian: false,
+    chapter: "第49回", faction: "登州系", endType: "善終", stance: "中立", weapon: "朴刀",
+    intro: "鄒淵之姪，頭頂有一肉瘤如獨角龍，相當勇猛。",
+    deeds: "與叔叔鄒淵同上山劫獄；上梁山。",
+    end: "征方臘存活，回鄉為民得善終。",
+    rel: {
+      sworn: [{n:"鄒淵(叔)",id:82},{n:"顧大嫂",id:57},{n:"孫立",id:58},{n:"孫新",id:81}],
+      saved: [{n:"解珍",id:26},{n:"解寶",id:27}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 84, name: "焦挺", nick: "沒面目", star: "地惡星", rank: 98, isTian: false,
+    chapter: "第52回", faction: "散人", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "中山府人，世代相撲為業，性格冷酷無情故號「沒面目」。",
+    deeds: "李逵離梁山尋宋江路上遇焦挺結識；引上枯樹山再上梁山。",
+    end: "征方臘攻昱嶺關被亂石打死。",
+    rel: {
+      sworn: [{n:"李逵",id:20},{n:"鮑旭",id:102}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 85, name: "湯隆", nick: "金錢豹子", star: "地孤星", rank: 88, isTian: false,
+    chapter: "第54回", faction: "散人", endType: "戰死", stance: "中立", weapon: "大鐵錘",
+    intro: "延安府人，鐵匠出身，徐寧的姑表弟。",
+    deeds: "連環馬大破梁山時湯隆獻計賺取表兄徐寧上山教鉤鐮槍法破連環馬；後在梁山管打造軍器。",
+    end: "征方臘攻杭州戰死。",
+    rel: {
+      sworn: [{n:"徐寧(表兄)",id:60},{n:"戴宗",id:18},{n:"宋江",id:14}],
+      saved: [{n:"徐寧(賺上山)",id:60}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 86, name: "韓滔", nick: "百勝將", star: "地威星", rank: 42, isTian: false,
+    chapter: "第55回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "棗木槊",
+    intro: "東京人，呼延灼副將，自稱百戰百勝。",
+    deeds: "隨呼延灼領連環馬攻梁山，戰敗被擒投降。",
+    end: "征方臘攻打常州被亂箭射死。",
+    rel: {
+      sworn: [{n:"呼延灼(主將)",id:28},{n:"彭玘",id:87}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 87, name: "彭玘", nick: "天目將", star: "地英星", rank: 43, isTian: false,
+    chapter: "第55回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "三尖兩刃刀",
+    intro: "東京人，呼延灼另一副將，眼有異光故號「天目將」。",
+    deeds: "同韓滔，隨呼延灼降梁山。",
+    end: "征方臘攻常州戰死。",
+    rel: {
+      sworn: [{n:"呼延灼(主將)",id:28},{n:"韓滔",id:86}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 88, name: "凌振", nick: "轟天雷", star: "地軸星", rank: 52, isTian: false,
+    chapter: "第55回", faction: "朝廷降將", endType: "善終", stance: "親招安", weapon: "火砲",
+    intro: "燕陵人，宋朝最厲害的砲手，造火砲技術一流，能打至十四五里遠。",
+    deeds: "朝廷派他攻梁山被吳用設計水中擒投降；專管梁山火砲。",
+    end: "征方臘存活，回京任御營砲務官，得善終。",
+    rel: {
+      sworn: [{n:"呼延灼",id:28},{n:"戴宗",id:18}],
+      saved: [], savedBy: [{n:"吳用(設計擒)",id:7}],
+      enemies: []
+    }
+  },
+  {
+    num: 89, name: "樊瑞", nick: "混世魔王", star: "地然星", rank: 61, isTian: false,
+    chapter: "第57回", faction: "散人", endType: "出家", stance: "反招安", weapon: "流星鎚、法術",
+    intro: "濮州人，會法術（呼風喚雨、撒豆成兵），據芒碭山為盜。",
+    deeds: "與項充李袞據芒碭山與梁山對立，公孫勝以法術降之；後拜公孫勝為師上梁山。",
+    end: "征方臘存活，與朱武同投羅真人座下出家修道，得善終。",
+    rel: {
+      sworn: [{n:"項充",id:90},{n:"李袞",id:91},{n:"公孫勝(師父)",id:9},{n:"朱武",id:31}],
+      saved: [], savedBy: [{n:"公孫勝(降妖收服)",id:9}],
+      enemies: []
+    }
+  },
+  {
+    num: 90, name: "項充", nick: "八臂哪吒", star: "地飛星", rank: 64, isTian: false,
+    chapter: "第57回", faction: "散人", endType: "戰死", stance: "中立", weapon: "飛刀、團牌",
+    intro: "沛縣人，使二十四把飛刀，盾牌絕技。",
+    deeds: "芒碭山樊瑞副將；後同降梁山專為步軍開路先鋒。",
+    end: "征方臘攻清溪縣陷山陡被亂軍踩死。",
+    rel: {
+      sworn: [{n:"樊瑞(主)",id:89},{n:"李袞",id:91}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 91, name: "李袞", nick: "飛天大聖", star: "地走星", rank: 65, isTian: false,
+    chapter: "第57回", faction: "散人", endType: "戰死", stance: "中立", weapon: "飛刀、團牌",
+    intro: "邳縣人，與項充技法相同，輕功如飛。",
+    deeds: "同項充、樊瑞同降梁山。",
+    end: "征方臘陷山時與項充同被踩殺。",
+    rel: {
+      sworn: [{n:"樊瑞(主)",id:89},{n:"項充",id:90}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 92, name: "段景住", nick: "金毛犬", star: "地狗星", rank: 108, isTian: false,
+    chapter: "第60回", faction: "散人", endType: "意外瘟疫", stance: "中立", weapon: "朴刀、偷馬",
+    intro: "涿州人，紅鬚黃髮如金毛犬，江湖偷馬大盜。",
+    deeds: "偷得「照夜玉獅子」名馬獻宋江，途中被曾頭市搶走，引發梁山攻曾頭市晁蓋戰死之大事件。",
+    end: "征方臘乘船過揚子江時遇風浪溺死。",
+    rel: {
+      sworn: [{n:"宋江",id:14},{n:"皇甫端(同管馬)",id:103}],
+      saved: [], savedBy: [],
+      enemies: [{n:"曾頭市(已破,晁蓋之死源頭)",ext:1}]
+    }
+  },
+  {
+    num: 93, name: "蔡福", nick: "鐵臂膊", star: "地平星", rank: 94, isTian: false,
+    chapter: "第62回", faction: "大名府", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "大名府兩院押獄兼行刑劊子手，蔡慶之兄。",
+    deeds: "盧俊義被誣陷下大名府獄等候斬首，柴進買通蔡福暗中保護免死；攻大名府後同上梁山。",
+    end: "征方臘攻打杭州戰死。",
+    rel: {
+      sworn: [{n:"蔡慶(親弟)",id:94},{n:"柴進",id:34}],
+      saved: [{n:"盧俊義(獄中保護)",id:29}], savedBy: [{n:"柴進(買通)",id:34}],
+      enemies: []
+    }
+  },
+  {
+    num: 94, name: "蔡慶", nick: "一枝花", star: "地損星", rank: 95, isTian: false,
+    chapter: "第62回", faction: "大名府", endType: "善終", stance: "中立", weapon: "朴刀",
+    intro: "蔡福之弟，喜插一枝花於頭故名，亦為大名府獄卒。",
+    deeds: "同蔡福保護盧俊義；上梁山。",
+    end: "征方臘存活，回鄉為民得善終。",
+    rel: {
+      sworn: [{n:"蔡福(親兄)",id:93},{n:"柴進",id:34}],
+      saved: [{n:"盧俊義(獄中保護)",id:29}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 95, name: "關勝", nick: "大刀", star: "天勇星", rank: 5, isTian: true,
+    chapter: "第63回", faction: "朝廷降將", endType: "善終", stance: "親招安", weapon: "青龍偃月刀",
+    intro: "蒲東人，三國蜀漢關羽嫡派子孫，使青龍偃月刀。書中武藝最高的降將，被梁山尊為馬軍五虎將之首。",
+    deeds: "朝廷派攻梁山被吳用設計水陸夾擊擒住，受感化降；招安後征四寇任主力。",
+    end: "招安後封大名府正兵馬總管，後因醉酒墜馬而亡。",
+    rel: {
+      sworn: [{n:"宣贊(同陣)",id:96},{n:"郝思文(結義)",id:97},{n:"林沖(後同梁山)",id:3},{n:"秦明",id:17},{n:"呼延灼",id:28}],
+      saved: [], savedBy: [{n:"吳用(設計擒後勸降)",id:7}],
+      enemies: []
+    }
+  },
+  {
+    num: 96, name: "宣贊", nick: "醜郡馬", star: "地傑星", rank: 40, isTian: false,
+    chapter: "第63回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "鋼刀",
+    intro: "因相貌醜陋卻娶得郡主故號「醜郡馬」，關勝副將。",
+    deeds: "隨關勝攻梁山降；後梁山戰役為將。",
+    end: "征方臘攻打蘇州被卞祥斬於陣中。",
+    rel: {
+      sworn: [{n:"關勝(主將)",id:95},{n:"郝思文",id:97}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 97, name: "郝思文", nick: "井木犴", star: "地雄星", rank: 41, isTian: false,
+    chapter: "第63回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "方天畫戟",
+    intro: "出生時母夢北斗第六宮「井木犴」星投懷故名，關勝同窗結義兄弟。",
+    deeds: "隨關勝同降梁山；多次戰役為先鋒。",
+    end: "征方臘攻杭州時被擒受千刀萬剮而死，是書中死狀最慘者之一。",
+    rel: {
+      sworn: [{n:"關勝(結義)",id:95},{n:"宣贊",id:96}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 98, name: "安道全", nick: "神醫", star: "地靈星", rank: 56, isTian: false,
+    chapter: "第65回", faction: "散人", endType: "善終", stance: "親招安", weapon: "醫術",
+    intro: "建康府人，天下第一神醫，治瘡科尤精，書中救命關鍵人物。",
+    deeds: "宋江得背瘡將死，戴宗千里請安道全救命；上梁山管全軍醫療。",
+    end: "征方臘前夕被朝廷詔回京治帝病，未隨大軍而存活；後在京任太醫得善終。",
+    rel: {
+      sworn: [{n:"戴宗",id:18},{n:"王定六",id:99}],
+      saved: [{n:"宋江(治背瘡)",id:14}], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 99, name: "王定六", nick: "活閃婆", star: "地劣星", rank: 104, isTian: false,
+    chapter: "第65回", faction: "散人", endType: "戰死", stance: "中立", weapon: "朴刀",
+    intro: "建康府人，使一條棍如閃電，故號「活閃婆」。",
+    deeds: "戴宗去請安道全路上認識王定六，引他同上梁山。",
+    end: "征方臘攻清溪縣戰死。",
+    rel: {
+      sworn: [{n:"戴宗",id:18},{n:"安道全",id:98}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 100, name: "單廷珪", nick: "聖水將", star: "地奇星", rank: 44, isTian: false,
+    chapter: "第67回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "蛇矛",
+    intro: "凌州人，善用水攻法，號「聖水將軍」。",
+    deeds: "與魏定國奉命攻梁山，被關勝勸降。",
+    end: "征方臘攻歙州被厲天閏所殺。",
+    rel: {
+      sworn: [{n:"魏定國(結義)",id:101},{n:"關勝",id:95}],
+      saved: [], savedBy: [{n:"關勝(勸降)",id:95}],
+      enemies: []
+    }
+  },
+  {
+    num: 101, name: "魏定國", nick: "神火將", star: "地猛星", rank: 45, isTian: false,
+    chapter: "第67回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "火攻法",
+    intro: "凌州人，善用火攻法，號「神火將軍」。",
+    deeds: "與單廷珪同降梁山。",
+    end: "征方臘攻歙州戰死。",
+    rel: {
+      sworn: [{n:"單廷珪(結義)",id:100},{n:"關勝",id:95}],
+      saved: [], savedBy: [{n:"關勝(勸降)",id:95}],
+      enemies: []
+    }
+  },
+  {
+    num: 102, name: "鮑旭", nick: "喪門神", star: "地暴星", rank: 60, isTian: false,
+    chapter: "第67回", faction: "散人", endType: "戰死", stance: "中立", weapon: "闊劍",
+    intro: "寇州人，據枯樹山為盜，相貌兇惡如喪門神。",
+    deeds: "焦挺引上枯樹山再上梁山；常與李逵搭檔殺敵，是李逵的心腹。",
+    end: "征方臘攻杭州時被石寶斬於陣中。",
+    rel: {
+      sworn: [{n:"焦挺",id:84},{n:"李逵",id:20}],
+      saved: [], savedBy: [],
+      enemies: [{n:"石寶(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 103, name: "皇甫端", nick: "紫髯伯", star: "地獸星", rank: 57, isTian: false,
+    chapter: "第68回", faction: "散人", endType: "善終", stance: "親招安", weapon: "醫馬術",
+    intro: "幽州人，紫髯紅鬚相貌奇特，醫馬絕技，江湖人稱「紫髯伯」。",
+    deeds: "梁山攻東昌府時段景住引他上山，管全軍馬醫。",
+    end: "征方臘存活，被朝廷留京任御馬監，得善終。",
+    rel: {
+      sworn: [{n:"段景住(同管馬)",id:92},{n:"宋江",id:14}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 104, name: "郁保四", nick: "險道神", star: "地健星", rank: 105, isTian: false,
+    chapter: "第68回", faction: "散人", endType: "戰死", stance: "中立", weapon: "大刀、軍旗",
+    intro: "身高一丈，曾頭市為頭目，後降梁山。",
+    deeds: "曾頭市偷盜公孫勝坐騎被擒；曾頭市破後降梁山，因身材高大善舉中軍大旗。",
+    end: "征方臘攻清溪縣戰死。",
+    rel: {
+      sworn: [{n:"段景住",id:92},{n:"宋江",id:14}],
+      saved: [], savedBy: [],
+      enemies: [{n:"曾頭市(舊主後叛)",ext:1}]
+    }
+  },
+  {
+    num: 105, name: "董平", nick: "雙槍將", star: "天立星", rank: 15, isTian: true,
+    chapter: "第69回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "雙槍",
+    intro: "河東上黨人，東平府兵馬都監，使雙槍。為人風流好色，外號「風流雙槍將」。",
+    deeds: "因看上知府程萬里之女想娶不成，城破時殺程萬里全家自取其女；攻打祝家莊時擒祝家莊；多役馬軍主力。",
+    end: "征方臘獨松關被張韜一刀斬殺，臨死前手腳已被砍。",
+    rel: {
+      sworn: [{n:"張清(同戰友)",id:106},{n:"林沖",id:3},{n:"宋江",id:14}],
+      saved: [], savedBy: [],
+      enemies: [{n:"程萬里(已殺全家)",ext:1},{n:"張韜(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 106, name: "張清", nick: "沒羽箭", star: "天捷星", rank: 16, isTian: true,
+    chapter: "第70回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "飛石、標槍",
+    intro: "彰德府人，東昌府將，能飛石打人百發百中故號「沒羽箭」。",
+    deeds: "飛石連打梁山十五員大將，無人能近；後被林沖、花榮設計擒住降；招安征方臘為馬軍主力。",
+    end: "征方臘獨松關被厲天閏一槍刺死。",
+    rel: {
+      sworn: [{n:"龔旺(副將)",id:107},{n:"丁得孫(副將)",id:108},{n:"董平",id:105}],
+      saved: [], savedBy: [{n:"林沖花榮(設計擒)",id:3}],
+      enemies: [{n:"厲天閏(已殺害)",ext:1}]
+    }
+  },
+  {
+    num: 107, name: "龔旺", nick: "花項虎", star: "地捷星", rank: 78, isTian: false,
+    chapter: "第70回", faction: "朝廷降將", endType: "戰死", stance: "親招安", weapon: "標槍",
+    intro: "張清副將，項上有虎紋故名「花項虎」。",
+    deeds: "隨張清降梁山。",
+    end: "征方臘陷洞中被擒處死。",
+    rel: {
+      sworn: [{n:"張清(主將)",id:106},{n:"丁得孫",id:108}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  },
+  {
+    num: 108, name: "丁得孫", nick: "中箭虎", star: "地速星", rank: 79, isTian: false,
+    chapter: "第70回", faction: "朝廷降將", endType: "意外瘟疫", stance: "親招安", weapon: "飛叉",
+    intro: "張清副將，臉上、項上有箭疤如中箭之虎。",
+    deeds: "隨張清降梁山。",
+    end: "征方臘途中被毒蛇咬中毒身亡。",
+    rel: {
+      sworn: [{n:"張清(主將)",id:106},{n:"龔旺",id:107}],
+      saved: [], savedBy: [],
+      enemies: []
+    }
+  }
+];
+
+const factionMap = {
+  "梁山元老": { label: "梁山元老", cls: "f-yuanlao", color: "#b89968" },
+  "晁蓋系": { label: "晁蓋系", cls: "f-chao", color: "#d4a857" },
+  "少華山": { label: "少華山", cls: "f-shaohua", color: "#c89572" },
+  "二龍山": { label: "二龍山", cls: "f-erlong", color: "#7eb6a3" },
+  "清風山系": { label: "清風山系", cls: "f-qingfeng", color: "#d28b8b" },
+  "江州揭陽": { label: "江州揭陽", cls: "f-jiangzhou", color: "#6fa8c4" },
+  "登州系": { label: "登州系", cls: "f-dengzhou", color: "#a8b860" },
+  "大名府": { label: "大名府", cls: "f-daming", color: "#c5919a" },
+  "朝廷降將": { label: "朝廷降將", cls: "f-jiang", color: "#8eaad0" },
+  "散人": { label: "散人", cls: "f-saner", color: "#a89e80" }
+};
+
+const endTypeOrder = ["戰死", "意外瘟疫", "出家", "善終", "殉葬", "毒殺", "失蹤"];
+const endTypeColors = {
+  "戰死": "#a83232",
+  "意外瘟疫": "#7a6b5a",
+  "出家": "#7eb6a3",
+  "善終": "#d4a857",
+  "殉葬": "#9c5fa8",
+  "毒殺": "#5a4a8a",
+  "失蹤": "#aaa9a9"
+};
+const factionOrder = ["梁山元老", "晁蓋系", "少華山", "二龍山", "清風山系", "江州揭陽", "登州系", "大名府", "朝廷降將", "散人"];
+
+let currentFaction = 'all';
+let currentSearch = '';
+let currentView = 'timeline';
+let graphSimulation = null;
+let graphShowEnemies = false;
+
+const timelineEl = document.getElementById('timeline-view');
+const starsEl = document.getElementById('stars-view');
+const statsEl = document.getElementById('stats-view');
+const graphEl = document.getElementById('graph-view');
+const emptyEl = document.getElementById('empty-state');
+
+function matchHero(h) {
+  if (currentFaction !== 'all' && h.faction !== currentFaction) return false;
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    const hay = (h.name + h.nick + h.star).toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+function buildRelTags(arr, isEnemy) {
+  if (!arr || !arr.length) return '<span style="color:var(--text-3);font-size:13px;">—</span>';
+  return arr.map(r => {
+    const cls = ['rel-tag'];
+    if (isEnemy) cls.push('enemy');
+    if (r.ext) cls.push('ext');
+    const dataAttr = r.id ? `data-jump="${r.id}"` : '';
+    return `<span class="${cls.join(' ')}" ${dataAttr}>${r.n}</span>`;
+  }).join('');
+}
+
+function buildCard(h) {
+  const f = factionMap[h.faction];
+  const quoteHtml = h.quote ? `
+          <div class="quote-block">
+            <div class="quote-text">「${h.quote}」</div>
+            <div class="quote-ctx">${h.quoteCtx}</div>
+          </div>
+        ` : '';
+  return `
+    <article class="hero-card" data-id="${h.num}">
+      <div class="hero-num ${h.isTian ? '' : 'dishasha'}">${h.num}</div>
+      <div class="card-body">
+        <div class="card-head">
+          <span class="name">${h.name}</span>
+          <span class="nick">${h.nick}</span>
+          <span class="star">${h.star}</span>
+          <span class="faction-pill ${f.cls}">${f.label}</span>
+          <span class="chapter">${h.chapter}</span>
+        </div>
+        <div class="detail">
+          <div class="detail-row"><span class="detail-key">武器</span><span class="detail-val">${h.weapon}</span></div>
+          <div class="detail-row"><span class="detail-key">簡介</span><span class="detail-val">${h.intro}</span></div>
+          <div class="detail-row"><span class="detail-key">事蹟</span><span class="detail-val">${h.deeds}</span></div>
+          <div class="detail-row"><span class="detail-key">結局</span><span class="detail-val">${h.end}</span></div>
+          ${quoteHtml}
+          <div class="relations">
+            <div class="relations-title">人 際 關 係</div>
+            <div class="rel-block">
+              <span class="rel-label">結 義</span>
+              <div class="rel-tags">${buildRelTags(h.rel.sworn, false)}</div>
+            </div>
+            <div class="rel-block">
+              <span class="rel-label">救 過</span>
+              <div class="rel-tags">${buildRelTags(h.rel.saved, false)}</div>
+            </div>
+            <div class="rel-block">
+              <span class="rel-label">被 救</span>
+              <div class="rel-tags">${buildRelTags(h.rel.savedBy, false)}</div>
+            </div>
+            <div class="rel-block">
+              <span class="rel-label">仇 敵</span>
+              <div class="rel-tags">${buildRelTags(h.rel.enemies, true)}</div>
+            </div>
+          </div>
+          <div class="prompt-section">
+            <button class="prompt-toggle" type="button"><span>繪 圖 提 示 詞</span></button>
+            <div class="prompt-content">
+              <button class="prompt-copy" type="button">複 製</button>
+              <div class="prompt-text">${heroPrompts[h.num] || '此人物的繪圖提示詞尚未提供。'}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderTimeline() {
+  const list = heroes.filter(matchHero);
+  if (!list.length) {
+    timelineEl.innerHTML = '';
+    return false;
+  }
+  timelineEl.innerHTML = list.map(buildCard).join('');
+  attachCardHandlers(timelineEl);
+  return true;
+}
+
+function renderStars() {
+  const list = heroes.filter(matchHero);
+  if (!list.length) {
+    starsEl.innerHTML = '';
+    return false;
+  }
+  const tian = list.filter(h => h.isTian).sort((a, b) => a.rank - b.rank);
+  const di = list.filter(h => !h.isTian).sort((a, b) => a.rank - b.rank);
+
+  let html = '';
+  if (tian.length) {
+    html += `<section class="stars-section">
+      <div class="stars-section-head">
+        <h2 class="stars-section-title">天罡</h2>
+        <span class="stars-count">${tian.length} of 36</span>
+      </div>
+      <div class="stars-grid">
+        ${tian.map(h => buildStarTile(h)).join('')}
+      </div>
+    </section>`;
+  }
+  if (di.length) {
+    html += `<section class="stars-section">
+      <div class="stars-section-head">
+        <h2 class="stars-section-title">地煞</h2>
+        <span class="stars-count">${di.length} of 72</span>
+      </div>
+      <div class="stars-grid">
+        ${di.map(h => buildStarTile(h)).join('')}
+      </div>
+    </section>`;
+  }
+  starsEl.innerHTML = html;
+  attachStarTileHandlers();
+  return true;
+}
+
+function buildStarTile(h) {
+  return `
+    <div class="star-tile" data-id="${h.num}">
+      <div class="star-rank">${h.isTian ? '天罡' : '地煞'} · No.${h.rank}</div>
+      <div class="star-tile-star">${h.star}</div>
+      <div class="star-tile-name">${h.name}</div>
+      <div class="star-tile-nick">${h.nick} · ${h.chapter}</div>
+    </div>
+  `;
+}
+
+function renderStats() {
+  const list = heroes.filter(matchHero);
+  if (!list.length) { statsEl.innerHTML = ''; return false; }
+
+  // 整體統計
+  const totalEndCounts = {};
+  endTypeOrder.forEach(t => totalEndCounts[t] = 0);
+  list.forEach(h => totalEndCounts[h.endType] = (totalEndCounts[h.endType] || 0) + 1);
+  const survivors = list.filter(h => ['善終','出家','失蹤'].includes(h.endType)).length;
+  const tian = list.filter(h => h.isTian).length;
+
+  const overallBar = endTypeOrder.map(t => {
+    const c = totalEndCounts[t];
+    if (!c) return '';
+    const pct = (c / list.length * 100).toFixed(1);
+    return `<span style="flex:${c};background:${endTypeColors[t]};" title="${t} ${c}人 ${pct}%"></span>`;
+  }).join('');
+
+  const legendHtml = endTypeOrder.filter(t => totalEndCounts[t] > 0).map(t =>
+    `<div class="death-legend-item"><span class="death-legend-swatch" style="background:${endTypeColors[t]};"></span>${t} ${totalEndCounts[t]}</div>`
+  ).join('');
+
+  let html = `
+    <div class="stats-overview">
+      <div class="stats-overview-title">梁 山 結 局</div>
+      <div class="stats-totals">
+        <div class="stats-total-item">
+          <div class="stats-total-num">${list.length}</div>
+          <div class="stats-total-label">總 人 數</div>
+        </div>
+        <div class="stats-total-item">
+          <div class="stats-total-num">${tian}</div>
+          <div class="stats-total-label">天 罡</div>
+        </div>
+        <div class="stats-total-item">
+          <div class="stats-total-num">${list.length - tian}</div>
+          <div class="stats-total-label">地 煞</div>
+        </div>
+        <div class="stats-total-item">
+          <div class="stats-total-num">${survivors}</div>
+          <div class="stats-total-label">存 活</div>
+        </div>
+        <div class="stats-total-item">
+          <div class="stats-total-num">${(survivors/list.length*100).toFixed(0)}<span style="font-size:18px;">%</span></div>
+          <div class="stats-total-label">存 活 率</div>
+        </div>
+      </div>
+      <div class="death-bar-overall">${overallBar}</div>
+      <div class="death-legend">${legendHtml}</div>
+    </div>
+  `;
+
+  // 派系卡片：要在當前篩選下顯示有人的派系
+  const factions = factionOrder.filter(f => list.some(h => h.faction === f));
+  html += '<div class="faction-cards">';
+  factions.forEach(f => {
+    const flist = list.filter(h => h.faction === f);
+    const ftian = flist.filter(h => h.isTian).length;
+    const fcounts = {};
+    endTypeOrder.forEach(t => fcounts[t] = 0);
+    flist.forEach(h => fcounts[h.endType] = (fcounts[h.endType] || 0) + 1);
+    const fsurvivors = flist.filter(h => ['善終','出家','失蹤'].includes(h.endType)).length;
+    const fsurvivePct = (fsurvivors / flist.length * 100).toFixed(0);
+    const avgRank = (flist.reduce((s, h) => s + h.rank, 0) / flist.length).toFixed(1);
+
+    const bar = endTypeOrder.map(t => {
+      const c = fcounts[t];
+      if (!c) return '';
+      return `<span style="flex:${c};background:${endTypeColors[t]};" title="${t} ${c}人"></span>`;
+    }).join('');
+
+    const fInfo = factionMap[f];
+    const top3 = flist.slice().sort((a,b) => a.rank - b.rank).slice(0, 3).map(h => h.name).join('、');
+
+    html += `
+      <div class="faction-card" style="border-top-color:${fInfo.color};">
+        <div class="faction-card-head">
+          <span class="faction-card-name" style="color:${fInfo.color};">${fInfo.label}</span>
+          <span class="faction-card-count">${flist.length}<span class="unit">人</span></span>
+        </div>
+        <div class="faction-card-meta">
+          <span>天罡 <b>${ftian}</b></span>
+          <span>地煞 <b>${flist.length - ftian}</b></span>
+          <span>存活率 <b>${fsurvivePct}%</b></span>
+        </div>
+        <div class="death-bar">${bar}</div>
+        <div class="faction-card-stats">
+          <em>代表：</em>${top3}<br>
+          <em>平均星位：</em>${avgRank}　<em>戰死：</em>${fcounts['戰死']}　<em>善終：</em>${fcounts['善終']}
+        </div>
+      </div>
+    `;
+  });
+  html += '</div>';
+
+  statsEl.innerHTML = html;
+  return true;
+}
+
+function renderGraph() {
+  const list = heroes.filter(matchHero);
+  if (!list.length) { graphEl.innerHTML = ''; return false; }
+
+  // 控制列 + 容器
+  graphEl.innerHTML = `
+    <div class="graph-controls">
+      <span class="filter-label">關 係</span>
+      <button class="graph-toggle active" id="graph-show-sworn">結 義</button>
+      <button class="graph-toggle ${graphShowEnemies ? 'active' : ''}" id="graph-show-enemies">仇 敵</button>
+      <span style="margin-left:auto;"></span>
+      <button class="graph-toggle" id="graph-play" style="border-color:var(--gold);color:var(--gold);">▶ 播放聚義</button>
+      <button class="graph-toggle" id="graph-reset" style="display:none;">■ 重置</button>
+    </div>
+    <div class="graph-container" id="graph-container">
+      <svg id="graph-svg"></svg>
+      <div class="graph-tooltip" id="graph-tooltip"></div>
+      <div class="play-overlay" id="play-overlay">
+        <div class="play-chapter" id="play-chapter">第 一 回</div>
+        <div class="play-counter" id="play-counter">已 聚 集 0 / 108</div>
+        <div class="play-event" id="play-event"></div>
+      </div>
+    </div>
+    <div class="graph-legend">
+      <span style="color:var(--gold-dim);font-family:var(--font-heading);">派系：</span>
+      ${factionOrder.map(f => `
+        <div class="graph-legend-item"><span class="graph-legend-dot" style="background:${factionMap[f].color};"></span>${factionMap[f].label}</div>
+      `).join('')}
+      <span style="border-left:1px solid var(--border);padding-left:14px;color:var(--gold-dim);font-family:var(--font-heading);margin-left:8px;">線：</span>
+      <div class="graph-legend-item"><span class="graph-legend-line" style="border-top-color:rgba(201,169,97,0.6);"></span>結義</div>
+      <div class="graph-legend-item"><span class="graph-legend-line" style="border-top-color:rgba(168,50,50,0.7);border-top-style:dashed;"></span>仇敵</div>
+    </div>
+    <div class="graph-help">點任一個圓圈會 highlight 該人物與所有關係 · 拖曳可移動節點 · 雙擊跳到該人卡片 · 「播放聚義」會按出場順序動畫展示</div>
+  `;
+
+  document.getElementById('graph-show-enemies').addEventListener('click', (e) => {
+    graphShowEnemies = !graphShowEnemies;
+    e.target.classList.toggle('active', graphShowEnemies);
+    drawGraph(list);
+  });
+  document.getElementById('graph-play').addEventListener('click', () => playTimeline(list));
+  document.getElementById('graph-reset').addEventListener('click', () => resetTimeline(list));
+
+  drawGraph(list);
+  return true;
+}
+
+function drawGraph(list) {
+  const ids = new Set(list.map(h => h.num));
+  const nodes = list.map(h => ({
+    id: h.num, name: h.name, nick: h.nick, star: h.star,
+    faction: h.faction, isTian: h.isTian,
+    color: factionMap[h.faction].color
+  }));
+
+  const links = [];
+  const seen = new Set();
+  list.forEach(h => {
+    h.rel.sworn.forEach(r => {
+      if (r.id && ids.has(r.id) && r.id !== h.num) {
+        const key = h.num < r.id ? `${h.num}-${r.id}-s` : `${r.id}-${h.num}-s`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          links.push({ source: h.num, target: r.id, type: 'sworn' });
+        }
+      }
+    });
+    if (graphShowEnemies) {
+      h.rel.enemies.forEach(r => {
+        if (r.id && ids.has(r.id) && r.id !== h.num) {
+          const key = h.num < r.id ? `${h.num}-${r.id}-e` : `${r.id}-${h.num}-e`;
+          if (!seen.has(key)) {
+            seen.add(key);
+            links.push({ source: h.num, target: r.id, type: 'enemy' });
+          }
+        }
+      });
+    }
+  });
+
+  const svg = d3.select('#graph-svg');
+  svg.selectAll('*').remove();
+  const container = document.getElementById('graph-container');
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+
+  const g = svg.append('g');
+
+  // zoom & pan
+  svg.call(d3.zoom().scaleExtent([0.4, 3]).on('zoom', (e) => {
+    g.attr('transform', e.transform);
+  }));
+
+  if (graphSimulation) graphSimulation.stop();
+  graphSimulation = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(d => d.id).distance(d => d.type === 'enemy' ? 90 : 60).strength(0.5))
+    .force('charge', d3.forceManyBody().strength(-180))
+    .force('center', d3.forceCenter(w / 2, h / 2))
+    .force('collide', d3.forceCollide().radius(14));
+
+  const link = g.append('g').selectAll('line')
+    .data(links).enter().append('line')
+    .attr('class', d => 'link ' + d.type);
+
+  const node = g.append('g').selectAll('circle')
+    .data(nodes).enter().append('circle')
+    .attr('class', d => 'node' + (d.isTian ? ' tian' : ''))
+    .attr('r', d => d.isTian ? 8 : 6)
+    .attr('fill', d => d.color)
+    .call(d3.drag()
+      .on('start', (e, d) => { if (!e.active) graphSimulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on('end', (e, d) => { if (!e.active) graphSimulation.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+  const label = g.append('g').selectAll('text')
+    .data(nodes).enter().append('text')
+    .attr('class', 'node-label')
+    .text(d => d.name)
+    .attr('dy', d => (d.isTian ? -12 : -10));
+
+  const tooltip = d3.select('#graph-tooltip');
+
+  let highlightId = null;
+  function setHighlight(hid) {
+    highlightId = hid;
+    if (hid === null) {
+      node.classed('dim', false).classed('highlight', false);
+      link.classed('dim', false).classed('highlight', false);
+      label.classed('show', false);
+      return;
+    }
+    const connected = new Set([hid]);
+    links.forEach(l => {
+      const sId = l.source.id !== undefined ? l.source.id : l.source;
+      const tId = l.target.id !== undefined ? l.target.id : l.target;
+      if (sId === hid) connected.add(tId);
+      if (tId === hid) connected.add(sId);
+    });
+    node.classed('dim', d => !connected.has(d.id));
+    node.classed('highlight', d => d.id === hid);
+    link.classed('dim', l => {
+      const sId = l.source.id !== undefined ? l.source.id : l.source;
+      const tId = l.target.id !== undefined ? l.target.id : l.target;
+      return sId !== hid && tId !== hid;
+    });
+    link.classed('highlight', l => {
+      const sId = l.source.id !== undefined ? l.source.id : l.source;
+      const tId = l.target.id !== undefined ? l.target.id : l.target;
+      return sId === hid || tId === hid;
+    });
+    label.classed('show', d => connected.has(d.id));
+  }
+
+  node.on('mouseover', (e, d) => {
+    const rect = container.getBoundingClientRect();
+    tooltip.html(`
+      <div class="tt-name">${d.name}</div>
+      <div class="tt-info">${d.nick} · ${d.star} · ${factionMap[d.faction].label}</div>
+    `);
+    tooltip.style('left', (e.clientX - rect.left + 14) + 'px')
+           .style('top', (e.clientY - rect.top + 14) + 'px')
+           .classed('show', true);
+  })
+  .on('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    tooltip.style('left', (e.clientX - rect.left + 14) + 'px')
+           .style('top', (e.clientY - rect.top + 14) + 'px');
+  })
+  .on('mouseout', () => tooltip.classed('show', false))
+  .on('click', (e, d) => {
+    e.stopPropagation();
+    setHighlight(highlightId === d.id ? null : d.id);
+  })
+  .on('dblclick', (e, d) => {
+    e.stopPropagation();
+    jumpToHero(d.id);
+  });
+
+  svg.on('click', () => setHighlight(null));
+
+  graphSimulation.on('tick', () => {
+    link
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    node.attr('cx', d => d.x).attr('cy', d => d.y);
+    label.attr('x', d => d.x).attr('y', d => d.y);
+  });
+}
+
+// 章節 → 事件對照（少數重要橋段在播放時提示）
+const chapterEvents = {
+  2: "史進闖少華山",
+  3: "魯智深拳打鎮關西",
+  7: "林沖誤入白虎堂",
+  9: "柴進收留落難好漢",
+  11: "梁山三朝元老",
+  13: "雷橫朱仝‧索超楊志",
+  14: "晁蓋七人聚義",
+  15: "智取生辰綱",
+  18: "宋江通風報信救晁蓋",
+  23: "武松景陽岡打虎",
+  27: "十字坡夫妻識武松",
+  32: "清風山三好漢‧白虎山兄弟",
+  33: "花榮‧黃信‧鎮三山",
+  35: "宋江得家書‧呂方郭盛",
+  36: "戴宗‧李俊揭陽嶺",
+  37: "揭陽鎮三霸",
+  38: "李逵張順潯陽江",
+  39: "蔡京偽書救宋江",
+  41: "黃門山四將",
+  44: "楊雄石秀‧飲馬川",
+  46: "時遷偷雞引發大事",
+  49: "登州劫獄",
+  50: "三打祝家莊‧李家莊降",
+  52: "焦挺‧柴進入獄",
+  54: "湯隆獻計破連環馬",
+  55: "呼延灼副將降",
+  56: "徐寧傳授鉤鐮槍",
+  57: "芒碭山樊瑞降",
+  60: "段景住獻馬‧晁蓋之死",
+  61: "盧俊義‧燕青上山",
+  62: "蔡福蔡慶大名府",
+  63: "關勝降梁山",
+  65: "安道全救宋江",
+  67: "單廷珪‧魏定國‧鮑旭",
+  68: "皇甫端‧郁保四",
+  69: "董平風流雙槍",
+  70: "張清沒羽箭‧聚齊108",
+  71: "石碣降天‧排座次"
+};
+
+let isPlaying = false;
+let playController = null;
+
+function getChapterNum(h) {
+  const m = h.chapter.match(/(\d+)/);
+  return m ? parseInt(m[1]) : 999;
+}
+
+function sleep(ms) {
+  return new Promise(resolve => {
+    playController = setTimeout(resolve, ms);
+  });
+}
+
+async function playTimeline(list) {
+  if (isPlaying) return;
+  isPlaying = true;
+  const playBtn = document.getElementById('graph-play');
+  const resetBtn = document.getElementById('graph-reset');
+  const overlay = document.getElementById('play-overlay');
+  const chapterEl = document.getElementById('play-chapter');
+  const counterEl = document.getElementById('play-counter');
+  const eventEl = document.getElementById('play-event');
+
+  playBtn.style.display = 'none';
+  resetBtn.style.display = 'inline-block';
+  overlay.classList.add('show');
+
+  // 隱藏所有節點與連線
+  d3.selectAll('#graph-svg .node').style('opacity', 0);
+  d3.selectAll('#graph-svg .link').style('opacity', 0);
+  d3.selectAll('#graph-svg .node-label').classed('show', false);
+
+  // 按章節分組
+  const sorted = list.slice().sort((a, b) => getChapterNum(a) - getChapterNum(b) || a.num - b.num);
+  const groups = {};
+  sorted.forEach(h => {
+    const ch = getChapterNum(h);
+    if (!groups[ch]) groups[ch] = [];
+    groups[ch].push(h);
+  });
+  const chapters = Object.keys(groups).map(Number).sort((a, b) => a - b);
+
+  const visible = new Set();
+  let count = 0;
+  const total = list.length;
+
+  for (const ch of chapters) {
+    if (!isPlaying) break;
+    const newHeroes = groups[ch];
+    const hadTian = newHeroes.some(h => h.isTian);
+    const isImportantChapter = chapterEvents[ch] !== undefined;
+    newHeroes.forEach(h => visible.add(h.num));
+    count += newHeroes.length;
+
+    // 更新覆蓋層
+    chapterEl.textContent = `第 ${ch} 回`;
+    counterEl.textContent = `已 聚 集 ${count} / ${total}`;
+    eventEl.textContent = chapterEvents[ch] || '';
+
+    // 音效：依章節重要性與是否有天罡決定鐘鼓
+    if (audioEnabled) {
+      if (isImportantChapter) {
+        playDrum(0.35);
+        setTimeout(() => playChime(hadTian ? 880 : 660, 0.6, 0.18), 80);
+      } else {
+        playChime(hadTian ? 720 : 540, 0.4, 0.13);
+      }
+    }
+
+    // 顯示新節點 (脈衝動畫)
+    d3.selectAll('#graph-svg .node')
+      .filter(d => visible.has(d.id))
+      .transition().duration(400)
+      .style('opacity', 1)
+      .attr('r', d => (d.isTian ? 11 : 8))
+      .transition().duration(300)
+      .attr('r', d => (d.isTian ? 8 : 6));
+
+    // 顯示連線（兩端都已可見的）
+    d3.selectAll('#graph-svg .link')
+      .filter(d => {
+        const sId = d.source.id !== undefined ? d.source.id : d.source;
+        const tId = d.target.id !== undefined ? d.target.id : d.target;
+        return visible.has(sId) && visible.has(tId);
+      })
+      .transition().duration(400).style('opacity', 1);
+
+    // 章節間延遲：人多的章節停久一點
+    const baseDelay = 700;
+    const extraDelay = Math.min(newHeroes.length * 100, 600);
+    await sleep(baseDelay + extraDelay);
+  }
+
+  if (isPlaying) {
+    chapterEl.textContent = '聚 齊';
+    counterEl.textContent = `108 將 · 替 天 行 道`;
+    eventEl.textContent = '第 71 回 · 石碣降天';
+    // 終曲音效：鑼+三聲鼓
+    if (audioEnabled) {
+      playGong(0.35);
+      setTimeout(() => playDrum(0.5), 400);
+      setTimeout(() => playDrum(0.45), 700);
+      setTimeout(() => playDrum(0.4), 1000);
+      setTimeout(() => playGong(0.25), 1500);
+    }
+    await sleep(2800);
+    overlay.classList.remove('show');
+  }
+
+  isPlaying = false;
+  // 清除內聯樣式讓 highlight 可以正常運作
+  d3.selectAll('#graph-svg .node').style('opacity', null).attr('r', d => d.isTian ? 8 : 6);
+  d3.selectAll('#graph-svg .link').style('opacity', null);
+  playBtn.style.display = 'inline-block';
+  resetBtn.style.display = 'none';
+}
+
+function resetTimeline(list) {
+  isPlaying = false;
+  if (playController) clearTimeout(playController);
+  document.getElementById('play-overlay').classList.remove('show');
+  document.getElementById('graph-play').style.display = 'inline-block';
+  document.getElementById('graph-reset').style.display = 'none';
+  // 清除內聯樣式（讓 CSS 接管）
+  d3.selectAll('#graph-svg .node').style('opacity', null).attr('r', d => d.isTian ? 8 : 6);
+  d3.selectAll('#graph-svg .link').style('opacity', null);
+}
+
+function renderStance() {
+  const list = heroes.filter(matchHero);
+  if (!list.length) { document.getElementById('stance-view').innerHTML = ''; return false; }
+
+  const anti = list.filter(h => h.stance === '反招安').sort((a, b) => a.rank - b.rank);
+  const neutral = list.filter(h => h.stance === '中立').sort((a, b) => a.rank - b.rank);
+  const pro = list.filter(h => h.stance === '親招安').sort((a, b) => a.rank - b.rank);
+
+  const total = list.length;
+  const antiPct = (anti.length / total * 100).toFixed(1);
+  const neutralPct = (neutral.length / total * 100).toFixed(1);
+  const proPct = (pro.length / total * 100).toFixed(1);
+
+  function chip(h) {
+    const fcolor = factionMap[h.faction].color;
+    return `<div class="stance-chip ${h.isTian ? 'tian' : ''}" style="border-left-color:${fcolor};" data-id="${h.num}">
+      <span class="stance-chip-name">${h.name}</span>
+      <span class="stance-chip-nick">${h.nick}</span>
+    </div>`;
+  }
+
+  const html = `
+    <div class="stance-intro">
+      <div class="stance-intro-title">招 安 路 線 之 爭</div>
+      <div class="stance-intro-text">
+        晁蓋死後，宋江主導梁山轉向接受朝廷招安。書中真正<em>表態</em>的人不多——明確反對的只有 <em>${anti.length} 人</em>（${antiPct}%）；積極推動或結構上必然支持的有 <em>${pro.length} 人</em>（${proPct}%）；剩下 <em>${neutral.length} 人</em>（${neutralPct}%）沒有明確立場，被路線帶著走。
+        <br><br>
+        梁山的命運不是被多數人決定的——是被一群少數的關鍵人物推著走的。下面是三派人物的分組：
+      </div>
+      <div class="stance-bar">
+        <span class="anti" style="flex:${anti.length};" title="反招安 ${anti.length} 人"></span>
+        <span class="neutral" style="flex:${neutral.length};" title="中立 ${neutral.length} 人"></span>
+        <span class="pro" style="flex:${pro.length};" title="親招安 ${pro.length} 人"></span>
+      </div>
+    </div>
+    <div class="stance-cols">
+      <div class="stance-col anti">
+        <div class="stance-col-head">
+          <div class="stance-col-title">反 招 安</div>
+          <div class="stance-col-meta"><b>${anti.length}</b>人 · ${antiPct}%</div>
+          <div class="stance-quote">「招甚鳥安！」李逵踢翻聖旨。<br>「冷了弟兄們的心。」武松喝止。</div>
+        </div>
+        <div class="stance-chips">${anti.map(chip).join('')}</div>
+      </div>
+      <div class="stance-col neutral">
+        <div class="stance-col-head">
+          <div class="stance-col-title">中 立</div>
+          <div class="stance-col-meta"><b>${neutral.length}</b>人 · ${neutralPct}%</div>
+          <div class="stance-quote">大多數梁山好漢沒有公開表態。技工、副將、地方小頭領，他們的命運被別人決定。</div>
+        </div>
+        <div class="stance-chips">${neutral.map(chip).join('')}</div>
+      </div>
+      <div class="stance-col pro">
+        <div class="stance-col-head">
+          <div class="stance-col-title">親 招 安</div>
+          <div class="stance-col-meta"><b>${pro.length}</b>人 · ${proPct}%</div>
+          <div class="stance-quote">「權借水泊歇馬，待朝廷赦罪招安。」宋江反覆對眾兄弟說。降將與貴族天然親體制。</div>
+        </div>
+        <div class="stance-chips">${pro.map(chip).join('')}</div>
+      </div>
+    </div>
+  `;
+
+  const el = document.getElementById('stance-view');
+  el.innerHTML = html;
+  el.querySelectorAll('.stance-chip').forEach(c => {
+    c.addEventListener('click', () => jumpToHero(parseInt(c.dataset.id)));
+  });
+  return true;
+}
+
+function attachCardHandlers(root) {
+  root.querySelectorAll('.card-body').forEach(body => {
+    body.addEventListener('click', (e) => {
+      if (e.target.classList.contains('rel-tag')) return;
+      if (e.target.closest('.prompt-section')) return; // 點繪圖提示區不觸發卡片開合
+      body.classList.toggle('expanded');
+      if (audioEnabled) playPageFlip();
+    });
+  });
+  root.querySelectorAll('.rel-tag[data-jump]').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = parseInt(tag.dataset.jump);
+      jumpToHero(id);
+    });
+  });
+  attachPromptHandlers(root);
+}
+
+// 繪圖提示詞展開 + 複製（給 timeline 卡片跟 modal 共用）
+function attachPromptHandlers(root) {
+  root.querySelectorAll('.prompt-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      btn.classList.toggle('open');
+      const content = btn.nextElementSibling;
+      if (content) content.classList.toggle('show');
+    });
+  });
+  root.querySelectorAll('.prompt-copy').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const textEl = btn.parentElement.querySelector('.prompt-text');
+      if (!textEl) return;
+      const text = textEl.textContent.trim();
+      let ok = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        ok = true;
+      } catch (err) {
+        // fallback：建臨時 textarea + execCommand
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); ok = true; } catch (e2) {}
+        document.body.removeChild(ta);
+      }
+      btn.textContent = ok ? '已 複 製' : '失 敗';
+      if (ok) btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '複 製';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+}
+
+function attachStarTileHandlers() {
+  starsEl.querySelectorAll('.star-tile').forEach(tile => {
+    tile.addEventListener('click', () => {
+      openHeroModal(parseInt(tile.dataset.id));
+    });
+  });
+}
+
+// === Hero Modal ===
+// 從 stars / stance / graph / 關係圖 點人 → 開 modal（不切走 view）
+// 在 timeline view 點 rel-tag → 維持原本滾動展開
+// modal 已開時點 rel-tag → 換成新人物（保持在 modal 內）
+function isHeroModalOpen() {
+  return document.getElementById('hero-modal').classList.contains('show');
+}
+
+function openHeroModal(id) {
+  const h = heroes.find(x => x.num === id);
+  if (!h) return;
+  const body = document.getElementById('hero-modal-body');
+  body.innerHTML = buildCard(h);
+  // 強制展開（modal 內卡片永遠展開狀態）
+  const cardBody = body.querySelector('.card-body');
+  if (cardBody) cardBody.classList.add('expanded');
+  // 重綁 rel-tag 跳轉（modal 內跳轉 = 換人，仍留在 modal）
+  body.querySelectorAll('.rel-tag[data-jump]').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openHeroModal(parseInt(tag.dataset.jump));
+    });
+  });
+  // 綁繪圖提示詞 toggle/copy
+  attachPromptHandlers(body);
+  // 滾回 modal 頂端（避免上一個人滾到一半的位置殘留）
+  document.getElementById('hero-modal').scrollTop = 0;
+  document.getElementById('hero-modal').classList.add('show');
+  document.body.style.overflow = 'hidden'; // 鎖背景滾動
+  if (audioEnabled) playPageFlip();
+}
+
+function closeHeroModal() {
+  document.getElementById('hero-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function jumpToHero(id) {
+  // 在 timeline 以外的 view，或 modal 已開時 → 開 modal
+  if (currentView !== 'timeline' || isHeroModalOpen()) {
+    openHeroModal(id);
+    return;
+  }
+  // Timeline view 原本邏輯：滾動到對應卡片並展開
+  setTimeout(() => {
+    const target = timelineEl.querySelector(`.hero-card[data-id="${id}"]`);
+    if (!target) {
+      currentSearch = '';
+      currentFaction = 'all';
+      document.getElementById('search').value = '';
+      document.querySelectorAll('#filters .chip').forEach(c => c.classList.remove('active'));
+      document.querySelector('#filters .chip[data-faction="all"]').classList.add('active');
+      render();
+      setTimeout(() => jumpToHero(id), 60);
+      return;
+    }
+    const body = target.querySelector('.card-body');
+    body.classList.add('expanded');
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    target.classList.add('highlight-flash');
+    setTimeout(() => target.classList.remove('highlight-flash'), 1700);
+  }, 100);
+}
+
+function switchView(view) {
+  currentView = view;
+  document.querySelectorAll('.view-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.view === view);
+  });
+  timelineEl.classList.add('hidden');
+  starsEl.classList.remove('show');
+  statsEl.classList.remove('show');
+  graphEl.classList.remove('show');
+  document.getElementById('stance-view').classList.remove('show');
+  if (view === 'timeline') {
+    timelineEl.classList.remove('hidden');
+  } else if (view === 'stars') {
+    starsEl.classList.add('show');
+  } else if (view === 'stats') {
+    statsEl.classList.add('show');
+  } else if (view === 'graph') {
+    graphEl.classList.add('show');
+  } else if (view === 'stance') {
+    document.getElementById('stance-view').classList.add('show');
+  }
+  render();
+}
+
+function render() {
+  let hasResults;
+  if (currentView === 'timeline') {
+    hasResults = renderTimeline();
+  } else if (currentView === 'stars') {
+    hasResults = renderStars();
+  } else if (currentView === 'stats') {
+    hasResults = renderStats();
+  } else if (currentView === 'graph') {
+    hasResults = renderGraph();
+  } else if (currentView === 'stance') {
+    hasResults = renderStance();
+  }
+  emptyEl.style.display = hasResults ? 'none' : 'block';
+  if (!hasResults) {
+    timelineEl.classList.add('hidden');
+    starsEl.classList.remove('show');
+    statsEl.classList.remove('show');
+    graphEl.classList.remove('show');
+    document.getElementById('stance-view').classList.remove('show');
+  } else if (currentView === 'timeline') {
+    timelineEl.classList.remove('hidden');
+  }
+}
+
+document.getElementById('search').addEventListener('input', (e) => {
+  currentSearch = e.target.value.trim();
+  render();
+});
+
+document.querySelectorAll('#filters .chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('#filters .chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFaction = chip.dataset.faction;
+    render();
+  });
+});
+
+document.querySelectorAll('.view-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchView(btn.dataset.view));
+});
+
+document.getElementById('sound-toggle').addEventListener('click', toggleAudio);
+document.getElementById('bgm-toggle').addEventListener('click', toggleBGM);
+
+// Hero modal 關閉觸發：背景遮罩、X 鈕、ESC 鍵
+document.getElementById('hero-modal-backdrop').addEventListener('click', closeHeroModal);
+document.getElementById('hero-modal-close').addEventListener('click', closeHeroModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && isHeroModalOpen()) closeHeroModal();
+});
+
+render();
+</script>
+
+</body>
+</html>

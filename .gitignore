@@ -1,0 +1,12 @@
+# 製作過程的工作檔，不需要部署到 GitHub Pages
+108sound.txt
+analyze_bgm.py
+hero_prompts_data.json
+heroes_appearance_prompts.md
+index.txt
+shuihu_sound_test.html
+
+# 系統檔
+.DS_Store
+Thumbs.db
+*.log
